@@ -1,8 +1,7 @@
-import { readFileSync, readdirSync } from "fs";
-import { format, join } from "path";
-import matter from "gray-matter";
 import type { PostType } from "@interfaces/post";
-import formatISO from "date-fns/formatISO";
+import { readdirSync, readFileSync } from "fs";
+import matter from "gray-matter";
+import { join } from "path";
 import markdownToHtml from "./markdownToHtml";
 
 type PostField = keyof PostType;

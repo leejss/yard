@@ -1,9 +1,9 @@
 import PostList from "@components/post-list";
-import { PostType } from "@interfaces/post";
 import { getAllPosts } from "@lib/ghost-api";
+import type { PostsOrPages } from "@tryghost/content-api";
 
 interface Props {
-  posts: PostType[];
+  posts: PostsOrPages;
 }
 
 export default function HomePage({ posts }: Props) {
@@ -15,13 +15,6 @@ export default function HomePage({ posts }: Props) {
 }
 
 export async function getStaticProps() {
-  // const posts = await getAllPosts(["date", "slug", "title"]);
-  // return {
-  //   props: {
-  //     posts,
-  //   },
-  // };
-
   const posts = await getAllPosts();
   console.log({ posts });
 
