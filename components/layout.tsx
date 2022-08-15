@@ -1,3 +1,4 @@
+import Head from "next/head";
 import type { ReactNode } from "react";
 import MainTitle from "./title";
 
@@ -7,10 +8,15 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div className="container mx-auto">
-      <MainTitle />
-      <main className="p-4">{children}</main>
-    </div>
+    <>
+      <Head>
+        <title>tinyyard</title>
+      </Head>
+      <div className="container mx-auto pt-4">
+        <MainTitle />
+        <main className="p-4">{children}</main>
+      </div>
+    </>
   );
 };
 

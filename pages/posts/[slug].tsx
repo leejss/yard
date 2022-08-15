@@ -1,3 +1,4 @@
+import DiscusComment from "@components/DiscusComment";
 import PostBody from "@components/post/post-body";
 import PostDate from "@components/post/post-date";
 import PostTitle from "@components/post/post-title";
@@ -14,6 +15,8 @@ export default function PostPage({ post }: Props) {
       <PostTitle title={post.title} />
       <PostDate date={post.published_at} />
       <PostBody html={post.html} />
+      <div id="disqus_thread"></div>
+      <DiscusComment id={post.id} title={post.title ? post.title : ""} />
     </div>
   );
 }
@@ -24,11 +27,8 @@ interface PageParams {
   };
 }
 export async function getStaticProps({ params }: PageParams) {
-  const post = await getSinglePost(params.slug, [
-    "title",
-    "published_at",
-    "html",
-  ]);
+  const post = await getSinglePost(params.slug);
+  console.log(post);
 
   return {
     props: {
