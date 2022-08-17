@@ -1,6 +1,6 @@
-import PostBody from "@components/post/post-body";
-import PostDate from "@components/post/post-date";
-import PostTitle from "@components/post/post-title";
+import PostBody from "@components/post/PostBody";
+import PostDate from "@components/post/PostDate";
+import PostTitle from "@components/post/PostTitle";
 import { getAllPosts, getSinglePost } from "@lib/ghost-api";
 import type { PostOrPage } from "@tryghost/content-api";
 
@@ -9,10 +9,14 @@ interface Props {
 }
 
 export default function PostPage({ post }: Props) {
+  console.log(post);
+
   return (
     <div className="flex flex-col gap-4">
-      <PostTitle title={post.title} />
-      <PostDate date={post.published_at} />
+      <header className="border-b-2 pb-4 border-green-400">
+        <PostTitle title={post.title} />
+        <PostDate date={post.published_at} />
+      </header>
       <PostBody html={post.html} />
     </div>
   );
@@ -25,7 +29,6 @@ interface PageParams {
 }
 export async function getStaticProps({ params }: PageParams) {
   const post = await getSinglePost(params.slug);
-  console.log(post);
 
   return {
     props: {

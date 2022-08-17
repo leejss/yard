@@ -7,6 +7,7 @@ export async function getAllPosts(fields?: Field[]) {
   const result = await ghostAPI.posts.browse({
     limit: "all",
     fields: fields,
+    include: "tags",
   });
 
   return result;
@@ -19,6 +20,7 @@ export async function getSinglePost(slug: string, fields?: Field[]) {
     },
     {
       fields,
+      include: "tags",
     }
   );
   return result;

@@ -1,5 +1,6 @@
 interface Props {
   title?: string;
+  date?: string;
 }
 
 const PostTitle = ({ title }: Props) => {

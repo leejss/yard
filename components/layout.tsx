@@ -1,6 +1,6 @@
 import Head from "next/head";
 import type { ReactNode } from "react";
-import MainTitle from "./title";
+import MainTitle from "./MainTitle";
 
 interface Props {
   children: ReactNode;

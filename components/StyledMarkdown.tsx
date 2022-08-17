@@ -13,10 +13,7 @@ interface Props {
 
 const StyledMarkdown = ({ html }: Props) => {
   useEffect(() => {
-    const higlight = async () => {
-      await Prism.highlightAll();
-    };
-    higlight();
+    Prism.highlightAll();
   }, []);
 
   return (
