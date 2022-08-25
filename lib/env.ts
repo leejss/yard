@@ -1,6 +1,5 @@
 const env = {
-  GHOST_API_URL: process.env.GHOST_API_URL,
-  GHOST_API_KEY: process.env.GHOST_API_KEY,
+  BLOK_PREVIEW_TOKEN: process.env.BLOK_PREVIEW_TOKEN,
   PAGE_URL: "https://www.tinyyard.dev",
 };
 

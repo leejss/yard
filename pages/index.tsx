@@ -1,25 +1,27 @@
-import PostList from "@components/PostList";
-import { getAllPosts } from "@lib/ghost-api";
-import type { PostsOrPages } from "@tryghost/content-api";
+import logger from "@lib/logger";
+import StoryBlokClient from "@lib/stroyblok";
+import {
+  getStoryblokApi,
+  StoryblokComponent,
+  useStoryblokState,
+} from "@storyblok/react";
+import type { StoryData } from "@storyblok/react";
 
-interface Props {
-  posts: PostsOrPages;
-}
+export default function HomePage({ data }: any) {
+  // const story = useStoryblokState(data.story);
 
-export default function HomePage({ posts }: Props) {
-  return (
-    <div>
-      <PostList posts={posts} />
-    </div>
-  );
+  return <div>{/* <StoryblokComponent blok={story.content!} /> */}</div>;
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts(["id", "slug", "published_at", "title"]);
+  const api = getStoryblokApi();
+  const { data } = await api.get(`cdn/stories/home`, {
+    version: "draft",
+  });
 
   return {
     props: {
-      posts,
+      // data,
     },
   };
 }
