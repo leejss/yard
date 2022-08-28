@@ -1,10 +1,10 @@
-import type { PostOrPage, PostsOrPages } from "@tryghost/content-api";
+import { PostType } from "@interfaces/post";
 import { isEmpty } from "@utils/array-helper";
 import { foramtDate } from "@utils/format-helpter";
 import Link from "next/link";
 
 interface PostListProps {
-  posts: PostsOrPages;
+  posts: PostType[];
 }
 
 export default function PostList({ posts }: PostListProps) {
@@ -19,18 +19,18 @@ export default function PostList({ posts }: PostListProps) {
 }
 
 interface PostListItemProps {
-  post: PostOrPage;
+  post: PostType;
 }
 
 function PostListItem({ post }: PostListItemProps) {
-  console.log(post.tags);
+  // console.log(post.tags);
 
   return (
     <Link href={`/posts/${post.slug}`}>
       <li className="flex justify-between text-2xl md:text-3xl leading-4 hover:text-green-400 cursor-pointer">
         <span>{post.title}</span>
-        {post.published_at && (
-          <time className="text-base">{foramtDate(post.published_at)}</time>
+        {post.publishedAt && (
+          <time className="text-base">{foramtDate(post.publishedAt)}</time>
         )}
       </li>
     </Link>
