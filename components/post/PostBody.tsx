@@ -1,4 +1,4 @@
-import StyledMarkdown from "@components/StyledMarkdown";
+import StyledMarkdown from "components/StyledMarkdown";
 
 interface Props {
   html?: string | null;

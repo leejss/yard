@@ -1,5 +1,5 @@
-import Head from "next/head";
 import type { ReactNode } from "react";
+import Head from "next/head";
 import MainTitle from "./MainTitle";
 
 interface Props {

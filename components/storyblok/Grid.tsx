@@ -1,4 +1,4 @@
-import { GridBlok } from "@interfaces/storyblok/blok";
+import { GridBlok } from "interfaces/storyblok/blok";
 import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 
 interface GridProps {

@@ -1,9 +1,9 @@
-import { PostType } from "@interfaces/post";
+import { PostType } from "interfaces/post";
 import {
   GenericStories,
   GenericStory,
   PostStory,
-} from "@interfaces/storyblok/story";
+} from "interfaces/storyblok/story";
 import ApiClient from "./client";
 import { __DEV__ } from "./constants";
 import markdownToHtml from "./markdownToHtml";

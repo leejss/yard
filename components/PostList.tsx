@@ -1,6 +1,6 @@
-import { PostType } from "@interfaces/post";
-import { isEmpty } from "@utils/array-helper";
-import { foramtDate } from "@utils/format-helpter";
+import { PostType } from "interfaces/post";
+import { isEmpty } from "utils/array-helper";
+import { foramtDate } from "utils/format-helpter";
 import Link from "next/link";
 
 interface PostListProps {

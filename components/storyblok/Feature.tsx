@@ -1,4 +1,4 @@
-import { FeatureBlok } from "@interfaces/storyblok/blok";
+import { FeatureBlok } from "interfaces/storyblok/blok";
 import { storyblokEditable } from "@storyblok/react";
 
 interface FeatureProps {

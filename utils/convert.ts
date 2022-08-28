@@ -1,6 +1,6 @@
-import { PostType } from "@interfaces/post";
-import { GenericStory, PostStory } from "@interfaces/storyblok/story";
-import markdownToHtml from "@lib/markdownToHtml";
+import { PostType } from "interfaces/post";
+import { GenericStory, PostStory } from "interfaces/storyblok/story";
+import markdownToHtml from "lib/markdownToHtml";
 
 export function convertPostBlokToPost(postBlok: any) {}
 

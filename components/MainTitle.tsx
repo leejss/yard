@@ -1,4 +1,4 @@
-import { PAGE_TITLE } from "@lib/constants";
+import { PAGE_TITLE } from "lib/constants";
 import Link from "next/link";
 
 const MainTitle = () => {

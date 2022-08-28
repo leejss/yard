@@ -1,4 +1,3 @@
-import { PostType } from "@interfaces/post";
 import type { StoryData } from "@storyblok/react";
 
 export interface PostStory {

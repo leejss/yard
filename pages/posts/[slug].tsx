@@ -1,7 +1,7 @@
-import PostBody from "@components/post/PostBody";
-import PostTitle from "@components/post/PostTitle";
-import { PostType } from "@interfaces/post";
-import { getAllPostStories, getSinglePost } from "@lib/api";
+import PostBody from "components/post/PostBody";
+import PostTitle from "components/post/PostTitle";
+import { PostType } from "interfaces/post";
+import { getAllPostStories, getSinglePost } from "lib/api";
 
 interface Props {
   post: PostType;

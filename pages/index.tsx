@@ -1,6 +1,6 @@
-import PostList from "@components/PostList";
-import { PostType } from "@interfaces/post";
-import { getAllPosts } from "@lib/api";
+import PostList from "components/PostList";
+import { PostType } from "interfaces/post";
+import { getAllPosts } from "lib/api";
 
 interface Props {
   posts: PostType[];
