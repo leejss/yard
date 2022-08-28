@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./prism.css";
 
 html,
 body {
@@ -24,7 +25,7 @@ a {
   }
   body {
     color: white;
-    background: #191919;
+    background: #281919;
   }
 
   *::selection {

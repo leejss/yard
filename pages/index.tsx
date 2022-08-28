@@ -1,27 +1,39 @@
-import logger from "@lib/logger";
+import { PostType } from "@interfaces/post";
+import { GenericStories, PostStory } from "@interfaces/storyblok/story";
 import StoryBlokClient from "@lib/stroyblok";
-import {
-  getStoryblokApi,
-  StoryblokComponent,
-  useStoryblokState,
-} from "@storyblok/react";
-import type { StoryData } from "@storyblok/react";
 
-export default function HomePage({ data }: any) {
-  // const story = useStoryblokState(data.story);
+interface Props {
+  posts: PostType[];
+}
 
-  return <div>{/* <StoryblokComponent blok={story.content!} /> */}</div>;
+export default function HomePage({ posts }: Props) {
+  console.log(posts);
+
+  return <div></div>;
 }
 
 export async function getStaticProps() {
-  const api = getStoryblokApi();
-  const { data } = await api.get(`cdn/stories/home`, {
-    version: "draft",
+  const { data }: GenericStories<PostStory> = await StoryBlokClient.get(
+    `cdn/stories`,
+    {
+      version: "draft",
+      starts_with: "posts/",
+    }
+  );
+
+  const posts: PostType[] = data.stories.map((story) => {
+    return {
+      id: story.content._uid,
+      slug: story.slug,
+      title: story.content.title,
+      createdAt: story.created_at,
+      publishedAt: story.published_at,
+    };
   });
 
   return {
     props: {
-      // data,
+      posts,
     },
   };
 }

@@ -1,6 +1,8 @@
 export interface PostType {
+  id: string;
   slug: string;
   title: string;
-  date?: string;
-  content?: string;
+  html?: string;
+  createdAt?: string;
+  publishedAt?: string | null;
 }

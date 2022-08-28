@@ -1,7 +1,3 @@
-import PostBody from "@components/post/PostBody";
-import PostDate from "@components/post/PostDate";
-import PostTitle from "@components/post/PostTitle";
-import type { PostOrPage } from "@tryghost/content-api";
 
 export default function PostPage() {
   return (

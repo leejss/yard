@@ -2,7 +2,7 @@ import type { PostType } from "@interfaces/post";
 import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
 import { join } from "path";
-import markdownToHtml from "./markdownToHtml";
+import markdownToHtml from "../markdownToHtml";
 
 type PostField = keyof PostType;
 const POSTS_DIR = join(process.cwd(), "_posts");

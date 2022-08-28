@@ -1,8 +1,5 @@
-import Storyblok from "storyblok-js-client";
-import env from "./env";
+import { getStoryblokApi } from "@storyblok/react";
 
-const StoryBlokClient = new Storyblok({
-  accessToken: env.BLOK_PREVIEW_TOKEN,
-});
+const StoryBlokClient = getStoryblokApi();
 
 export default StoryBlokClient;
