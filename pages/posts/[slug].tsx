@@ -8,8 +8,6 @@ interface Props {
 }
 
 export default function PostPage({ post }: Props) {
-  console.log(post);
-
   return (
     <div className="flex flex-col gap-4">
       <header className="border-b-2 pb-4 border-green-400">
@@ -49,8 +47,6 @@ export const getStaticPaths = async () => {
       },
     };
   });
-
-  console.log(paths);
 
   return {
     paths,

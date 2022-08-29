@@ -5,8 +5,6 @@ interface PageProps {
 }
 
 const Page = ({ blok }: PageProps) => {
-  console.log(blok);
-
   return (
     <main {...storyblokEditable(blok)}>
       {blok.body.map((nestedBlok: any) => {

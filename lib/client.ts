@@ -1,8 +1,6 @@
-import StoryBlok from "storyblok-js-client";
-import { API_TOKEN } from "lib/constants";
+// import StoryBlok from "storyblok-js-client";
+import { getStoryblokApi } from "@storyblok/react";
 
-const ApiClient = new StoryBlok({
-  accessToken: API_TOKEN,
-});
+const ApiClient = getStoryblokApi();
 
 export default ApiClient;

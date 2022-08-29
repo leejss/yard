@@ -23,8 +23,6 @@ interface PostListItemProps {
 }
 
 function PostListItem({ post }: PostListItemProps) {
-  // console.log(post.tags);
-
   return (
     <Link href={`/posts/${post.slug}`}>
       <li className="flex justify-between text-2xl md:text-3xl leading-4 hover:text-green-400 cursor-pointer">
