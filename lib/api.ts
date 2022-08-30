@@ -1,4 +1,4 @@
-import { PostType } from "interfaces/post";
+import { PostType, TagType } from "interfaces/post";
 import {
   GenericStories,
   GenericStory,
@@ -9,8 +9,7 @@ import { __DEV__ } from "./constants";
 import markdownToHtml from "./markdownToHtml";
 
 const version = __DEV__ ? "draft" : "published";
-
-type OptionalPostField = "html" | "createdAt" | "publishedAt";
+type OptionalPostField = "html" | "createdAt" | "publishedAt" | "tags";
 
 export async function getAllPostStories() {
   const { data }: GenericStories<PostStory> = await ApiClient.get(
@@ -51,6 +50,11 @@ export async function getAllPosts(fields: OptionalPostField[] = []) {
       if (field === "publishedAt") {
         post[field] = story.published_at;
       }
+      if (field === "tags") {
+        if (story.content.tags) {
+          post[field] = story.content.tags.split(", ") as TagType[];
+        }
+      }
     });
     return post;
   });
@@ -75,6 +79,11 @@ export async function getSinglePost(
     }
     if (field === "publishedAt") {
       post[field] = story.published_at;
+    }
+    if (field === "tags") {
+      if (story.content.tags) {
+        post[field] = story.content.tags.split(", ") as TagType[];
+      }
     }
   });
   return post;

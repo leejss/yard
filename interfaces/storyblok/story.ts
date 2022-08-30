@@ -1,9 +1,11 @@
 import type { StoryData } from "@storyblok/react";
 
+// Story type
 export interface PostStory {
   _uid: string;
   title: string;
   markdown: string;
+  tags: string;
 }
 
 export type GenericStory<Content> = {

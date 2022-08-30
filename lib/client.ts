@@ -8,7 +8,4 @@ storyblokInit({
 });
 const ApiClient = getStoryblokApi();
 
-console.log(API_TOKEN);
-console.log(ApiClient);
-
 export default ApiClient;

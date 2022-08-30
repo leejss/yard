@@ -15,7 +15,7 @@ export default function HomePage({ posts }: Props) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts();
+  const posts = await getAllPosts(["publishedAt", "tags"]);
   return {
     props: {
       posts,

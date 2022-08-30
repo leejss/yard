@@ -45,3 +45,8 @@
 .markdown img {
   @apply rounded-md;
 }
+
+.markdown ul {
+  list-style: disc;
+  padding-left: 18px;
+}

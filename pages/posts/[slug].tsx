@@ -1,7 +1,8 @@
 import PostBody from "components/post/PostBody";
-import PostTitle from "components/post/PostTitle";
+import Tag from "components/ui/Tag";
 import { PostType } from "interfaces/post";
 import { getAllPostStories, getSinglePost } from "lib/api";
+import { foramtDate } from "utils/format-helpter";
 
 interface Props {
   post: PostType;
@@ -10,9 +11,14 @@ interface Props {
 export default function PostPage({ post }: Props) {
   return (
     <div className="flex flex-col gap-4">
-      <header className="border-b-2 pb-4 border-green-400">
-        <PostTitle title={post.title} />
-        {/* <PostDate date={post.published_at} /> */}
+      <header className="flex flex-col gap-2 pb-4 border-b-2 border-green-400">
+        <h1 className="text-5xl">{post.title}</h1>
+        {post.publishedAt ? (
+          <p className="text-2xl">{foramtDate(post.publishedAt)}</p>
+        ) : (
+          <div>DEV</div>
+        )}
+        <div>{post.tags && post.tags.map((t) => <Tag key={t}>{t}</Tag>)}</div>
       </header>
       <PostBody html={post.html} />
     </div>
@@ -30,6 +36,7 @@ export const getStaticProps = async (context: PathContext) => {
     "html",
     "createdAt",
     "publishedAt",
+    "tags",
   ]);
   return {
     props: {
