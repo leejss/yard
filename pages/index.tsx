@@ -7,11 +7,7 @@ interface Props {
 }
 
 export default function HomePage({ posts }: Props) {
-  return (
-    <div>
-      <PostList posts={posts} />
-    </div>
-  );
+  return <PostList posts={posts} />;
 }
 
 export async function getStaticProps() {

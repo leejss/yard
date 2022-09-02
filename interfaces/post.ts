@@ -4,7 +4,8 @@ export type TagType =
   | "typescript"
   | "react"
   | "nextjs"
-  | "storybook";
+  | "storybook"
+  | "etc";
 
 export interface PostType {
   id: string;

@@ -6,6 +6,7 @@ storyblokInit({
   accessToken: API_TOKEN,
   use: [apiPlugin],
 });
+
 const ApiClient = getStoryblokApi();
 
 export default ApiClient;
