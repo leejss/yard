@@ -11,7 +11,7 @@ interface Props {
 export default function PostPage({ post }: Props) {
   return (
     <div className="flex flex-col gap-4">
-      <header className="flex flex-col gap-2 pb-4 border-b-2 border-green-400">
+      <header className="flex flex-col gap-2 pb-4 border-b-[0.5px] border-gray-300">
         <h1 className="text-5xl">{post.title}</h1>
         {post.publishedAt ? (
           <p className="text-2xl">{foramtDate(post.publishedAt)}</p>

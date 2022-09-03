@@ -4,7 +4,7 @@ import Link from "next/link";
 const MainTitle = () => {
   return (
     <header className="mb-4">
-      <h1 className="text-center md:text-left text-6xl md:text-8xl font-bold leading-wide px-4 transition-colors hover:text-teal-400">
+      <h1 className="px-4 text-6xl font-bold text-center transition-colors md:text-left md:text-8xl leading-wide hover:text-gray-500">
         <Link href="/">{PAGE_TITLE}</Link>
       </h1>
     </header>
