@@ -141,7 +141,7 @@ const AboutPage = () => {
           </section>
         </div>
       </main>
-      <BackToBlog />
+      <BackToHome />
     </>
   );
 };
@@ -187,11 +187,11 @@ const SubTitleList = ({ children }: { children: ReactNode }) => {
   return <ul className="flex flex-col gap-4 pl-1 md:pl-6">{children}</ul>;
 };
 
-const BackToBlog = () => {
+const BackToHome = () => {
   return (
     <div className="fixed text-base md:text-3xl flex items-center gap-4 bottom-4 left-4 bg-[#fffdb] dark:bg-[#1b1616db] rounded-2xl p-2">
       <MdArrowBackIos />
-      <Link href="/">Go to blog</Link>
+      <Link href="/">Home</Link>
     </div>
   );
 };

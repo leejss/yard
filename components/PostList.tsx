@@ -27,7 +27,7 @@ interface PostListItemProps {
 function PostListItem({ post }: PostListItemProps) {
   return (
     <li className="py-3 border-b-[0.5px] border-b-gray-300">
-      <div className="flex justify-between mb-1">
+      <div className="flex flex-col justify-between mb-1 md:flex-row">
         <Link href={`/posts/${post.slug}`}>
           <h2 className="text-xl cursor-pointer md:text-3xl hover:text-gray-500">
             {post.title}
