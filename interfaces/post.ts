@@ -5,6 +5,7 @@ export type TagType =
   | "react"
   | "nextjs"
   | "storybook"
+  | "git"
   | "etc";
 
 export interface PostType {

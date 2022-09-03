@@ -34,6 +34,8 @@ function getColorSet(tag: TagType) {
       return "text-white bg-blue-900";
     case "storybook":
       return "text-white bg-pink-600";
+    case "git":
+      return "text-white bg-[#e94d32]";
     case "etc":
       return "text-white bg-gray-600";
     default:

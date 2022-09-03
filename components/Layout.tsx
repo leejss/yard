@@ -12,7 +12,7 @@ const Layout = ({ children }: Props) => {
       <Head>
         <title>tinyyard</title>
       </Head>
-      <div className="container mx-auto pt-4">
+      <div className="container py-16 mx-auto">
         <MainTitle />
         <main className="p-4">{children}</main>
       </div>

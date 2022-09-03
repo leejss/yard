@@ -43,6 +43,14 @@
   padding: 0.2em 0.4em;
 }
 
+.markdown li code {
+  @apply text-sm;
+  background: rgba(135, 131, 120, 0.15);
+  color: #eb5757;
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+}
+
 .markdown pre code {
   @apply rounded-md;
 }
