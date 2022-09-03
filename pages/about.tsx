@@ -129,7 +129,7 @@ const AboutPage = () => {
           </SubTitleList>
         </section>
         <section id="skills">
-          <MainTitle hash="skills">기술</MainTitle>
+          <MainTitle hash="#skills">기술</MainTitle>
           <ul className="flex gap-2">
             {skills.map((sk) => (
               <Tag key={sk}>{sk}</Tag>
