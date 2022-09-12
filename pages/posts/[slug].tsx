@@ -12,7 +12,9 @@ export default function PostPage({ post }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <header className="flex flex-col gap-2 pb-4 border-b-[0.5px] border-gray-300">
-        <h1 className="text-5xl">{post.title}</h1>
+        <h1 className="text-3xl md:leading-[60px!important] md:text-5xl dark:text-white">
+          {post.title}
+        </h1>
         {post.publishedAt ? (
           <p className="text-2xl">{foramtDate(post.publishedAt)}</p>
         ) : (

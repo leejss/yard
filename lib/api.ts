@@ -38,7 +38,7 @@ export async function getAllPosts(fields: OptionalPostField[] = []) {
     const post: PostType = {
       id: story.content._uid,
       slug: story.slug,
-      title: story.content.title,
+      title: story.content.title ?? "",
     };
     fields.forEach(async (field) => {
       if (field === "createdAt") {
@@ -68,7 +68,7 @@ export async function getSinglePost(
   const post: PostType = {
     id: story.content._uid,
     slug: story.slug,
-    title: story.content.title,
+    title: story.content.title ?? "",
   };
   fields.forEach(async (field) => {
     if (field === "createdAt") {

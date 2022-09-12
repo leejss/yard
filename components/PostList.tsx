@@ -30,7 +30,7 @@ function PostListItem({ post }: PostListItemProps) {
       <div className="flex flex-col justify-between mb-1 md:flex-row">
         <Link href={`/posts/${post.slug}`}>
           <h2 className="text-xl cursor-pointer md:text-3xl hover:text-gray-500">
-            {post.title}
+            {post.title ?? "No title"}
           </h2>
         </Link>
         {post.publishedAt ? (
