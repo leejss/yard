@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap");
+
 .markdown * {
-  @apply mb-4;
+  @apply mb-5;
 }
 
 /* # */
@@ -31,12 +33,16 @@
 }
 
 .markdown p {
-  @apply text-lg;
-  @apply md:text-xl;
+  @apply text-xl;
+  @apply leading-8;
+  @apply md:text-2xl;
+  @apply md:leading-10;
 }
 
 .markdown code {
-  font-family: "Roboto Mono";
+  @apply text-sm;
+  @apply md:text-lg;
+  font-family: "Source Code Pro", monospace;
   /* @apply text-sm;
   background: rgba(135, 131, 120, 0.15);
   color: #eb5757;
@@ -46,6 +52,7 @@
 
 .markdown p > code {
   @apply text-sm;
+  @apply md:text-lg;
   background: rgba(135, 131, 120, 0.15);
   color: #eb5757;
   border-radius: 3px;
