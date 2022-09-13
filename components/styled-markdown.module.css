@@ -99,3 +99,12 @@
   @apply text-lg;
   @apply md:text-2xl;
 }
+
+.markdown h2 code {
+  @apply text-xl;
+  @apply md:text-2xl;
+  background: rgba(135, 131, 120, 0.15);
+  color: #eb5757;
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+}
