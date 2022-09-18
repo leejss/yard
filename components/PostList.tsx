@@ -2,7 +2,6 @@ import { PostType } from "interfaces/post";
 import { isEmpty } from "utils/array-helper";
 import { foramtDate } from "utils/format-helpter";
 import Link from "next/link";
-import Tag from "./ui/Tag";
 
 interface PostListProps {
   posts: PostType[];
@@ -26,7 +25,7 @@ interface PostListItemProps {
 
 function PostListItem({ post }: PostListItemProps) {
   return (
-    <li className="py-3 border-b-[0.5px] border-b-gray-300">
+    <li className="py-3 border-b-[0.5px] border-b-gray-100 dark:border-b-gray-700">
       <div className="flex flex-col justify-between mb-1 md:flex-row">
         <Link href={`/posts/${post.slug}`}>
           <h2 className="text-xl cursor-pointer md:text-3xl hover:text-gray-500">
@@ -41,13 +40,13 @@ function PostListItem({ post }: PostListItemProps) {
           <time className="text-base">dev</time>
         )}
       </div>
-      {post.tags && (
+      {/* {post.tags && (
         <div>
           {post.tags.map((t) => (
             <Tag key={`${post.id}-${t}`}>{t}</Tag>
           ))}
         </div>
-      )}
+      )} */}
     </li>
   );
 }
