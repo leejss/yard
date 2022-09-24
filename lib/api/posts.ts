@@ -18,7 +18,10 @@ export function getAllSlugs() {
   });
 }
 
-export async function getPostBySlug(slug: string) {
+export async function getPostBySlug(
+  slug: string,
+  fields?: ("categories" | "html")[]
+) {
   let fullPath = getFullPath(slug);
   if (isDir(fullPath)) {
     fullPath = path.join(fullPath, `${slug}.md`);
@@ -31,12 +34,20 @@ export async function getPostBySlug(slug: string) {
 
   const post: Post = {
     id: `${Math.round(getFileTimeInfo(fullPath).createAtMs)}`,
-    slug,
     title: data.title,
-    categories: data.categories,
     date: data.date.toLocaleString(),
-    html: await markdownToHtml(content),
+    slug,
   };
+  if (fields) {
+    for (const f of fields) {
+      if (f === "categories") {
+        post[f] = data.categories;
+      }
+      if (f === "html") {
+        post[f] = await markdownToHtml(content);
+      }
+    }
+  }
 
   return post;
 }

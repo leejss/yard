@@ -1,4 +1,4 @@
-import PostBody from "components/post/PostBody";
+import StyledMarkdown from "components/StyledMarkdown";
 import Tag from "components/ui/Tag";
 import { getAllSlugs, getPostBySlug } from "lib/api/posts";
 import { Post } from "lib/types";
@@ -20,7 +20,7 @@ export default function PostPage({ post }: Props) {
             post.categories.map((t) => <Tag key={t}>{t}</Tag>)}
         </div>
       </header>
-      <PostBody html={post.html} />
+      {post.html && <StyledMarkdown html={post.html} />}
     </div>
   );
 }
@@ -33,7 +33,7 @@ interface PathContext {
 
 export const getStaticProps = async (context: PathContext) => {
   const slug = context.params.slug;
-  const post = await getPostBySlug(slug);
+  const post = await getPostBySlug(slug, ["categories", "html"]);
   return {
     props: {
       post,

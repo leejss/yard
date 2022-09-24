@@ -1,10 +1,10 @@
 export type Post = {
   id: string;
-  slug: string;
   title: string;
   date: string;
-  categories: TagType[];
-  html: string;
+  slug: string;
+  categories?: TagType[];
+  html?: string;
 };
 
 export type FrontMatter = {
