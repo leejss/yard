@@ -1,11 +1,10 @@
 import PostBody from "components/post/PostBody";
 import Tag from "components/ui/Tag";
-import { PostType } from "interfaces/post";
-import { getAllPostStories, getSinglePost } from "lib/api";
-import { foramtDate } from "utils/format-helpter";
+import { getAllSlugs, getPostBySlug } from "lib/api/posts";
+import { Post } from "lib/types";
 
 interface Props {
-  post: PostType;
+  post: Post;
 }
 
 export default function PostPage({ post }: Props) {
@@ -15,12 +14,11 @@ export default function PostPage({ post }: Props) {
         <h1 className="text-3xl md:leading-[60px!important] md:text-5xl dark:text-white">
           {post.title}
         </h1>
-        {post.publishedAt ? (
-          <p className="text-2xl">{foramtDate(post.publishedAt)}</p>
-        ) : (
-          <div>DEV</div>
-        )}
-        <div>{post.tags && post.tags.map((t) => <Tag key={t}>{t}</Tag>)}</div>
+        {post.date ? <p className="text-2xl">{post.date}</p> : <div>DEV</div>}
+        <div>
+          {post.categories &&
+            post.categories.map((t) => <Tag key={t}>{t}</Tag>)}
+        </div>
       </header>
       <PostBody html={post.html} />
     </div>
@@ -34,12 +32,8 @@ interface PathContext {
 }
 
 export const getStaticProps = async (context: PathContext) => {
-  const post = await getSinglePost(context.params.slug, [
-    "html",
-    "createdAt",
-    "publishedAt",
-    "tags",
-  ]);
+  const slug = context.params.slug;
+  const post = await getPostBySlug(slug);
   return {
     props: {
       post,
@@ -48,11 +42,11 @@ export const getStaticProps = async (context: PathContext) => {
 };
 
 export const getStaticPaths = async () => {
-  const postStories = await getAllPostStories();
-  const paths = postStories.map((story) => {
+  const slugs = getAllSlugs();
+  const paths = slugs.map((slug) => {
     return {
       params: {
-        slug: story.slug,
+        slug,
       },
     };
   });

@@ -1,10 +1,9 @@
-import { PostType } from "interfaces/post";
 import { isEmpty } from "utils/array-helper";
-import { foramtDate } from "utils/format-helpter";
 import Link from "next/link";
+import { Post } from "lib/types";
 
 interface PostListProps {
-  posts: PostType[];
+  posts: Post[];
 }
 
 export default function PostList({ posts }: PostListProps) {
@@ -20,7 +19,7 @@ export default function PostList({ posts }: PostListProps) {
 }
 
 interface PostListItemProps {
-  post: PostType;
+  post: Post;
 }
 
 function PostListItem({ post }: PostListItemProps) {
@@ -32,21 +31,12 @@ function PostListItem({ post }: PostListItemProps) {
             {post.title ?? "No title"}
           </h2>
         </Link>
-        {post.publishedAt ? (
-          <time className="text-base md:text-lg">
-            {foramtDate(post.publishedAt)}
-          </time>
+        {post.date ? (
+          <time className="text-base md:text-lg">{post.date}</time>
         ) : (
           <time className="text-base">dev</time>
         )}
       </div>
-      {/* {post.tags && (
-        <div>
-          {post.tags.map((t) => (
-            <Tag key={`${post.id}-${t}`}>{t}</Tag>
-          ))}
-        </div>
-      )} */}
     </li>
   );
 }

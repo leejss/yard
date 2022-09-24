@@ -1,5 +1,5 @@
 import Tag from "components/ui/Tag";
-import type { TagType } from "interfaces/post";
+import { TagType } from "lib/types";
 import type { NextPage } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";

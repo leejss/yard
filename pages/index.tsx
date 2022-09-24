@@ -1,14 +1,14 @@
 import PostList from "components/PostList";
-import { PostType } from "interfaces/post";
-import { getAllPosts } from "lib/api";
+import { getAllPosts } from "lib/api/posts";
+import { Post } from "lib/types";
 import Link from "next/link";
 import { MdArrowForwardIos } from "react-icons/md";
 
-interface Props {
-  posts: PostType[];
+interface HomePageProps {
+  posts: Post[];
 }
 
-export default function HomePage({ posts }: Props) {
+export default function HomePage({ posts }: HomePageProps) {
   return (
     <>
       <PostList posts={posts} />
@@ -21,10 +21,11 @@ export default function HomePage({ posts }: Props) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts(["publishedAt", "tags"]);
+  const posts = await getAllPosts();
+
   return {
     props: {
-      posts,
+      posts: posts as Post[],
     },
   };
 }

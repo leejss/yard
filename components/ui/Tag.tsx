@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { TagType } from "interfaces/post";
+import { TagType } from "lib/types";
 
 interface TagProps {
   children: TagType;

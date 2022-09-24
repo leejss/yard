@@ -16,6 +16,7 @@ export function isDir(path: string) {
 export function getFileTimeInfo(path: string) {
   return {
     createAt: fs.lstatSync(path).birthtime,
+    createAtMs: fs.lstatSync(path).birthtimeMs,
     lastModifiedAt: fs.lstatSync(path).mtime,
   };
 }
