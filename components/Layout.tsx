@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import Head from "next/head";
-import MainTitle from "./MainTitle";
+import { PAGE_TITLE } from "lib/constants";
+import Link from "next/link";
 
 interface Props {
   children: ReactNode;
@@ -8,15 +8,14 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   return (
-    <>
-      <Head>
-        <title>tinyyard</title>
-      </Head>
-      <div className="container py-16 mx-auto">
-        <MainTitle />
-        <main className="p-4">{children}</main>
-      </div>
-    </>
+    <div className="container mx-auto p-14">
+      <header className="mb-4">
+        <h1 className="text-5xl font-bold text-center transition-colors md:text-left md:text-7xl hover:text-gray-500 ">
+          <Link href="/">{PAGE_TITLE}</Link>
+        </h1>
+      </header>
+      <main className="py-4">{children}</main>
+    </div>
   );
 };
 

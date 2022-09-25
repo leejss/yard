@@ -24,7 +24,7 @@ interface PostListItemProps {
 
 function PostListItem({ post }: PostListItemProps) {
   return (
-    <li className="py-3 transition-all border-b border-b-gray-100 dark:border-b-gray-700">
+    <li className="py-3 transition-all border-b border-b-gray-300 dark:border-b-gray-700">
       <div className="flex flex-col justify-between mb-1 md:flex-row">
         <Link href={`/posts/${post.slug}`}>
           <h2 className="text-xl cursor-pointer md:text-3xl hover:text-gray-500">
@@ -32,7 +32,9 @@ function PostListItem({ post }: PostListItemProps) {
           </h2>
         </Link>
         {post.date ? (
-          <time className="text-base md:text-lg">{post.date}</time>
+          <time className="text-base text-gray-500 md:text-lg">
+            {post.date}
+          </time>
         ) : (
           <time className="text-base">dev</time>
         )}

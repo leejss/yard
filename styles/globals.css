@@ -18,6 +18,17 @@ a {
   box-sizing: border-box;
 }
 
+*::selection {
+  background: rgba(45, 170, 219, 0.3);
+}
+::-webkit-scrollbar-track {
+  background: rgba(202, 204, 206, 0.04);
+}
+
+body {
+  background-color: #fafafa;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

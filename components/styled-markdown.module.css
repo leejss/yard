@@ -64,11 +64,7 @@
 }
 
 .markdown a {
-  color: rgb(22, 171, 134);
-}
-
-.markdown a:hover {
-  color: rgb(22, 194, 151);
+  @apply text-[#16ab86] hover:text-[#16c297] underline;
 }
 
 .markdown ol {

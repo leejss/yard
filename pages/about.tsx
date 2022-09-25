@@ -1,9 +1,7 @@
 import Tag from "components/ui/Tag";
 import { TagType } from "lib/types";
 import type { NextPage } from "next";
-import Link from "next/link";
 import type { ReactNode } from "react";
-import { MdArrowBackIos } from "react-icons/md";
 
 const skills: TagType[] = [
   "javascript",
@@ -141,7 +139,6 @@ const AboutPage = () => {
           </section>
         </div>
       </main>
-      <BackToHome />
     </>
   );
 };
@@ -185,13 +182,4 @@ const DiskList = ({ children }: { children: ReactNode }) => {
 
 const SubTitleList = ({ children }: { children: ReactNode }) => {
   return <ul className="flex flex-col gap-4 pl-1 md:pl-6">{children}</ul>;
-};
-
-const BackToHome = () => {
-  return (
-    <div className="fixed text-base md:text-3xl flex items-center gap-4 bottom-4 left-4 bg-[#fffdb] dark:bg-[#1b1616db] rounded-2xl p-2">
-      <MdArrowBackIos />
-      <Link href="/">Home</Link>
-    </div>
-  );
 };

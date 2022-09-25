@@ -1,31 +1,38 @@
-import PostList from "components/PostList";
-import { getAllPosts } from "lib/api/posts";
-import { Post } from "lib/types";
 import Link from "next/link";
-import { MdArrowForwardIos } from "react-icons/md";
 
-interface HomePageProps {
-  posts: Post[];
-}
+const links: {
+  text: string;
+  route: string;
+}[] = [
+  {
+    text: "posts",
+    route: "/posts",
+  },
+  {
+    text: "about me",
+    route: "/about",
+  },
+];
 
-export default function HomePage({ posts }: HomePageProps) {
+const HomePage = () => {
   return (
-    <>
-      <PostList posts={posts} />
-      <div className="fixed text-base md:text-3xl flex items-center gap-4 bottom-4 right-4 bg-[#fffdb] dark:bg-[#1b1616db] rounded-2xl p-2">
-        <Link href="/about">About</Link>
-        <MdArrowForwardIos />
-      </div>
-    </>
+    <div>
+      <ul className="flex flex-col gap-2 ">
+        {links.map((link) => (
+          <li
+            key={link.route}
+            className="text-2xl transition-colors md:text-3xl hover:text-gray-500"
+          >
+            <Link href={link.route}>
+              <span className="underline cursor-pointer underline-offset-4">
+                {link.text}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
-}
+};
 
-export async function getStaticProps() {
-  const posts = await getAllPosts();
-
-  return {
-    props: {
-      posts: posts as Post[],
-    },
-  };
-}
+export default HomePage;
