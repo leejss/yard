@@ -8,7 +8,7 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div className="container mx-auto p-14">
+    <div className="p-8 md:p-14">
       <header className="mb-4">
         <h1 className="text-5xl font-bold text-center transition-colors md:text-left md:text-7xl hover:text-gray-500 ">
           <Link href="/">{PAGE_TITLE}</Link>
