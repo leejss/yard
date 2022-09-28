@@ -1,6 +1,7 @@
 import Tag from "components/ui/Tag";
 import { TagType } from "lib/types";
 import type { NextPage } from "next";
+import Head from "next/head";
 import type { ReactNode } from "react";
 
 const skills: TagType[] = [
@@ -14,6 +15,9 @@ const skills: TagType[] = [
 const AboutPage = () => {
   return (
     <>
+      <Head>
+        <title>tinyyard | about me</title>
+      </Head>
       <main className="container px-12 py-20 mx-auto md:px-36 lg:px-72">
         <h1 className="text-4xl font-bold md:text-6xl">이종서</h1>
         <p className="my-4 text-sm italic text-gray-400 md:text-md">
