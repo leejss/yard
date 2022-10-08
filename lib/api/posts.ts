@@ -35,7 +35,7 @@ export async function getPostBySlug(
   const post: Post = {
     id: `${Math.round(getFileTimeInfo(fullPath).createAtMs)}`,
     title: data.title,
-    date: data.date.toLocaleString(),
+    date: data.date ? data.date.toLocaleString() : getDate(),
     slug,
   };
   if (fields) {
@@ -60,40 +60,17 @@ export async function getAllPosts() {
   });
 }
 
-// export function getPostPaths() {
-//   const result: string[] = [];
-//   const d1 = fs.readdirSync(POST_DIR);
-//   d1.forEach((ditem) => {
-//     const fp = path.join(POST_DIR, ditem);
+function getDate() {
+  function addLeadingZeros(num: number, totalLength: number = 2) {
+    return String(num).padStart(totalLength, "0");
+  }
 
-//     if (isDir(fp)) {
-//       const d2 = fs.readdirSync(fp);
+  const date = new Date();
+  const y = date.getFullYear();
+  const m = date.getMonth() + 1;
+  const d = date.getDate();
+  const hh = date.getHours();
+  const mm = date.getMinutes();
 
-//       d2.forEach((d2item) => {
-//         if (isMarkdown(path.join(POST_DIR, ditem, d2item))) {
-//           result.push(`${ditem}/${d2item}`);
-//         }
-//       });
-//     } else if (isMarkdown(fp)) {
-//       result.push(ditem);
-//     }
-//   });
-//   return result;
-// }
-
-// export async function getPostByPath(p: string) {
-//   const fullPath = getFullPath(p);
-
-//   const fileContent = fs.readFileSync(fullPath, "utf-8");
-//   const { data, content } = matter(fileContent);
-//   const post: Post = {
-//     id: `${Math.round(getFileTimeInfo(fullPath).createAtMs)}`,
-//     slug: p.split(".")[0],
-//     title: data.title,
-//     categories: data.categories,
-//     date: data.date,
-//     html: await markdownToHtml(content),
-//   };
-
-//   return post;
-// }
+  return `${y}-${m}-${addLeadingZeros(d)} ${addLeadingZeros(hh)}:${mm}`;
+}
