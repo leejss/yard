@@ -74,3 +74,36 @@ function getDate() {
 
   return `${y}-${m}-${addLeadingZeros(d)} ${addLeadingZeros(hh)}:${mm}`;
 }
+
+export async function getPrevAndNext(slug: string) {
+  let prev: null | { title: string; slug: string } = null;
+  let next: null | { title: string; slug: string } = null;
+  const posts = await getAllPosts();
+  const currentSlugIdx = posts.findIndex((post) => post.slug === slug);
+
+  if (currentSlugIdx === 0) {
+    next = {
+      slug: posts[currentSlugIdx + 1].slug,
+      title: posts[currentSlugIdx + 1].title,
+    };
+  } else if (currentSlugIdx === posts.length - 1) {
+    prev = {
+      title: posts[currentSlugIdx - 1].title,
+      slug: posts[currentSlugIdx - 1].slug,
+    };
+  } else {
+    next = {
+      slug: posts[currentSlugIdx + 1].slug,
+      title: posts[currentSlugIdx + 1].title,
+    };
+    prev = {
+      title: posts[currentSlugIdx - 1].title,
+      slug: posts[currentSlugIdx - 1].slug,
+    };
+  }
+
+  return {
+    prev,
+    next,
+  };
+}

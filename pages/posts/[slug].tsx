@@ -1,14 +1,17 @@
 import StyledMarkdown from "components/StyledMarkdown";
 import Tag from "components/ui/Tag";
-import { getAllSlugs, getPostBySlug } from "lib/api/posts";
+import { getAllSlugs, getPostBySlug, getPrevAndNext } from "lib/api/posts";
 import { Post } from "lib/types";
 import Head from "next/head";
+import Link from "next/link";
 
 interface Props {
   post: Post;
+  prev: null | { title: string; slug: string };
+  next: null | { title: string; slug: string };
 }
 
-export default function PostPage({ post }: Props) {
+export default function PostPage({ post, prev, next }: Props) {
   return (
     <>
       <Head>
@@ -27,6 +30,22 @@ export default function PostPage({ post }: Props) {
         </header>
         {post.html && <StyledMarkdown html={post.html} />}
       </div>
+      <nav className="mt-4 relative">
+        {prev && (
+          <div className="absolute left-0 cursor-pointer py-2 px-3 bg-gray-600 hover:bg-gray-700 rounded-md">
+            <Link href={`/posts/${prev.slug}`}>
+              <span>이전글: {prev.title}</span>
+            </Link>
+          </div>
+        )}
+        {next && (
+          <div className="absolute right-0 cursor-pointer py-2 px-3 bg-gray-600 hover:bg-gray-700 rounded-md">
+            <Link href={`/posts/${next.slug}`}>
+              <span>다음글: {next.title}</span>
+            </Link>
+          </div>
+        )}
+      </nav>
     </>
   );
 }
@@ -40,9 +59,14 @@ interface PathContext {
 export const getStaticProps = async (context: PathContext) => {
   const slug = context.params.slug;
   const post = await getPostBySlug(slug, ["categories", "html"]);
+
+  const { next, prev } = await getPrevAndNext(slug);
+
   return {
     props: {
       post,
+      prev,
+      next,
     },
   };
 };
