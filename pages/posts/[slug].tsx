@@ -31,19 +31,23 @@ export default function PostPage({ post, prev, next }: Props) {
         {post.html && <StyledMarkdown html={post.html} />}
       </div>
       <nav className="flex flex-col md:grid md:grid-cols-2  gap-3 mt-4 relative">
-        {prev && (
+        {prev ? (
           <div className="cursor-pointer py-2 px-3 bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-700 rounded-md md:justify-self-start">
             <Link href={`/posts/${prev.slug}`}>
               <span>이전글: {prev.title}</span>
             </Link>
           </div>
+        ) : (
+          <div></div>
         )}
-        {next && (
+        {next ? (
           <div className="cursor-pointer py-2 px-3 bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-700 rounded-md md:justify-self-end">
             <Link href={`/posts/${next.slug}`}>
               <span>다음글: {next.title}</span>
             </Link>
           </div>
+        ) : (
+          <div></div>
         )}
       </nav>
     </>
