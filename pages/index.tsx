@@ -6,11 +6,11 @@ const links: {
   route: string;
 }[] = [
   {
-    text: "posts",
+    text: "Posts",
     route: "/posts",
   },
   {
-    text: "about me",
+    text: "About Me",
     route: "/about",
   },
 ];
@@ -24,12 +24,9 @@ const HomePage = () => {
       <div>
         <ul className="flex flex-col gap-2">
           {links.map((link) => (
-            <li
-              key={link.route}
-              className="text-2xl transition-colors md:text-3xl hover:text-gray-500"
-            >
+            <li key={link.route} className="text-xl sm:text-2xl hover:underline">
               <Link href={link.route}>
-                <span className="underline cursor-pointer underline-offset-4">{link.text}</span>
+                <a className="cursor-pointer underline-offset-4">{link.text}</a>
               </Link>
             </li>
           ))}

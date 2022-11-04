@@ -1,10 +1,10 @@
+import Giscus from "@giscus/react";
 import StyledMarkdown from "components/StyledMarkdown";
 import NavButton from "components/ui/NavButton";
 import Tag from "components/ui/Tag";
 import { getAllSlugs, getPostBySlug, getPrevAndNext } from "lib/api/posts";
 import { Post } from "lib/types";
 import Head from "next/head";
-import Link from "next/link";
 
 interface Props {
   post: Post;
@@ -30,18 +30,35 @@ export default function PostPage({ post, prev, next }: Props) {
         </header>
         {post.html && <StyledMarkdown html={post.html} />}
       </div>
-      <nav className="flex flex-col md:grid md:grid-cols-2 gap-3 mt-4 relative">
+
+      <nav className="flex flex-col md:grid md:grid-cols-2 gap-3 mt-4 mb-6">
         {prev ? (
           <NavButton href={`/posts/${prev.slug}`}>이전글: {prev.title}</NavButton>
         ) : (
           <div></div>
         )}
         {next ? (
-          <NavButton href={`/posts/${next.slug}`}>다음글: {next.title}</NavButton>
+          <NavButton className="sm:text-right" href={`/posts/${next.slug}`}>
+            다음글: {next.title}
+          </NavButton>
         ) : (
           <div></div>
         )}
       </nav>
+      <Giscus
+        id="comments"
+        repo="leejss/tinyyard"
+        repoId="R_kgDOHvoXPQ"
+        categoryId="DIC_kwDOHvoXPc4CSXdq"
+        mapping="pathname"
+        // term="Welcome to @giscus/react component!"
+        reactionsEnabled="0"
+        emitMetadata="0"
+        inputPosition="bottom"
+        theme="preferred_color_scheme"
+        lang="en"
+        loading="lazy"
+      />
     </>
   );
 }
