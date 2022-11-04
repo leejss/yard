@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
-import { PAGE_TITLE } from "lib/constants";
 import Link from "next/link";
+import { PAGE_TITLE } from "@lib/constants";
+import ThemeButton from "./ui/ThemeButton";
 
 interface Props {
   children: ReactNode;
@@ -18,8 +19,11 @@ const Layout = ({ children }: Props) => {
   return (
     <div className="sm:max-w-[1024px] mx-auto w-full pt-8 p-6">
       <header className="text-sm sm:text-base flex flex-col gap-6 border-b border-gray-300 mb-16 pb-4">
-        <Title />
-        <div className="flex justify-between text-gray-500">
+        <div>
+          <Title />
+          <ThemeButton />
+        </div>
+        <div className="flex justify-between text-gray-500 dark:text-slate-300">
           <div>
             <Link href="/posts">
               <a className="hover:underline">Posts</a>

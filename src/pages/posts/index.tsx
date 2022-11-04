@@ -1,6 +1,6 @@
-import PostList from "components/PostList";
-import { getAllPosts } from "lib/api/posts";
-import { Post } from "lib/types";
+import PostList from "@components/PostList";
+import { getAllPosts } from "@lib/api/posts";
+import { Post } from "@lib/types";
 import Head from "next/head";
 
 interface HomePageProps {

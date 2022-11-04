@@ -1,9 +1,9 @@
 import Giscus from "@giscus/react";
-import StyledMarkdown from "components/StyledMarkdown";
-import NavButton from "components/ui/NavButton";
-import Tag from "components/ui/Tag";
-import { getAllSlugs, getPostBySlug, getPrevAndNext } from "lib/api/posts";
-import { Post } from "lib/types";
+import StyledMarkdown from "@components/StyledMarkdown";
+import NavButton from "@components/ui/NavButton";
+import Tag from "@components/ui/Tag";
+import { getAllSlugs, getPostBySlug, getPrevAndNext } from "@lib/api/posts";
+import { Post } from "@lib/types";
 import Head from "next/head";
 
 interface Props {
@@ -24,7 +24,11 @@ export default function PostPage({ post, prev, next }: Props) {
             {post.title}
           </h1>
           <div className="flex items-center gap-4">
-            {post.date ? <p className="text-md text-gray-700">{post.date}</p> : <div>DEV</div>}
+            {post.date ? (
+              <p className="text-md text-gray-700 dark:text-slate-300">{post.date}</p>
+            ) : (
+              <div>DEV</div>
+            )}
             <div>{post.categories && post.categories.map((t) => <Tag key={t}>{t}</Tag>)}</div>
           </div>
         </header>

@@ -1,13 +1,12 @@
-import { isEmpty } from "utils/array-helper";
 import Link from "next/link";
-import { Post } from "lib/types";
+import { Post } from "@lib/types";
 
 interface PostListProps {
   posts: Post[];
 }
 
 export default function PostList({ posts }: PostListProps) {
-  if (isEmpty(posts)) return null;
+  if (posts.length === 0) return null;
 
   return (
     <ul className="flex flex-col gap-3 my-6">

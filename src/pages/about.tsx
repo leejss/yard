@@ -1,16 +1,10 @@
-import Tag from "components/ui/Tag";
-import { TagType } from "lib/types";
+import Tag from "@components/ui/Tag";
+import { TagType } from "@lib/types";
 import type { NextPage } from "next";
 import Head from "next/head";
 import type { ReactNode } from "react";
 
-const skills: TagType[] = [
-  "javascript",
-  "react",
-  "typescript",
-  "css",
-  "nextjs",
-];
+const skills: TagType[] = ["javascript", "react", "typescript", "css", "nextjs"];
 
 const AboutPage = () => {
   return (
@@ -29,10 +23,7 @@ const AboutPage = () => {
             <ul className="flex flex-col gap-3">
               <li className="flex items-center justify-between">
                 <strong>Email</strong>
-                <a
-                  className="hover:underline"
-                  href="mailto:goldemshine@gmail.com"
-                >
+                <a className="hover:underline" href="mailto:goldemshine@gmail.com">
                   goldemshine@gmail.com
                 </a>
               </li>
@@ -81,9 +72,7 @@ const AboutPage = () => {
                     </a>
                     <time>2021-09-01 ~</time>
                   </h3>
-                  <p className="italic">
-                    국내 7,000단지를 보유한 아파트 생활 편의 서비스
-                  </p>
+                  <p className="italic">국내 7,000단지를 보유한 아파트 생활 편의 서비스</p>
                 </div>
                 <SubTitleList>
                   <li>
@@ -91,15 +80,12 @@ const AboutPage = () => {
                       Ecommerce 플랫폼 {'"잘스마켓"'} 개발
                     </SubTitle>
                     <DiskList>
-                      <li>
-                        웹뷰와 브릿지 통신을 활용하여 하이브리드 형식으로 개발
-                      </li>
+                      <li>웹뷰와 브릿지 통신을 활용하여 하이브리드 형식으로 개발</li>
                       <li>Nextjs, swr, mobx 등을 활용</li>
                       <li>AWS amplify 서비스를 통해 배포</li>
                       <li>
                         <strong className="font-bold">
-                          3주간 개발 후, 국내 평균 전환율 대비 470% 높은
-                          전환율을 도출
+                          3주간 개발 후, 국내 평균 전환율 대비 470% 높은 전환율을 도출
                         </strong>
                       </li>
                     </DiskList>
@@ -114,9 +100,7 @@ const AboutPage = () => {
                     </DiskList>
                   </li>
                   <li>
-                    <SubTitle time="2021-11 ~ 2021-12">
-                      입주민 공지 달력 제작
-                    </SubTitle>
+                    <SubTitle time="2021-11 ~ 2021-12">입주민 공지 달력 제작</SubTitle>
                   </li>
                 </SubTitleList>
               </li>
@@ -151,13 +135,7 @@ export default AboutPage;
 
 AboutPage.getLayout = (page: NextPage) => page;
 
-const SubTitle = ({
-  children,
-  time,
-}: {
-  children: ReactNode;
-  time?: string;
-}) => {
+const SubTitle = ({ children, time }: { children: ReactNode; time?: string }) => {
   return (
     <h4 className="flex justify-between gap-2 pl-4 mb-4 border-l-4">
       <span className="basis-[80%] text-base md:text-lg">{children}</span>
@@ -166,13 +144,7 @@ const SubTitle = ({
   );
 };
 
-const MainTitle = ({
-  children,
-  hash,
-}: {
-  children: ReactNode;
-  hash: string;
-}) => {
+const MainTitle = ({ children, hash }: { children: ReactNode; hash: string }) => {
   return (
     <h2 className="mb-3 text-2xl font-bold md:text-3xl">
       <a href={hash}>{children}</a>

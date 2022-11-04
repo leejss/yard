@@ -1,9 +1,9 @@
 import fs from "fs";
 import matter from "gray-matter";
-import markdownToHtml from "lib/markdownToHtml";
-import { Post } from "lib/types";
+import markdownToHtml from "@lib/markdownToHtml";
+import { Post } from "@lib/types";
 import path from "path";
-import { getFileTimeInfo, isDir } from "utils/fs-helper";
+import { getFileTimeInfo, isDir } from "src/utils/fs-helper";
 
 const POST_DIR = path.join(process.cwd(), "posts");
 
@@ -18,10 +18,7 @@ export function getAllSlugs() {
   });
 }
 
-export async function getPostBySlug(
-  slug: string,
-  fields?: ("categories" | "html")[]
-) {
+export async function getPostBySlug(slug: string, fields?: ("categories" | "html")[]) {
   let fullPath = getFullPath(slug);
   if (isDir(fullPath)) {
     fullPath = path.join(fullPath, `${slug}.md`);

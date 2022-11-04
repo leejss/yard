@@ -1,4 +1,4 @@
-import { foramtDate } from "utils/format-helpter";
+import { foramtDate } from "@utils/format-helpter";
 
 interface Props {
   date?: string | null;
