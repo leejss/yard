@@ -22,16 +22,14 @@ const HomePage = () => {
         <title>tinyyard | home</title>
       </Head>
       <div>
-        <ul className="flex flex-col gap-2 ">
+        <ul className="flex flex-col gap-2">
           {links.map((link) => (
             <li
               key={link.route}
               className="text-2xl transition-colors md:text-3xl hover:text-gray-500"
             >
               <Link href={link.route}>
-                <span className="underline cursor-pointer underline-offset-4">
-                  {link.text}
-                </span>
+                <span className="underline cursor-pointer underline-offset-4">{link.text}</span>
               </Link>
             </li>
           ))}

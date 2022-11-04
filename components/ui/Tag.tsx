@@ -7,12 +7,7 @@ interface TagProps {
 
 const Tag = ({ children }: TagProps) => {
   return (
-    <span
-      className={cn(
-        "px-2 py-1 text-sm font-bold bg-bl rounded-2xl",
-        getColorSet(children)
-      )}
-    >
+    <span className={cn("px-2 py-1 text-sm font-bold bg-bl rounded-2xl", getColorSet(children))}>
       {children}
     </span>
   );
