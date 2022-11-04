@@ -70,6 +70,8 @@ const Home = () => {
 export default Home;
 ```
 
+<img src="/images/Screen Shot 2022-11-04 at 3.17.49 PM.png" width="500px" height="500px" style="margin: 0 auto;" />
+
 번들 결과를 보면 index.js에 import한 컴포넌트만 포함되어 있는 것을 볼 수 있다. 그 다음 배럴 모듈에서 가져온 경우를 살펴보자
 
 ```jsx
@@ -86,6 +88,7 @@ const Home = () => {
 export default Home;
 ```
 
+<img src="/images/Screen Shot 2022-11-04 at 3.19.21 PM.png" width="500px" height="500px" style="margin: 0 auto;" />
 index.js를 살펴보면 Button만 import했는데 배럴 모듈안에 있는 모든 모듈이 bundle된 것을 볼 수 있다. 타입스크립트 배럴 모듈이 트리 셰이킹 되지 않는 문제점은 nextjs 뿐만 아니라 다른 webpack 프로젝트에서도 확인할 수 있었다.
 
 ## 해결책

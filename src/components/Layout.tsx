@@ -21,7 +21,7 @@ const Layout = ({ children }: Props) => {
       <header className="text-sm sm:text-base flex flex-col gap-6 border-b border-gray-300 mb-16 pb-4">
         <div>
           <Title />
-          <ThemeButton />
+          {/* <ThemeButton /> */}
         </div>
         <div className="flex justify-between text-gray-500 dark:text-slate-300">
           <div>
