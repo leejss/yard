@@ -61,7 +61,7 @@ export default function PostPage({ post, prev, next }: Props) {
         inputPosition="bottom"
         theme="preferred_color_scheme"
         lang="en"
-        loading="lazy"
+        // loading="lazy"
       />
     </>
   );
