@@ -33,7 +33,7 @@ const {} = useQuery(key, fetcher, options); // 또는 const {} = useQuery(config
 
 가장 눈에 띄는 차이점이 아닐까 싶다.
 
-NPM에 나와 있는 [SWR](https://www.npmjs.com/package/swr)의 unpacked size는 231kb이고 [React-Query](https://www.npmjs.com/package/react-query)의 unpacked size는 2.27MB이다. 사이즈에서 상당한 차이가 난다. 사실 이 사이즈가 번들 과정에서 그대로 적용되어 클라이언트에 전달되는 것은 아니기 때문에 직접 비교하는 것은 무리가 있어 보이지만 그래도 역시 사이즈 차이가 많이나고 어쨌든 `React-Query`가 코드 베이스를 더 무겁게 만드는 것은 사실이다. (그 만큼 더 다양한 기능을 제공한다.) 따라서 프로젝트의 사이즈가 크지 않고 데이터 펫칭 로직이 간단하다면 아무래도 좀 더 라이트한 `SWR`을 사용하는 게 더 합리적이라 생각한다.
+NPM에 나와 있는 [SWR](https://www.npmjs.com/package/swr)의 unpacked size는 231kb이고 [React-Query](https://www.npmjs.com/package/react-query)의 unpacked size는 2.27MB이다. 사이즈에서 상당한 차이가 난다. 사실 이 사이즈가 번들 과정에서 그대로 적용되어 클라이언트에 전달되는 것은 아니기 때문에 직접 비교하는 것은 무리가 있어 보이지만 그래도 역시 사이즈 차이가 많이나고 어쨌든 `React-Query`가 코드 베이스를 더 무겁게 만드는 것은 사실이다. (그 만큼 더 다양한 기능을 제공한다.) 따라서 프로젝트의 사이즈가 크지 않고 데이터 펫칭 로직이 간단하다면 아무래도 좀 더 라이트한 `SWR`을 사용하는 게 더 합리적인 것처럼 보인다.
 
 ### 공식 문서
 
