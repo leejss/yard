@@ -1,5 +1,5 @@
 ---
-title: "Threejs를 이용한 3D Text"
+title: "[Threejs]Threejs를 이용한 3D Text"
 date: 2022-12-13 23:56
 categories:
   - javascript
