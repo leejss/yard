@@ -9,10 +9,10 @@ const links: {
     text: "Posts",
     route: "/posts",
   },
-  {
-    text: "About Me",
-    route: "/about",
-  },
+  // {
+  //   text: "About Me",
+  //   route: "/about",
+  // },
 ];
 
 const HomePage = () => {
