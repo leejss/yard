@@ -1,4 +1,5 @@
 ---
+import { SITE_TITLE } from '@/config'
 ---
 
 <!DOCTYPE html>
@@ -12,6 +13,37 @@
     />
   </head>
   <body>
-    <div></div>
+    <div class="sm:max-w-[823px] mx-auto w-full pt-8 p-6">
+      <h1
+        class="text-3xl font-medium text-center md:text-left md:text-5xl mb-10"
+      >
+        <a class="hover:underline" href="/">{SITE_TITLE}</a>
+      </h1>
+      <nav class="flex justify-between text-gray-500">
+        <div>
+          <a class="hover:underline" href="/posts">posts</a>
+        </div>
+        <div class="flex justify-between gap-3">
+          <div>
+            <a
+              target="_blank"
+              class="hover:underline"
+              href="https://github.com/leejss">github</a
+            >
+          </div>
+          <div>
+            <a
+              target="_blank"
+              class="hover:underline"
+              href="https://www.linkedin.com/in/%EC%A2%85%EC%84%9C-%EC%9D%B4-5aa73a224/"
+              >linkedin</a
+            >
+          </div>
+        </div>
+      </nav>
+      <main class="pt-10 pb-8">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>

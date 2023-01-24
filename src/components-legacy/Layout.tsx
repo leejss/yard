@@ -1,10 +1,10 @@
-import type { ReactNode } from "react";
-import Link from "next/link";
-import { PAGE_TITLE } from "@lib/constants";
-import ThemeButton from "./ui/ThemeButton";
+import type { ReactNode } from 'react'
+import Link from 'next/link'
+import { PAGE_TITLE } from '@lib/constants'
+import ThemeButton from './ui/ThemeButton'
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const Title = () => {
@@ -12,8 +12,8 @@ const Title = () => {
     <h1 className="text-3xl font-medium text-center transition-colors md:text-left md:text-5xl">
       <Link href="/">{PAGE_TITLE}</Link>
     </h1>
-  );
-};
+  )
+}
 
 const Layout = ({ children }: Props) => {
   return (
@@ -41,7 +41,7 @@ const Layout = ({ children }: Props) => {
       </header>
       <main className="py-4">{children}</main>
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

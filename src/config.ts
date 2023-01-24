@@ -1,3 +1,1 @@
-// export const
-
-export {};
+export const SITE_TITLE = 'tinyyard'
