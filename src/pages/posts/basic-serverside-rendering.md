@@ -1,5 +1,6 @@
 ---
-title: "Serverside rendering 기본 구현해보기"
+layout: '../../layouts/post-layout.astro'
+title: 'Serverside rendering 기본 구현해보기'
 date: 2022-12-29 15:14
 categories:
   - react
@@ -12,25 +13,25 @@ categories:
 
 ```js
 // src/server/server.js
-import express from "express";
+import express from 'express'
 
-const app = express();
-const PORT = 8080;
+const app = express()
+const PORT = 8080
 
 app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
-});
+  console.log(`http://localhost:${PORT}`)
+})
 ```
 
 ES6와 JSX를 Nodejs에서 사용하기 위해 babel을 사용한다.
 
 ```js
 // src/server/index.js
-require("@babel/register")({
-  presets: ["@babel/preset-env", "@babel/preset-react"],
-});
+require('@babel/register')({
+  presets: ['@babel/preset-env', '@babel/preset-react'],
+})
 
-require("./server.js");
+require('./server.js')
 ```
 
 커맨드라인에서 `node render-server/index.js`를 입력하면 런타임에서 babel이 서버 코드를 transpile하여 실행한다.
@@ -41,20 +42,20 @@ require("./server.js");
 
 ```jsx
 // src/App.js
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
   return (
     <button
       onClick={() => {
-        setCount((prev) => prev + 1);
+        setCount((prev) => prev + 1)
       }}
     >
       count: {count}
     </button>
-  );
-};
+  )
+}
 
 const App = () => {
   return (
@@ -62,10 +63,10 @@ const App = () => {
       <h1>Hello world!</h1>
       <Counter />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
 ```
 
 컴포넌트를 통해서 단순히 HTML을 생성하고 싶다면, 웹팩(webpack)과 같은 별다른 모듈 번들러(bundler)가 필요하진 않다. 즉 위 코드는 클라이언트(client)로 ship되지 않는다. 단지 서버에서 HTML을 생성하기 위해 필요할 뿐이다.
@@ -77,14 +78,14 @@ export default App;
 다음과 같이 서버에서 리액트 컴포넌트를 렌더해보자.
 
 ```js
-import { renderToString } from "react-dom/server";
+import { renderToString } from 'react-dom/server'
 
 // ... 중간생략
 
-app.get("/", (req, res) => {
-  const html = renderToString(<App />);
-  res.send(html);
-});
+app.get('/', (req, res) => {
+  const html = renderToString(<App />)
+  res.send(html)
+})
 ```
 
 console.log(html)을 통해 결과물을 보면 다음과 같다.

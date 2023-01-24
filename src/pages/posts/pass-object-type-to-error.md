@@ -1,5 +1,6 @@
 ---
-title: "Error message에 객체 타입 전달하기"
+layout: '../../layouts/post-layout.astro'
+title: 'Error message에 객체 타입 전달하기'
 date: 2022-09-18 03:10
 categories:
   - javascript
@@ -18,7 +19,7 @@ JS에서 Error의 생성자는 string 타입의 message를 파라미터로 받�
 그래서 기본적으로 다음과 같이 사용해볼 수 있다.
 
 ```js
-throw new Error("Something went wrong");
+throw new Error('Something went wrong')
 ```
 
 그런데 zod라는 schema validation 라이브러리를 쓰다가 Error message에 간접적으로 객체를 전달할 수 있는 방법을 알게 되었다.  
@@ -26,9 +27,9 @@ zod에서 validation에 실패하면 ZodError를 throw 한다.
 
 ```js
 try {
-  mySchema.parse(query); // throw new ZodError()
+  mySchema.parse(query) // throw new ZodError()
 } catch (error) {
-  console.log(error.message);
+  console.log(error.message)
 }
 /*
 [
@@ -51,13 +52,13 @@ error.message를 로그로 보니 object 타입으로 보인다. 사실 로그�
 ```js
 throw new Error(
   JSON.stringify({
-    message: "Bad request",
+    message: 'Bad request',
     code: 400,
   })
-);
+)
 // 이런 식으로 throw하고
 
-const errorObj = JSON.parse(error.message);
+const errorObj = JSON.parse(error.message)
 
 // 이런 식으로 접근해서 사용한다.
 ```

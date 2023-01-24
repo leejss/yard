@@ -1,8 +1,9 @@
 ---
-title: "AWS Amplify로 nextjs SGG앱 배포 시 주의할 점"
+layout: '../../layouts/post-layout.astro'
+title: 'AWS Amplify로 nextjs SGG앱 배포 시 주의할 점'
 date: 2022-10-31 23:48
 categories:
-    - nextjs
+  - nextjs
 ---
 
 AWS Amplify는 디폴트로 당신이 SSR과 SSG를 사용한다고 가정한다. 따라서 배포 시, SSR을 위해서 lambda를 셋팅하는 데, 이 과정에서 시간을 많이 잡아 먹는다.

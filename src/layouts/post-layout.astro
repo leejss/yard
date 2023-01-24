@@ -1,0 +1,39 @@
+---
+import PageLayout from './page-layout.astro'
+
+interface Props {
+  content: {
+    title: string
+    date: string
+    categories: string[]
+  }
+}
+
+const {
+  content: { categories, date, title },
+} = Astro.props
+---
+
+<PageLayout>
+  <header class="pb-8">
+    <h2
+      class="text-xl md:leading-[60px!important] md:text-2xl dark:text-indigo-300 font-bold"
+    >
+      {title}
+    </h2>
+    <time>
+      {
+        new Date(date).toLocaleDateString('ko-KR', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        })
+      }</time
+    >
+  </header>
+  <div
+    class="prose max-w-none prose-a:text-[#16ab86] hover:prose-a:text-[#29e8b8] dark:prose-invert prose-stone prose-code:text-[#eb5757]"
+  >
+    <slot />
+  </div>
+</PageLayout>

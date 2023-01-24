@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "React: key와 props change"
 date: 2022-10-06 03:47
 categories:

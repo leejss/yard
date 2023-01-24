@@ -1,5 +1,6 @@
 ---
-title: "타입스크립트에서 클래스 다루기 - 1"
+layout: '../../layouts/post-layout.astro'
+title: '타입스크립트에서 클래스 다루기 - 1'
 date: 2022-10-17 21:31
 categories:
   - typescript
@@ -16,8 +17,8 @@ categories:
 ```js
 // javascript
 class Person {
-  name = "James"; // 선언과 동시에 초기화
-  age; // 필드 선언
+  name = 'James' // 선언과 동시에 초기화
+  age // 필드 선언
 }
 ```
 
@@ -25,8 +26,8 @@ class Person {
 
 ```ts
 class Person {
-  name: string = "James";
-  age: number;
+  name: string = 'James'
+  age: number
 }
 ```
 
@@ -36,15 +37,15 @@ class Person {
 ```ts
 // Error
 class Person {
-  age: number; // ❌ Property 'age' has no initializer and is not definitely assigned in the constructor.(2564)
+  age: number // ❌ Property 'age' has no initializer and is not definitely assigned in the constructor.(2564)
   constructor() {}
 }
 
 // Do this
 class Person {
-  age: number;
+  age: number
   constructor(age: number) {
-    this.age = age;
+    this.age = age
   }
 }
 ```
@@ -55,18 +56,18 @@ readonly인 클래스 필드는 생성자 밖에서 값이 바뀌는 것을 제�
 
 ```ts
 class Person {
-  readonly age: number;
+  readonly age: number
   constructor(age: number) {
-    this.age = age;
+    this.age = age
   }
 
   setAge(age: number) {
-    this.age = age; // ❌ Cannot assign to 'age' because it is a read-only property.(2540)
+    this.age = age // ❌ Cannot assign to 'age' because it is a read-only property.(2540)
   }
 }
 
-const p = new Person(24);
-p.age = 40; // ❌ Cannot assign to 'age' because it is a read-only property.(2540)
+const p = new Person(24)
+p.age = 40 // ❌ Cannot assign to 'age' because it is a read-only property.(2540)
 ```
 
 **implements**  
@@ -74,13 +75,13 @@ p.age = 40; // ❌ Cannot assign to 'age' because it is a read-only property.(25
 
 ```ts
 interface Person {
-  name: string;
+  name: string
 }
 
 class Main implements Person {
-  name: string;
+  name: string
   constructor(name: string) {
-    this.name = name;
+    this.name = name
   }
 }
 ```
@@ -112,18 +113,18 @@ class Man extends Person {
 
 ```ts
 class Base {
-  name: string = "Base";
+  name: string = 'Base'
   constructor() {
-    console.log(this.name);
+    console.log(this.name)
   }
 }
 
 class Derived extends Base {
-  name = "Derived";
+  name = 'Derived'
 }
 
-const d = new Derived();
-console.log(d.name);
+const d = new Derived()
+console.log(d.name)
 
 // Base
 // Derived
@@ -145,28 +146,28 @@ protected 필드 선언시, modifier는 상속이 되지 않는다. 따라서 �
 
 ```ts
 class Base {
-  protected val = 123;
+  protected val = 123
 }
 
 class Derived extends Base {
-  val = 456; // Now it's public!
+  val = 456 // Now it's public!
 }
 
-const d = new Derived();
-console.log(d.val); // 456
+const d = new Derived()
+console.log(d.val) // 456
 
 // ========================================
 
 class Base {
-  protected val = 123;
+  protected val = 123
 }
 
 class Derived extends Base {
-  protected val = 456; // Protected를 명시해준다.
+  protected val = 456 // Protected를 명시해준다.
 }
 
-const d = new Derived();
-console.log(d.val); // ❌ Property 'val' is protected and only accessible within class 'Derived' and its subclasses.
+const d = new Derived()
+console.log(d.val) // ❌ Property 'val' is protected and only accessible within class 'Derived' and its subclasses.
 ```
 
 **Cross-hierarchy protected access**  
@@ -174,12 +175,12 @@ Derived 클래스의 인스턴스에서 Base 클래스 인스턴스의 protected
 
 ```ts
 class Base {
-  protected val = 123;
+  protected val = 123
 }
 
 class Derived extends Base {
   getValFromBase(b: Base) {
-    console.log(b.val); // ❌ Property 'val' is protected and only accessible through an instance of class 'Derived'. This is an instance of class 'Base'.
+    console.log(b.val) // ❌ Property 'val' is protected and only accessible through an instance of class 'Derived'. This is an instance of class 'Base'.
   }
 }
 ```
@@ -191,9 +192,9 @@ class Derived extends Base {
 
 ```ts
 class Base {
-  private val = 123;
+  private val = 123
   getVal(b: Base) {
-    console.log(b.val); // No error
+    console.log(b.val) // No error
   }
 }
 ```

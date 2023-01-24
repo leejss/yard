@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "Hoisting, TDZ"
 date: 2022-10-10 14:17
 categories:

@@ -1,5 +1,6 @@
 ---
-title: "Initial render와 Re render"
+layout: '../../layouts/post-layout.astro'
+title: 'Initial render와 Re render'
 date: 2022-11-29 17:56
 categories:
   - react
@@ -23,13 +24,13 @@ categories:
 리액트 앱을 최초로 실행할 때 일어나는 렌더링이다. `react-dom/clinet`의 `createRoot`를 통해서 앱의 컨테이너 역할을 하는 루트 노드를 생성한다. 그리고 루트 노드를 통해서 render 함수를 호출하여 초기 렌더링을 Trigger한다.
 
 ```tsx
-const root = createRoot(container);
+const root = createRoot(container)
 
 // CSR 환경인 경우
-root.render(<App />);
+root.render(<App />)
 
 // SSR 환경인 경우
-hydrateRoot(container, <App />);
+hydrateRoot(container, <App />)
 ```
 
 ### Render
@@ -45,8 +46,8 @@ hydrateRoot(container, <App />);
 ### Trigger
 
 ```tsx
-setCount(count + 1); // ✅ Trigger render!
-count++; // ❌ Not tirgger render!
+setCount(count + 1) // ✅ Trigger render!
+count++ // ❌ Not tirgger render!
 ```
 
 컴포넌트의 state가 업데이트 되면 렌더링을 Trigger한다. (함수 컴포넌트에서는 렌더를 Trigger하는 `useState`, `useReducer`를 제공한다.) 초기 렌더링 이 후 일어나는 렌더링이기 때문에 리렌더링이라 한다.

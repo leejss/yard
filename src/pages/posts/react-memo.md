@@ -1,5 +1,6 @@
 ---
-title: "React: memo 제대로 알기"
+layout: '../../layouts/post-layout.astro'
+title: 'React: memo 제대로 알기'
 date: 2022-10-04 22:48
 categories:
   - react
@@ -14,7 +15,7 @@ export default function App() {
   const [countState, setCountState] = useState({
     count1: 0,
     count2: 0,
-  });
+  })
   return (
     <div className="App">
       <button
@@ -22,7 +23,7 @@ export default function App() {
           setCountState((prev) => ({
             ...prev,
             count1: prev.count1 + 1,
-          }));
+          }))
         }}
       >
         count1++
@@ -32,7 +33,7 @@ export default function App() {
           setCountState((prev) => ({
             ...prev,
             count2: prev.count2 + 1,
-          }));
+          }))
         }}
       >
         count2++
@@ -40,18 +41,18 @@ export default function App() {
       <Counter1 count1={countState.count1} />
       <Counter2 count2={countState.count2} />
     </div>
-  );
+  )
 }
 
 const Counter1 = (props) => {
-  console.log("Counter1 render");
-  return <h1>{props.count1}</h1>;
-};
+  console.log('Counter1 render')
+  return <h1>{props.count1}</h1>
+}
 
 const Counter2 = (props) => {
-  console.log("Counter2 render");
-  return <h1>{props.count2}</h1>;
-};
+  console.log('Counter2 render')
+  return <h1>{props.count2}</h1>
+}
 ```
 
 `Counter2` 컴포넌트는 오직 `App`의 `countState.count2`만 필요하지만 `count1++` 버튼을 클릭하면 같이 렌더링 된다.
@@ -68,9 +69,9 @@ memo는 오직 props를 비교한다 만약 props가 이전과 똑같다면 렌�
 
 ```jsx
 const Counter2 = memo((props) => {
-  console.log("Counter2 render");
-  return <h1>{props.count2}</h1>;
-});
+  console.log('Counter2 render')
+  return <h1>{props.count2}</h1>
+})
 ```
 
 <img src="/images/react-memo/react-memo2.gif" alt="" style="margin: 0 auto" />

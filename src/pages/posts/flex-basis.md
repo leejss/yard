@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "Flex basis: To control flex item's size"
 date: 2022-09-02 05:42
 categories:

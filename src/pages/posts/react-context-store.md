@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "React Context로 Store만들어 사용하기"
 date: 2022-11-10 02:02
 categories:

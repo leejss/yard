@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "tailwindcss에 커스텀 클래스 추가하기"
 date: 2022-10-08 14:17
 categories:

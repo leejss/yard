@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "[Threejs] Shadow 추가하기"
 date: 2022-12-18 22:59
 categories:

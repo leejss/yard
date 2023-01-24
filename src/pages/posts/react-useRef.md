@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "React: useRef 바로알기"
 date: 2022-10-06 14:38
 categories:

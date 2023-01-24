@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "React Query pattern: mutation"
 date: 2022-10-02 21:46
 categories:

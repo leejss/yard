@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE } from '@/config'
+import '../styles/globals.css'
 ---
 
 <!DOCTYPE html>
@@ -11,15 +12,17 @@ import { SITE_TITLE } from '@/config'
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <div class="sm:max-w-[823px] mx-auto w-full pt-8 p-6">
-      <h1
-        class="text-3xl font-medium text-center md:text-left md:text-5xl mb-10"
-      >
+      <h1 class="text-5xl font-medium mb-10">
         <a class="hover:underline" href="/">{SITE_TITLE}</a>
       </h1>
-      <nav class="flex justify-between text-gray-500">
+      <nav
+        class="flex justify-between text-gray-500 border-b border-b-slate-600 pb-6"
+      >
         <div>
           <a class="hover:underline" href="/posts">posts</a>
         </div>
@@ -41,7 +44,7 @@ import { SITE_TITLE } from '@/config'
           </div>
         </div>
       </nav>
-      <main class="pt-10 pb-8">
+      <main class="pb-8">
         <slot />
       </main>
     </div>

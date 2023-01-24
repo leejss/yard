@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "Storyblok as content source"
 date: 2022-09-02 15:00
 categories:

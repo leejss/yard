@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "React Query pattern: prefetching"
 date: 2022-09-28 21:55
 categories:

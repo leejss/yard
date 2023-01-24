@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "Nextjs prefetching"
 date: 2022-09-12 13:11
 categories:

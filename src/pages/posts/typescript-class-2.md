@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "타입스크립트에서 클래스 다루기 - 2"
 date: 2022-10-29 23:31
 categories:

@@ -1,5 +1,6 @@
 ---
-title: "Backwards compatibility vs. Forwards compatibility"
+layout: '../../layouts/post-layout.astro'
+title: 'Backwards compatibility vs. Forwards compatibility'
 date: 2022-09-11 14:29
 categories:
   - javascript

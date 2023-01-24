@@ -1,5 +1,6 @@
 ---
-title: "Javascript comparisons"
+layout: '../../layouts/post-layout.astro'
+title: 'Javascript comparisons'
 date: 2022-09-13 13:44
 categories:
   - javascript
@@ -12,17 +13,17 @@ A value와 B value가 서로 같은지 체크하고자 할 때 우리는 비교 
 strict equality를 체크할 때 === 를 사용한다. 그런데 반드시 “strict”하지 않는다.
 
 ```jsx
-3 === 3.0; // true
-"yes" === "yes"; // true
-null === null; // true
-false === false; // true
+3 === 3.0 // true
+'yes' === 'yes' // true
+null === null // true
+false === false // true
 
-42 === "42"; // false
-"hello" === "Hello"; // false
-true === 1; // false
-0 === null; // false
-"" === null; // false
-null === undefined; // false
+42 === '42' // false
+'hello' === 'Hello' // false
+true === 1 // false
+0 === null // false
+'' === null // false
+null === undefined // false
 ```
 
 위 예시가 `===`의 일반적인 usecases다.
@@ -30,8 +31,8 @@ null === undefined; // false
 왜 반드시 strict하지 않냐면 `===` 가 거짓말을 하는 경우가 두 가지 있다.
 
 ```jsx
-NaN === NaN; // false
-0 === -0; // true
+NaN === NaN // false
+0 === -0 // true
 ```
 
 위 두 가지 경우에는 `===`를 사용하면 안 된다. 대신 `Object.is()`나 `Number.isNaN()`을 사용해야 한다.
@@ -53,8 +54,8 @@ NaN === NaN; // false
 따라서 다음과 같은 경우가 발생한다.
 
 ```jsx
-42 == "42"; // true
-1 == true; // true
+42 == '42' // true
+1 == true // true
 ```
 
 어떤 두 값을 비교할 때 타입이 다른 경우 의도치 않게 coercion이 일어날 수 있다. 따라서 `==`는 주의해서 사용해야 한다.
@@ -80,12 +81,12 @@ a === [1,2,3] // false -> identity가 서로 다르다.
 === 보다 더 strict한 비교 수단이다.
 
 ```jsx
-Object.is(NaN, NaN); // true
-Object.is(0, -0); // false
+Object.is(NaN, NaN) // true
+Object.is(0, -0) // false
 ```
 
 ===와 마찬가지로 객체 비교에서는 reference를 체크한다.
 
 ```jsx
-Object.is([], []); // false
+Object.is([], []) // false
 ```

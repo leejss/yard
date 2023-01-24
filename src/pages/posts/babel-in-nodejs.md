@@ -1,5 +1,6 @@
 ---
-title: "Nodejs에서 Babel 사용하기"
+layout: '../../layouts/post-layout.astro'
+title: 'Nodejs에서 Babel 사용하기'
 date: 2022-12-27 4:10
 categories:
   - javascript
@@ -9,18 +10,18 @@ ES6의 import, export를 사용한 스크립트를 nodejs환경에서 실행하�
 
 ```js
 // server.js
-import express from "express";
+import express from 'express'
 
-const app = express();
-const PORT = 8080;
+const app = express()
+const PORT = 8080
 
-app.get("/", (req, res) => {
-  res.send("hello");
-});
+app.get('/', (req, res) => {
+  res.send('hello')
+})
 
 app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
-});
+  console.log(`http://localhost:${PORT}`)
+})
 ```
 
 ```zsh
@@ -70,20 +71,20 @@ npx babel server.js --out-file server-babel.js
 
 ```js
 // server-babel.js
-"use strict";
+'use strict'
 
-var _express = _interopRequireDefault(require("express"));
+var _express = _interopRequireDefault(require('express'))
 function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
+  return obj && obj.__esModule ? obj : { default: obj }
 }
-var app = (0, _express["default"])();
-var PORT = 8080;
-app.get("/", function (req, res) {
-  res.send("hello");
-});
+var app = (0, _express['default'])()
+var PORT = 8080
+app.get('/', function (req, res) {
+  res.send('hello')
+})
 app.listen(PORT, function () {
-  console.log("http://localhost:".concat(PORT));
-});
+  console.log('http://localhost:'.concat(PORT))
+})
 ```
 
 이 코드를 run하면 정상적으로 실행된다.
@@ -116,11 +117,11 @@ npx babel-node server.js
 
 ```js
 // index.js
-require("@babel/register")({
-  presets: ["@babel/preset-env"],
-});
+require('@babel/register')({
+  presets: ['@babel/preset-env'],
+})
 
-require("./server");
+require('./server')
 ```
 
 ```zsh

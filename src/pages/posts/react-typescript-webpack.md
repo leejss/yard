@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "React + Typescript Webpack으로 SPA 프로젝트 구성하기"
 date: 2022-11-03 21:54
 categories:

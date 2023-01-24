@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "[You Don't Know JS Yet] Lexical Scope"
 date: 2022-09-15 13:55
 categories:
@@ -24,12 +25,12 @@ JS 엔진이 자바스크립트를 대할 때, line by line으로 statement를 �
 다음 코드는 전부 target reference 상황이다.
 
 ```js
-var age = 64;
+var age = 64
 
 for (const number of numbers) {
 } // 루프 변수 타겟
 
-getUserById(23); // 파라미터가 타겟
+getUserById(23) // 파라미터가 타겟
 
 function getUserById() {} // 함수선언은 타겟
 ```

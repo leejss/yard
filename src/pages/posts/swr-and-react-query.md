@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "SWR과 React-Query 비교 분석"
 date: 2022-11-27 16:48
 categories:

@@ -1,4 +1,5 @@
 ---
+layout: '../../layouts/post-layout.astro'
 title: "React: useMemo 바로알기"
 date: 2022-10-09 03:25
 categories:
