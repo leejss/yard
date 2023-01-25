@@ -1,6 +1,5 @@
 ---
-layout: '../../layouts/post-layout.astro'
-title: "Nextjs prefetching"
+title: 'Nextjs prefetching'
 date: 2022-09-12 13:11
 categories:
   - nextjs
@@ -50,8 +49,8 @@ categories:
 
 ```tsx
 useEffect(() => {
-  router.prefetch("/products/[id]");
-}, []);
+  router.prefetch('/products/[id]')
+}, [])
 ```
 
 - 그리고 다시 network를 확인해 본다.

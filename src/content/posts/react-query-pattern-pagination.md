@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: 'React Query pattern: pagination'
 date: 2022-09-28 12:44
 categories:

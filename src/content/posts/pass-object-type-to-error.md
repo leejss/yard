@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: 'Error message에 객체 타입 전달하기'
 date: 2022-09-18 03:10
 categories:

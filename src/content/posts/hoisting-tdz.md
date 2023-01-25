@@ -1,6 +1,5 @@
 ---
-layout: '../../layouts/post-layout.astro'
-title: "Hoisting, TDZ"
+title: 'Hoisting, TDZ'
 date: 2022-10-10 14:17
 categories:
   - javascript
@@ -25,15 +24,15 @@ var hoisting과 let, const hoisting에 차이가 있다. (You Don't Know JS Yet�
 그리도 또 하나의 차이점은 var hoisting된 변수는 `undefined`로 자동 초기화(auto-initialization)를 하지만 let과 const는 자동초기화를 하지 않는다.
 
 ```js
-console.log(a); // undefined
-var a = "hello";
+console.log(a) // undefined
+var a = 'hello'
 ```
 
 위 코드가 동작하는 이유는 var hoisting에서는 자동초기화가 일어나기 때문이다.
 
 ```js
-console.log(a); // ReferenceError: Cannot access 'a' before initialization
-let a = "hello";
+console.log(a) // ReferenceError: Cannot access 'a' before initialization
+let a = 'hello'
 ```
 
 `let`과 `const`는 자동초기화가 일어나지 않는다. `let`과 `const`의 초기화는 오직 직접 초기화를 수행한 경우 일어난다.
@@ -45,10 +44,10 @@ let a = "hello";
 function foo() {}
 
 // Function expression (anonymous)
-var boo = function () {};
+var boo = function () {}
 
 // Function expression (named)
-var hoo = function hoo() {};
+var hoo = function hoo() {}
 ```
 
 function hoisting은 function declaration에서만 일어난다.  
@@ -57,11 +56,11 @@ function hoisting은 variable hoisting과 다른 점이 있다. 먼저 이름이
 > Pay close attention to the distinction here. A function declaration is hoisted and initialized to its function value (again, called function hoisting). - You Don't Know JS Yet: Scope & Closures - 2nd Edition
 
 ```js
-foo(); // foo
-console.log(foo); // [Function: foo]
+foo() // foo
+console.log(foo) // [Function: foo]
 
 function foo() {
-  console.log("foo");
+  console.log('foo')
 }
 ```
 
@@ -69,11 +68,11 @@ function foo() {
 반면 함수 표현식에서는 function hoisting은 일어나지 않는다. var로 선언한 변수에 함수가 할당하는 방식이기 때문에 Variable hoisting이 일어난다.
 
 ```js
-console.log(foo); // undefined
+console.log(foo) // undefined
 
 var foo = function () {
-  console.log("foo");
-};
+  console.log('foo')
+}
 ```
 
 ## Temporal Dead Zone
@@ -91,19 +90,19 @@ hoisting은 일어나서 scope내에서 visible 하지만 초기화하지 않아
 
 ```js
 // TDZ
-console.log(a); // ReferenceError: Cannot access 'a' before initialization
+console.log(a) // ReferenceError: Cannot access 'a' before initialization
 
-let a = 123; // Where TDZ ends
+let a = 123 // Where TDZ ends
 ```
 
 그런데 Function hoisting이 일어나게 되면 좀 더 실질적인 TDZ를 느낄 수 있다.
 
 ```js
-speakName();
+speakName()
 
-let a = "helloo";
+let a = 'helloo'
 function speakName() {
-  console.log(a);
+  console.log(a)
 }
 ```
 

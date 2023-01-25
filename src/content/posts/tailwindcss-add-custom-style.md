@@ -1,6 +1,5 @@
 ---
-layout: '../../layouts/post-layout.astro'
-title: "tailwindcss에 커스텀 클래스 추가하기"
+title: 'tailwindcss에 커스텀 클래스 추가하기'
 date: 2022-10-08 14:17
 categories:
   - etc
@@ -78,24 +77,24 @@ tailwindcss는 일반적인 클래스 정의를 제한하지 않는다.
 ```js
 // tailwind.config.js
 
-const plugin = require("tailwindcss/plugin");
+const plugin = require('tailwindcss/plugin')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.tsx"],
+  content: ['./src/**/*.tsx'],
   theme: {
     extend: {},
   },
   plugins: [
     plugin(({ addComponents }) => {
       addComponents({
-        ".highlight": {
-          color: "#34ebbd",
+        '.highlight': {
+          color: '#34ebbd',
         },
-      });
+      })
     }),
   ],
-};
+}
 ```
 
 ## References

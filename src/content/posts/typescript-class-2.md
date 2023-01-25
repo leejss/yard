@@ -1,9 +1,8 @@
 ---
-layout: '../../layouts/post-layout.astro'
-title: "타입스크립트에서 클래스 다루기 - 2"
+title: '타입스크립트에서 클래스 다루기 - 2'
 date: 2022-10-29 23:31
 categories:
-    - typescript
+  - typescript
 ---
 
 ## `this`
@@ -13,21 +12,21 @@ categories:
 ```js
 // javascript
 class Person {
-    name = "James";
-    logName() {
-        console.log(this.name);
-    }
+  name = 'James'
+  logName() {
+    console.log(this.name)
+  }
 }
 
-const p = new Person();
-p.logName(); // James
+const p = new Person()
+p.logName() // James
 
 const obj = {
-    name: "obj",
-    sayName: p.logName,
-};
+  name: 'obj',
+  sayName: p.logName,
+}
 
-obj.sayName(); // obj
+obj.sayName() // obj
 ```
 
 `this` context는 함수를 어떻게 호출하냐에 따라 결정된다. `obj`를 통해서 `logName`을 호출하면 `this` context는 클래스 인스턴스가 아닌 `obj`로 결정된다.  
@@ -35,21 +34,21 @@ this context를 클래스 인스턴스로 고정시키는 방법은 arrow functi
 
 ```js
 class Person {
-    name = "James";
-    logName = () => {
-        console.log(this.name);
-    };
+  name = 'James'
+  logName = () => {
+    console.log(this.name)
+  }
 }
 
-const p = new Person();
-p.logName(); // James
+const p = new Person()
+p.logName() // James
 
 const obj = {
-    name: "obj",
-    sayName: p.logName,
-};
+  name: 'obj',
+  sayName: p.logName,
+}
 
-obj.sayName(); // James
+obj.sayName() // James
 ```
 
 대신 이 방식에는 몇 가지 [trade-offs](https://www.typescriptlang.org/docs/handbook/2/classes.html#arrow-functions)가 있다.
@@ -60,18 +59,18 @@ arrow function을 사용하는 대신 타입스크립트에서는 this context�
 
 ```ts
 class Person {
-    name = "James";
-    logName(this: Person) {
-        console.log(this.name);
-    }
+  name = 'James'
+  logName(this: Person) {
+    console.log(this.name)
+  }
 }
 
 const obj = {
-    name: "obj",
-    sayName: p.logName,
-};
+  name: 'obj',
+  sayName: p.logName,
+}
 
-obj.sayName(); // ❌ Compile error
+obj.sayName() // ❌ Compile error
 // The 'this' context of type '{ name: string; sayName: (this: Person) => void; }' is not assignable to method's 'this' of type 'Person'.
 // Property 'logName' is missing in type '{ name: string; sayName: (this: Person) => void; }' but required in type 'Person'
 ```
@@ -84,4 +83,4 @@ this의 타입은 동적으로 결정된다. 왜냐하면 클래스를 상속하
 
 ## References
 
--   [Typescript Classes](https://www.typescriptlang.org/docs/handbook/2/classes.html)
+- [Typescript Classes](https://www.typescriptlang.org/docs/handbook/2/classes.html)

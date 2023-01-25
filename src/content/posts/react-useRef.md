@@ -1,6 +1,5 @@
 ---
-layout: '../../layouts/post-layout.astro'
-title: "React: useRef 바로알기"
+title: 'React: useRef 바로알기'
 date: 2022-10-06 14:38
 categories:
   - react
@@ -24,24 +23,24 @@ state는 값이 바뀌면 reference identity가 바뀌지만 ref는 바뀌지 �
 ### reference identity
 
 ```js
-console.log({} === {}); // false
-console.log(Object.is({}, {})); // false
+console.log({} === {}) // false
+console.log(Object.is({}, {})) // false
 
 console.log(
   Object.is(
     () => {},
     () => {}
   )
-); // false
+) // false
 ```
 
 위 코드에서 로그가 false로 나오는 이유는 두 객체의 reference identity가 다르기 때문이다. 객체 리터럴은 항상 새로운 객체를 생성한다. 자바스크립에서 객체 비교는 객체의 구조를 비교하는 것이 아니라 reference identity를 비교 한다.
 
 ```js
-const obj1 = {};
-const obj2 = obj1;
+const obj1 = {}
+const obj2 = obj1
 
-console.log(obj1 === obj2); // true
+console.log(obj1 === obj2) // true
 ```
 
 두 변수의 reference가 같기 때문에 위 비교는 true가 된다.
@@ -51,30 +50,30 @@ console.log(obj1 === obj2); // true
 useState가 반환하는 set함수는 항상 새로운 객체를 리턴하기 때문에 이전 state 값과 set 이 후 현재 state값의 reference identity가 다르다. 반면 useRef는 직접 mutation을 하기 때문에 렌더링 사이에 같은 reference identity를 유지한다.
 
 ```tsx
-let prevRef: any;
+let prevRef: any
 
 const App = () => {
-  const [val, setVal] = useState(0);
+  const [val, setVal] = useState(0)
   const ref = useRef({
     count: 0,
-  });
+  })
 
-  prevRef = ref;
+  prevRef = ref
 
   return (
     <div>
       <button
         onClick={() => {
-          setVal((prev) => prev + 1);
-          ref.current.count += 1;
-          console.log(prevRef === ref); // true. prevRef와 ref는 같은 reference를 가지고 있다.
+          setVal((prev) => prev + 1)
+          ref.current.count += 1
+          console.log(prevRef === ref) // true. prevRef와 ref는 같은 reference를 가지고 있다.
         }}
       >
         Render {val}
       </button>
     </div>
-  );
-};
+  )
+}
 ```
 
 ## DOM과 ref
@@ -93,13 +92,13 @@ React는 화면을 그려내는 과정을 두 단계로 나눈다.
 
 ```tsx
 const App = () => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  console.log("During rendering: ", ref.current); // During rendering:  null
+  const ref = useRef<HTMLDivElement | null>(null)
+  console.log('During rendering: ', ref.current) // During rendering:  null
   useEffect(() => {
-    console.log("After rendering", ref.current); // After rendering <div>​</div>​
-  });
-  return <div ref={ref}></div>;
-};
+    console.log('After rendering', ref.current) // After rendering <div>​</div>​
+  })
+  return <div ref={ref}></div>
+}
 ```
 
 위 코드를 보면 알 수 있듯이 ref는 render 단계가 아닌 commit 단계에서 attach 된다.

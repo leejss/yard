@@ -1,6 +1,5 @@
 ---
-layout: '../../layouts/post-layout.astro'
-title: "React: useMemo 바로알기"
+title: 'React: useMemo 바로알기'
 date: 2022-10-09 03:25
 categories:
   - react
@@ -9,7 +8,7 @@ categories:
 ```jsx
 const cachedValue = useMemo(calculationFn, [
   /* dependencies */
-]);
+])
 ```
 
 > `useMemo` is a React Hook that lets you cache the result of a calculation between re-renders. - react docs
@@ -23,7 +22,7 @@ const cachedValue = useMemo(calculationFn, [
 ```jsx
 // data set => list
 
-const list = getListFromDataset(dataSet);
+const list = getListFromDataset(dataSet)
 ```
 
 > **By default, when a component re-renders, React re-renders all of its children recursively.** - react docs
@@ -34,13 +33,13 @@ const list = getListFromDataset(dataSet);
 React는 memoization을 위헤 `useMemo` 훅을 제공한다. useMemo로 특정 값을 감싸면 렌더링이 일어나도 dependencies가 변하지 않는 한 똑같은 값을 생성하지 않는다.
 
 ```jsx
-const list = useMemo(listFromCalculation, []);
+const list = useMemo(listFromCalculation, [])
 // ...
 
 const listFromCalculation = () => {
-  console.log("listFromCalculation called");
-  return [1, 2, 3];
-};
+  console.log('listFromCalculation called')
+  return [1, 2, 3]
+}
 ```
 
 최초 렌더링시, listFromCalculation called가 로그에 찍히고 그 후 렌더링 시에는 찍히지 않는다.
@@ -57,27 +56,27 @@ React에서 props이 이전과 동일하면 렌더링을 반복하지 않게 하
 
 ```jsx
 const App = () => {
-  const [now, setNow] = useState(0);
-  const list = listFromCalculation();
+  const [now, setNow] = useState(0)
+  const list = listFromCalculation()
   return (
     <>
       <List list={list} />
       <button
         onClick={() => {
-          setNow(Date.now());
+          setNow(Date.now())
         }}
       >
         Render
       </button>
     </>
-  );
-};
+  )
+}
 ```
 
 `App`이 렌더링 될 때 마다, `listFromCalculation` 호출이 되고 `List`도 다시 렌더링 될 것이다.
 
 ```tsx
-const list = useMemo(listFromCalculation, []);
+const list = useMemo(listFromCalculation, [])
 ```
 
 `useMemo`를 사용하고
@@ -90,8 +89,8 @@ const List = memo(({ list }: { list: number[] }) => {
         <li key={d}>{d}</li>
       ))}
     </ul>
-  );
-});
+  )
+})
 ```
 
 `memo`로 `List` 컴포넌트를 감싸게 되면, `App`이 렌더링해도 `List`는 렌더링 하지 않는다.

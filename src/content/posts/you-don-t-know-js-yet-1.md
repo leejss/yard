@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: "[You Don't Know JS Yet] Lexical Scope"
 date: 2022-09-15 13:55
 categories:

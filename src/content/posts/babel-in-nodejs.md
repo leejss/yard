@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: 'Nodejs에서 Babel 사용하기'
 date: 2022-12-27 4:10
 categories:

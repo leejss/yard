@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: 'AWS Amplify로 nextjs SGG앱 배포 시 주의할 점'
 date: 2022-10-31 23:48
 categories:

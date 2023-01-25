@@ -1,6 +1,5 @@
 ---
-layout: '../../layouts/post-layout.astro'
-title: "Storyblok as content source"
+title: 'Storyblok as content source'
 date: 2022-09-02 15:00
 categories:
   - etc
@@ -45,18 +44,18 @@ Preview는 Draft와 Published content를 불러 오고 Public은 오직 Publishe
 Storyblok은 리액트와 쉽게 결합할 수 있도록 `@storyblok/react`라는 패키지를 제공하고 있으니 이를 활용하자.
 
 ```ts
-import { storyblokInit, apiPlugin } from "@storyblok/react";
-import { API_TOKEN } from "lib/constants";
-import { getStoryblokApi } from "@storyblok/react";
+import { storyblokInit, apiPlugin } from '@storyblok/react'
+import { API_TOKEN } from 'lib/constants'
+import { getStoryblokApi } from '@storyblok/react'
 
 storyblokInit({
   accessToken: API_TOKEN,
   use: [apiPlugin],
-});
+})
 
-const ApiClient = getStoryblokApi();
+const ApiClient = getStoryblokApi()
 
-export default ApiClient;
+export default ApiClient
 ```
 
 이런 식으로 Api 클라이언트를 만들었다.
@@ -73,10 +72,10 @@ export async function getAllPostStories() {
     `cdn/stories`,
     {
       version,
-      starts_with: "posts/",
+      starts_with: 'posts/',
     }
-  );
-  return data.stories;
+  )
+  return data.stories
 }
 ```
 

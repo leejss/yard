@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: "비동기 자바스크립트와 실행 순서"
 date: 2022-12-01 21:41
 categories:

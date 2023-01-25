@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: 'React: memo 제대로 알기'
 date: 2022-10-04 22:48
 categories:

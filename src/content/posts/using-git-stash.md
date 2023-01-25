@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: 'git stash 활용하기'
 date: 2022-09-03 15:47
 categories:

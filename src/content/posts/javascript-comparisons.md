@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: 'Javascript comparisons'
 date: 2022-09-13 13:44
 categories:

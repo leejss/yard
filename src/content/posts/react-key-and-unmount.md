@@ -1,6 +1,5 @@
 ---
-layout: '../../layouts/post-layout.astro'
-title: "React: key와 props change"
+title: 'React: key와 props change'
 date: 2022-10-06 03:47
 categories:
   - react
@@ -12,11 +11,11 @@ categories:
 
 ```tsx
 {
-  list.map((item) => <li key={item.id}></li>);
+  list.map((item) => <li key={item.id}></li>)
 }
 
 {
-  posts.map((post) => <PostItem key={post.id} {...post} />);
+  posts.map((post) => <PostItem key={post.id} {...post} />)
 }
 ```
 
@@ -31,7 +30,7 @@ key는 비교 과정에서 사용하는 속성이다. Tree 구조에서 동일�
 
 ```tsx
 const App = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('')
 
   return (
     <div>
@@ -42,13 +41,13 @@ const App = () => {
       />
       <CounterWithName name={name} />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
 
 const CounterWithName = ({ name }: { name: string }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   return (
     <div>
@@ -57,14 +56,14 @@ const CounterWithName = ({ name }: { name: string }) => {
       </h1>
       <button
         onClick={() => {
-          setCount((prev) => prev + 1);
+          setCount((prev) => prev + 1)
         }}
       >
         Increment
       </button>
     </div>
-  );
-};
+  )
+}
 ```
 
 예를 들어, `App` 컴포넌트에서 `name`값을 변경해 리렌더링이 일어나도 `CounterWithName` 컴포넌트의 `count` 상태값은 사라지지 않는다.
@@ -75,8 +74,8 @@ const CounterWithName = ({ name }: { name: string }) => {
 
 ```tsx
 useEffect(() => {
-  setCount(0);
-}, [name]);
+  setCount(0)
+}, [name])
 ```
 
 실제로 `name`이 바뀌면 `setCount(0)` 을 호출하기 때문에 값이 초기화 된다. 하지만 이는 불필요한 작업(unnecessary effects) 이다.  
@@ -96,20 +95,20 @@ React의 안티패턴 중에 props를 state의 초기화 값으로 사용하는 
 
 ```tsx
 const Counter = ({ initialCount }: { initialCount: number }) => {
-  const [count, setCount] = useState(initialCount);
+  const [count, setCount] = useState(initialCount)
   return (
     <div>
       {count}
       <button
         onClick={() => {
-          setCount((prev) => prev + 1);
+          setCount((prev) => prev + 1)
         }}
       >
         increment
       </button>
     </div>
-  );
-};
+  )
+}
 ```
 
 다음과 같이 사용하면 문제가 없다.
@@ -122,7 +121,7 @@ const Counter = ({ initialCount }: { initialCount: number }) => {
 
 ```tsx
 const App = () => {
-  const [initialValue, setInitialValue] = useState(0);
+  const [initialValue, setInitialValue] = useState(0)
   return (
     <div>
       <h1>Initial Value</h1>
@@ -130,13 +129,13 @@ const App = () => {
         type="number"
         value={`${initialValue}`}
         onChange={(e) => {
-          setInitialValue(parseInt(e.target.value));
+          setInitialValue(parseInt(e.target.value))
         }}
       />
       <Counter initialCount={initialValue} />
     </div>
-  );
-};
+  )
+}
 ```
 
 인풋창을 통해서 initialValue를 바꾸어도 Counter 컴포넌트의 count 값은 여전히 0이다. 렌더링을 하면 `const [count, setCount] = useState(initialCount);` 도 실행할텐데 어째서 count값이 바뀌지 않는 것일까?

@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: "타입스크립트 Barrel file의 Tree shaking 문제"
 date: 2022-11-04 15:43
 categories:

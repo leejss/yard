@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: 'Serverside rendering 기본 구현해보기'
 date: 2022-12-29 15:14
 categories:

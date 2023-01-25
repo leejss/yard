@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: '자바스크립트와 비동기 프로그래밍'
 date: 2022-11-26 21:54
 categories:

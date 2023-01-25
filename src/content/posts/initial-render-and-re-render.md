@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: 'Initial render와 Re render'
 date: 2022-11-29 17:56
 categories:

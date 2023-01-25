@@ -1,5 +1,4 @@
 ---
-layout: '../../layouts/post-layout.astro'
 title: "React module state (1)"
 date: 2022-09-05 15:05
 categories:
