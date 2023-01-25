@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content'
+import PageLayout from '@/layouts/page-layout.astro'
+
+const posts = (
+  await getCollection('posts', ({ data }) => {
+    return !data.draft
+  })
+)
+  .sort((a, b) => {
+    return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+  })
+  .map((v) => {
+    return {
+      slug: v.slug,
+      date: v.data.date,
+      title: v.data.title,
+    }
+  })
+---
+
+<PageLayout>
+  <ul class="flex flex-col gap-3 my-6">
+    {
+      posts.map((post) => {
+        return (
+          <li>
+            <h2 class="text-md md:text-lg hover:underline">
+              <a href={`/posts/${post.slug}`}>{post.title}</a>
+            </h2>
+            <time
+              class="text-xs text-gray-500 md:text-sm flex-1"
+              datetime={post.date}
+            >
+              {new Date(post.date).toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </time>
+          </li>
+        )
+      })
+    }
+  </ul>
+</PageLayout>
