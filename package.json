@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^2.0.0",
+    "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^3.0.0",
     "@giscus/react": "^2.2.0",
     "astro": "^2.0.1"
