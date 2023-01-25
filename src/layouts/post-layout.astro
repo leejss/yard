@@ -16,12 +16,10 @@ const {
 
 <PageLayout>
   <header class="pb-8">
-    <h2
-      class="text-xl md:leading-[60px!important] md:text-2xl dark:text-indigo-300 font-bold"
-    >
+    <h2 class="text-xl md:text-2xl dark:text-indigo-300 font-bold py-3">
       {title}
     </h2>
-    <time>
+    <time class="text-sm md:text-base">
       {
         new Date(date).toLocaleDateString('ko-KR', {
           year: 'numeric',
