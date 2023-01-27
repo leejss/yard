@@ -1,6 +1,17 @@
 ---
 import { SITE_TITLE } from '@/config'
 import '../styles/globals.css'
+
+export interface Props {
+  title?: string
+}
+
+const { title } = Astro.props
+
+const renderTitle = (title: string | undefined) => {
+  if (!title) return 'tinyyard'
+  return `tinyyard  | ${title}`
+}
 ---
 
 <!DOCTYPE html>
@@ -14,6 +25,7 @@ import '../styles/globals.css'
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{renderTitle(title)}</title>
   </head>
   <body>
     <div class="sm:max-w-[823px] mx-auto w-full pt-8 p-6">
