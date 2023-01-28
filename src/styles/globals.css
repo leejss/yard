@@ -49,3 +49,7 @@ body {
 hr {
   border-top: 0.5px solid #aaa;
 }
+
+.giscus {
+  margin-top: 2rem;
+}
