@@ -1,6 +1,6 @@
 ---
 title: 'Typed event emitter'
-date: 2023-02-25 24:27
+date: 2023-02-25 00:27
 categories:
   - typescript
 ---
