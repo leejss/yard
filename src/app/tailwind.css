@@ -13,6 +13,6 @@
 
 @layer components {
   .link {
-    @apply font-bold transition-all text-foregroundLink  hover:underline;
+    @apply font-bold text-foregroundLink hover:underline;
   }
 }
