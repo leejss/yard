@@ -4,17 +4,15 @@
 
 @layer base {
   :root {
+    /* Color */
     --foreground-hsl: 240 100% 10%;
+    --foreground-link-hsl: 15 90% 50%;
     --background-hsl: 60 50% 95%;
   }
 }
 
 @layer components {
-  .debug1 {
-    outline: 1px solid red;
-  }
-
-  .debug2 {
-    outline: 1px solid blue;
+  .link {
+    @apply font-bold transition-all text-foregroundLink  hover:underline;
   }
 }

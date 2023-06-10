@@ -1,4 +1,5 @@
 import "./globals.css";
+import Nav from "./nav";
 
 export const metadata = {
   title: "tinyyard",
@@ -8,7 +9,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
-      <body className="bg-background debug1">{children}</body>
+      <body className="text-foreground bg-background">
+        <div className="p-4">
+          <Nav />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

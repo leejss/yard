@@ -1,5 +1,5 @@
 const HomePage = () => {
-  return <div className="text-foreground">Tinyyard</div>;
+  return <main>main</main>;
 };
 
 export default HomePage;
