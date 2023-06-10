@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --foreground-hsl: 240 100% 10%;
+    --background-hsl: 60 50% 95%;
+  }
+}
+
+@layer components {
+  .debug1 {
+    outline: 1px solid red;
+  }
+
+  .debug2 {
+    outline: 1px solid blue;
+  }
+}
