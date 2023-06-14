@@ -10,7 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html>
       <body className="text-foreground bg-background">
-        <div className="p-4">
+        <div className="p-4 container mx-auto">
           <Nav />
           {children}
         </div>

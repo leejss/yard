@@ -8,6 +8,21 @@
     --foreground-hsl: 240 100% 10%;
     --foreground-link-hsl: 15 90% 50%;
     --background-hsl: 60 50% 95%;
+
+    /* size */
+    --max-width: 1024px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: dark;
+    }
+
+    :root {
+      --foreground-hsl: 214 20% 75%;
+      --foreground-link-hsl: 15 70% 40%;
+      --background-hsl: 0 0% 5%;
+    }
   }
 }
 

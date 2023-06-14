@@ -1,6 +1,6 @@
-//generateStaticParams
-
+import dayjs from "dayjs";
 import getPost from "./utils/getPost";
+import parseMarkdown from "./utils/parseMarkdown";
 
 interface PageProps {
   params: {
@@ -9,11 +9,23 @@ interface PageProps {
 }
 
 const PostPage = async ({ params }: PageProps) => {
-  const post = getPost(params.slug);
-  // 1. get slug from params
-  // 2. get files using slug
-  // 3. Parse markdown string
-  return <div>Post page</div>;
+  const post = await getPost(params.slug);
+  const html = await parseMarkdown(post.content);
+
+  return (
+    <article>
+      <header className="py-4">
+        <h1 className="text-xl">{post.title}</h1>
+        <h2>{dayjs(post.date).format("YYYY/MM/DD")}</h2>
+      </header>
+      <div
+        className="prose dark:prose-invert !text-foreground"
+        dangerouslySetInnerHTML={{
+          __html: html,
+        }}
+      />
+    </article>
+  );
 };
 
 export default PostPage;
