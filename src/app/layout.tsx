@@ -1,5 +1,6 @@
 import "./globals.css";
 import Nav from "./nav";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "tinyyard",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="p-4 container mx-auto">
           <Nav />
           {children}
+          <Analytics />
         </div>
       </body>
     </html>
