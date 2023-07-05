@@ -1,5 +1,5 @@
 ---
-title: '타입스크립트에서 클래스 다루기 - 1'
+title: "타입스크립트에서 클래스 다루기 - 1"
 date: 2022-10-17 21:31
 categories:
   - typescript
@@ -13,38 +13,38 @@ categories:
 
 자바스크립트에서도 클래스 필드를 만들 수 있다.
 
-```js
+```javascript
 // javascript
 class Person {
-  name = 'James' // 선언과 동시에 초기화
-  age // 필드 선언
+  name = "James"; // 선언과 동시에 초기화
+  age; // 필드 선언
 }
 ```
 
 타입스크립트에서는 필드의 타입 어노테이션이 가능하다.
 
-```ts
+```typescript
 class Person {
-  name: string = 'James'
-  age: number
+  name: string = "James";
+  age: number;
 }
 ```
 
 **--strictPropertyInitialization**  
 타입스크립트 컴파일러 옵션에서 위 옵션을 `true`로 할 시 (또는 strict가 true일 시) 선언된 필드가 생성자(constructor)에서 초기화를 안 할 시, 에러를 발생시킨다.
 
-```ts
+```typescript
 // Error
 class Person {
-  age: number // ❌ Property 'age' has no initializer and is not definitely assigned in the constructor.(2564)
+  age: number; // ❌ Property 'age' has no initializer and is not definitely assigned in the constructor.(2564)
   constructor() {}
 }
 
 // Do this
 class Person {
-  age: number
+  age: number;
   constructor(age: number) {
-    this.age = age
+    this.age = age;
   }
 }
 ```
@@ -53,34 +53,34 @@ class Person {
 타입스크립트에서는 클래스 멤버의 성격와 행동을 제어할 수 있는 modifiers를 제공해준다.  
 readonly인 클래스 필드는 생성자 밖에서 값이 바뀌는 것을 제한한다. => 오직 생성자를 통해서 초기화를 할 수 있는 필드임을 나타낸다.
 
-```ts
+```typescript
 class Person {
-  readonly age: number
+  readonly age: number;
   constructor(age: number) {
-    this.age = age
+    this.age = age;
   }
 
   setAge(age: number) {
-    this.age = age // ❌ Cannot assign to 'age' because it is a read-only property.(2540)
+    this.age = age; // ❌ Cannot assign to 'age' because it is a read-only property.(2540)
   }
 }
 
-const p = new Person(24)
-p.age = 40 // ❌ Cannot assign to 'age' because it is a read-only property.(2540)
+const p = new Person(24);
+p.age = 40; // ❌ Cannot assign to 'age' because it is a read-only property.(2540)
 ```
 
 **implements**  
 타입스크립트에서는 implements clause를 통해서 클래스의 implementation을 컴파일 단계에서 체크할 수 있다.
 
-```ts
+```typescript
 interface Person {
-  name: string
+  name: string;
 }
 
 class Main implements Person {
-  name: string
+  name: string;
   constructor(name: string) {
-    this.name = name
+    this.name = name;
   }
 }
 ```
@@ -91,7 +91,7 @@ implements clause를 작성하면서 했던 실수는 `interface`를 통해서 �
 
 **Method overriding**
 
-```ts
+```typescript
 class Person {
   greet() {}
 }
@@ -110,20 +110,20 @@ class Man extends Person {
 - derived class field 초기화
 - derived constructor 호출
 
-```ts
+```typescript
 class Base {
-  name: string = 'Base'
+  name: string = "Base";
   constructor() {
-    console.log(this.name)
+    console.log(this.name);
   }
 }
 
 class Derived extends Base {
-  name = 'Derived'
+  name = "Derived";
 }
 
-const d = new Derived()
-console.log(d.name)
+const d = new Derived();
+console.log(d.name);
 
 // Base
 // Derived
@@ -143,43 +143,43 @@ protected는 서브클래스에서만 접근이 가능하다. private는 오직 
 **Exposure of protected members**  
 protected 필드 선언시, modifier는 상속이 되지 않는다. 따라서 서브클래스에서도 protected를 명시해줘야 한다. (public으로 하는 것이 의도가 아니라면!)
 
-```ts
+```typescript
 class Base {
-  protected val = 123
+  protected val = 123;
 }
 
 class Derived extends Base {
-  val = 456 // Now it's public!
+  val = 456; // Now it's public!
 }
 
-const d = new Derived()
-console.log(d.val) // 456
+const d = new Derived();
+console.log(d.val); // 456
 
 // ========================================
 
 class Base {
-  protected val = 123
+  protected val = 123;
 }
 
 class Derived extends Base {
-  protected val = 456 // Protected를 명시해준다.
+  protected val = 456; // Protected를 명시해준다.
 }
 
-const d = new Derived()
-console.log(d.val) // ❌ Property 'val' is protected and only accessible within class 'Derived' and its subclasses.
+const d = new Derived();
+console.log(d.val); // ❌ Property 'val' is protected and only accessible within class 'Derived' and its subclasses.
 ```
 
 **Cross-hierarchy protected access**  
 Derived 클래스의 인스턴스에서 Base 클래스 인스턴스의 protected 필드에 접근할 수 있을까?
 
-```ts
+```typescript
 class Base {
-  protected val = 123
+  protected val = 123;
 }
 
 class Derived extends Base {
   getValFromBase(b: Base) {
-    console.log(b.val) // ❌ Property 'val' is protected and only accessible through an instance of class 'Derived'. This is an instance of class 'Base'.
+    console.log(b.val); // ❌ Property 'val' is protected and only accessible through an instance of class 'Derived'. This is an instance of class 'Base'.
   }
 }
 ```
@@ -189,11 +189,11 @@ class Derived extends Base {
 **Cross-instance private access**  
 같은 클래스의 인스턴스 간, private 필드를 접근할 수 있을까?
 
-```ts
+```typescript
 class Base {
-  private val = 123
+  private val = 123;
   getVal(b: Base) {
-    console.log(b.val) // No error
+    console.log(b.val); // No error
   }
 }
 ```

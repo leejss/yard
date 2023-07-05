@@ -1,6 +1,6 @@
+import contentService from "@/lib/content.service";
+import { htmlTransformer } from "@vrite/sdk/transformers";
 import dayjs from "dayjs";
-import getPost from "./utils/getPost";
-import parseMarkdown from "./utils/parseMarkdown";
 
 interface PageProps {
   params: {
@@ -9,9 +9,8 @@ interface PageProps {
 }
 
 const PostPage = async ({ params }: PageProps) => {
-  const post = await getPost(params.slug);
-  const html = await parseMarkdown(post.content);
-
+  const post = await contentService.getContentPiece(params.slug);
+  const content = htmlTransformer(post.content);
   return (
     <article>
       <header className="py-4">
@@ -21,7 +20,7 @@ const PostPage = async ({ params }: PageProps) => {
       <div
         className="prose dark:prose-invert !text-foreground"
         dangerouslySetInnerHTML={{
-          __html: html,
+          __html: content,
         }}
       />
     </article>

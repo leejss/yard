@@ -1,5 +1,5 @@
 ---
-title: 'Nextjs prefetching'
+title: "Nextjs prefetching"
 date: 2022-09-12 13:11
 categories:
   - nextjs
@@ -30,7 +30,7 @@ categories:
 
 ## nextjs에서 prefetching 해보기
 
-- nextjs에서 prefetching은 link과 관련된 js 파일만 prefetch 한다.
+- nextjs에서 prefetching은 link과 관련된 javascript 파일만 prefetch 한다.
 - nextjs에서는 prefetching할 Link를 직접 설정할 수 있다.
 - prefetching을 쉽게 적용하는 방법은 `next/link`의 Link 컴포넌트를 이용하여 route를 설정하는 것이다.
 - Link 컴포넌트에 명시한 href과 관련된 js를 자동으로 prefetch 한다. - Link 컴포넌트는 prefetch라는 props를 받는데, default가 true이다.
@@ -45,12 +45,12 @@ categories:
 - 먼저 prefetch를 적용하지 않는 환경이다.
   ![](https://a.storyblok.com/f/171155/2926x1386/ec7bd235fb/screen-shot-2022-09-12-at-11-59-13-pm.png)
 - 여러 chunks가 보이는데 /products/[id] 와 관련된 js는 prefetch되지 않았다.
-- 그 다음 prefetch를 해보았다. `index.tsx`에 다음 코드를 넣어 준다.
+- 그 다음 prefetch를 해보았다. `index.typescript`에 다음 코드를 넣어 준다.
 
-```tsx
+```typescript
 useEffect(() => {
-  router.prefetch('/products/[id]')
-}, [])
+  router.prefetch("/products/[id]");
+}, []);
 ```
 
 - 그리고 다시 network를 확인해 본다.
@@ -59,6 +59,6 @@ useEffect(() => {
 
 ## References
 
-- [Route prefetching in Next.js](https://web.dev/route-prefetching-in-nextjs/)
+- [Route prefetching in Next.javascript](https://web.dev/route-prefetching-in-nextjs/)
 - [Faster Web Navigation with Predictive Prefetching](https://www.youtube.com/watch?v=0jB4YWgAxUo&list=PLndr4jfFMrRQMcTU-Wz6d15V4K_AmVOaO&index=42&t=344s)
 - [Prefetching](https://en.wikipedia.org/wiki/Prefetching)

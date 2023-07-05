@@ -1,5 +1,5 @@
 ---
-title: 'React: key와 props change'
+title: "React: key와 props change"
 date: 2022-10-06 03:47
 categories:
   - react
@@ -9,13 +9,13 @@ categories:
 
 배열을 렌더링하려고 할 때, 우리는 key를 항상 넣어준다.
 
-```tsx
+```typescript
 {
-  list.map((item) => <li key={item.id}></li>)
+  list.map((item) => <li key={item.id}></li>);
 }
 
 {
-  posts.map((post) => <PostItem key={post.id} {...post} />)
+  posts.map((post) => <PostItem key={post.id} {...post} />);
 }
 ```
 
@@ -28,26 +28,22 @@ key는 비교 과정에서 사용하는 속성이다. Tree 구조에서 동일�
 
 기본적으로 Parent 컴포넌트가 렌더링을 하면 재귀적으로 Children 컴포넌트들도 렌더링을 한다. 만약 Child 컴포넌트가 local state를 가지고 있으면 렌더링 마다 상태값은 유지가 된다.
 
-```tsx
+```typescript
 const App = () => {
-  const [name, setName] = useState('')
+  const [name, setName] = useState("");
 
   return (
     <div>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
       <CounterWithName name={name} />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
 
 const CounterWithName = ({ name }: { name: string }) => {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div>
@@ -56,14 +52,14 @@ const CounterWithName = ({ name }: { name: string }) => {
       </h1>
       <button
         onClick={() => {
-          setCount((prev) => prev + 1)
+          setCount((prev) => prev + 1);
         }}
       >
         Increment
       </button>
     </div>
-  )
-}
+  );
+};
 ```
 
 예를 들어, `App` 컴포넌트에서 `name`값을 변경해 리렌더링이 일어나도 `CounterWithName` 컴포넌트의 `count` 상태값은 사라지지 않는다.
@@ -72,17 +68,17 @@ const CounterWithName = ({ name }: { name: string }) => {
 
 먼저 `useEffect`를 떠올려 볼 수 있다.
 
-```tsx
+```typescript
 useEffect(() => {
-  setCount(0)
-}, [name])
+  setCount(0);
+}, [name]);
 ```
 
 실제로 `name`이 바뀌면 `setCount(0)` 을 호출하기 때문에 값이 초기화 된다. 하지만 이는 불필요한 작업(unnecessary effects) 이다.  
 그리고 declarative해보이지 않는다.  
 여기서 우리는 key를 활용할 수 있다. 이전 렌더링과 key가 다르다면 상태는 초기화 된다. 따라서 useEffect대신 다음과 같이 작성할 수 있다.
 
-```tsx
+```typescript
 <CounterWithName name={name} key={name} />
 ```
 
@@ -93,35 +89,35 @@ React가 봤을 때 key가 다르면 state를 공유하지 않은 전혀 다른 
 
 React의 안티패턴 중에 props를 state의 초기화 값으로 사용하는 것이 있다.
 
-```tsx
+```typescript
 const Counter = ({ initialCount }: { initialCount: number }) => {
-  const [count, setCount] = useState(initialCount)
+  const [count, setCount] = useState(initialCount);
   return (
     <div>
       {count}
       <button
         onClick={() => {
-          setCount((prev) => prev + 1)
+          setCount((prev) => prev + 1);
         }}
       >
         increment
       </button>
     </div>
-  )
-}
+  );
+};
 ```
 
 다음과 같이 사용하면 문제가 없다.
 
-```tsx
+```typescript
 <Counter initialCount={10} />
 ```
 
 문제는 props가 렌더링 시 변하는 경우다.
 
-```tsx
+```typescript
 const App = () => {
-  const [initialValue, setInitialValue] = useState(0)
+  const [initialValue, setInitialValue] = useState(0);
   return (
     <div>
       <h1>Initial Value</h1>
@@ -129,13 +125,13 @@ const App = () => {
         type="number"
         value={`${initialValue}`}
         onChange={(e) => {
-          setInitialValue(parseInt(e.target.value))
+          setInitialValue(parseInt(e.target.value));
         }}
       />
       <Counter initialCount={initialValue} />
     </div>
-  )
-}
+  );
+};
 ```
 
 인풋창을 통해서 initialValue를 바꾸어도 Counter 컴포넌트의 count 값은 여전히 0이다. 렌더링을 하면 `const [count, setCount] = useState(initialCount);` 도 실행할텐데 어째서 count값이 바뀌지 않는 것일까?
@@ -146,7 +142,7 @@ const App = () => {
 
 그런데 key를 사용하면 이를 해결할 수 있다.
 
-```tsx
+```typescript
 <Counter initialCount={initialValue} key={initialValue} />
 ```
 
