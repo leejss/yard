@@ -1,5 +1,5 @@
 ---
-title: '자바스크립트와 비동기 프로그래밍'
+title: "자바스크립트와 비동기 프로그래밍"
 date: 2022-11-26 21:54
 categories:
   - javascript
@@ -7,17 +7,17 @@ categories:
 
 자바스크립트 코드의 평가와 실행을 담당하는 자바스크립트 엔진은 싱글 스레드 방식으로 돌아가기 때문에 자바스크립트는 싱글 스레드 언어라고 부를 수 있다. 싱글 스레드는 한 번에 하나의 태스크만 처리할 수 있다는 것을 의미한다.
 
-```js
+```javascript
 function wait(ms) {
-  const until = Date.now() + ms
+  const until = Date.now() + ms;
   while (Date.now() <= until) {}
-  return
+  return;
 }
 
-wait(3000)
+wait(3000);
 
-console.log('hello world!')
-s
+console.log("hello world!");
+s;
 ```
 
 자바스크립트 엔진 관점에서 위 코드를 살펴보자.
@@ -47,7 +47,7 @@ s
 
 이 처럼 자바스크립트의 비동기 작업은 브라우저의 이벤트 루프와 태스크 큐에 의해 처리 된다.
 
-```js
+```javascript
 
 function foo() {
   // Do something

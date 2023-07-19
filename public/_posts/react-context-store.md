@@ -13,7 +13,7 @@ state가 변한 부분만 렌더링을 하고자 하는 경우 어떻게 Context
 
 ## State Based Context
 
-```tsx
+```typescript
 const App = () => {
   return (
     <StoreContext.Provider value={value}>
@@ -31,7 +31,7 @@ const App = () => {
 
 기본적으로 provider의 value props를 통해서 컴포넌트 트리에 data를 전파한다. state based context같은 경우 다음과 같이 작성할 수 있다.
 
-```tsx
+```typescript
 const App = () => {
   const [name, setName] = useState({
     first: "",
@@ -54,7 +54,7 @@ const App = () => {
 
 App 컴포넌트의 로컬 상태가 context로서 컴포넌트 트리에 전달된다. App 컴포넌트의 로컬 상태는 곧 전역 상태가 된다. Form 컴포넌트에서는 useContext훅을 통해서 가장 가까이 있는 Provider의 context를 읽는다.
 
-```tsx
+```typescript
 const Form = () => {
   **const [name, setName] = useContext(StoreContext)**
   return (
@@ -77,7 +77,7 @@ setName을 통해 name 상태를 변경하면 App컴포넌트가 리렌더링 �
 
 ## Ref Based Context
 
-```tsx
+```typescript
 const App = () => {
   const value = useRef({
     first: "",
@@ -103,7 +103,7 @@ useRef를 통해 생성한 값은 렌더링 마다 동일한 레퍼런스를 유
 
 먼저 인터페이스 부터 생각해보자. 다음과 같은 인터페이스를 구현해보고 싶다.
 
-```tsx
+```typescript
 const store = createStore();
 
 store.get();
@@ -113,7 +113,7 @@ store.subscribe(callback);
 
 subscribe를 통해서 콜백을 등록하고 store의 데이터가 변할 때마다 콜백을 호출해준다. callback에 바로 set 함수를 추가하여 rendering layer를 추가할 것이다.
 
-```tsx
+```typescript
 const createNameStore = () => {
   // 1.
   const value = useRef({
@@ -126,10 +126,7 @@ const createNameStore = () => {
   const subscribers = useRef(new Set<() => void>()).current;
   const get = useCallback(() => value.current, []);
   const set = useCallback((nextState: NameStore | NameStoreUpdateFunction) => {
-    value.current =
-      typeof nextState === "function"
-        ? (nextState as NameStoreUpdateFunction)(value.current)
-        : nextState;
+    value.current = typeof nextState === "function" ? (nextState as NameStoreUpdateFunction)(value.current) : nextState;
     // 3.
     subscribers.forEach((cb) => cb());
   }, []);
@@ -175,14 +172,14 @@ const useNameStore = () => {
 
 따라서 다음과 같이 Provider 컴포넌트를 작성할 수 있다.
 
-```tsx
+```typescript
 const NameProvider = ({ children }: PropsWithChildren) => {
   const store = createNameStore();
   return <NameContext.Provider value={store}>{children}</NameContext.Provider>;
 };
 ```
 
-```tsx
+```typescript
 const App = () => {
   return (
     <NameProvider>
@@ -201,7 +198,7 @@ const App = () => {
 
 NameProvider가 위치한 곳은 컴포넌트 트리의 최상위고 업데이트가 일어나는 곳은 Form이다.
 
-```tsx
+```typescript
 const Form = () => {
   const [name, setName] = useNameStore();
   return (
@@ -241,7 +238,7 @@ const Form = () => {
 
 팩토리 함수를 작성해보자.
 
-```tsx
+```typescript
 const StoreContext = createContext(null);
 const StoreProvider = ({ children }: PropsWithChildren) => {
   const store = createStore(initialData);
@@ -253,15 +250,14 @@ createStore 팩토리 함수를 만들면 쉽게 store를 생성하여 context�
 
 그런데 한가지 달라진 점은 컴포넌트 트리 밖 또는 훅 밖에서는 훅을 사용할 수 없다. 따라서 useRef 대신 지역변수를 사용하도록 한다.
 
-```tsx
+```typescript
 function createStore<T>(initialData: T) {
   type StateUpdateFunction<T> = (prev: T) => T;
   let data = initialData;
   const subscribers = new Set<() => void>();
   const get = () => data;
   const set = (nextState: T | StateUpdateFunction<T>) => {
-    data =
-      typeof nextState === "function" ? (nextState as StateUpdateFunction<T>)(data) : nextState;
+    data = typeof nextState === "function" ? (nextState as StateUpdateFunction<T>)(data) : nextState;
     subscribers.forEach((cb) => cb());
   };
   const subscribe = (cb: () => void) => {
@@ -283,7 +279,7 @@ export default createStore;
 
 initialData의 타입을 추론하여 store를 생성하도록 했다.
 
-```tsx
+```typescript
 const countStore = createStore(0);
 const nameStore = createStore({
   first: "",
@@ -293,7 +289,7 @@ const nameStore = createStore({
 
 이런 식으로 store를 생성할 수 있다. 컴포넌트를 store와 연결해줄 훅도 제네릭하게 바꿔보도록 하자.
 
-```tsx
+```typescript
 import { Context, useContext, useState } from "react";
 
 type Store<T> = {
@@ -317,7 +313,7 @@ export default useStore;
 
 useStore의 역할은 context를 찾아 data layer에 접근하고 컴포넌트의 렌더링을 담당한다.
 
-```tsx
+```typescript
 const [count, setCount] = useStore(CountContext);
 const [name, setName] = useStore(NameContext);
 ```
@@ -337,13 +333,13 @@ const [name, setName] = useStore(NameContext);
 
 실제로 createContext 팩토리 함수를 직접 정의해서 사용하는 라이브러리들이 있는 것 같은데 Chakra UI 라이브러리에서도 같은 방식으로 직접 createContext 함수를 정의하여 사용하고 있다.
 
-```tsx
+```typescript
 const [StoreProvider, useStore] = createContext(initialState);
 ```
 
 기본적인 인터페이스는 위와 같다. 전에 비해 훨씬 간결해졌다. 작성 방법도 이전과 크게 다르지 않다.
 
-```tsx
+```typescript
 function createStateContext<T>(initialState: T) {
   type ContextReturnType = ReturnType<typeof createStore<T>>;
   const store = createStore(initialState);
@@ -369,7 +365,7 @@ function createStateContext<T>(initialState: T) {
 
 이제 createContext를 통해서 data source와 data access layer, rendering layer까지 정의해서 사용할 수 있다.
 
-```tsx
+```typescript
 export const [CountProvider, useCount] = createStateContext(0);
 
 const App = () => {

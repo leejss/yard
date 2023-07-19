@@ -1,5 +1,5 @@
 ---
-title: 'SWR과 React-Query 비교 분석'
+title: "SWR과 React-Query 비교 분석"
 date: 2022-11-27 16:48
 categories:
   - react
@@ -16,13 +16,13 @@ categories:
 
 이 둘 라이브러리를 사용해 봤을 때, 주요 기능의 사용성은 유사하다.
 
-```ts
+```typescript
 // SWR
 
-const {} = useSWR(key, fetcher, options)
+const {} = useSWR(key, fetcher, options);
 
 // React-Query
-const {} = useQuery(key, fetcher, options) // 또는 const {} = useQuery(config);
+const {} = useQuery(key, fetcher, options); // 또는 const {} = useQuery(config);
 ```
 
 그런데 여러 가지 부분에서 차이점이 존재한다.
@@ -69,20 +69,20 @@ React-Query는 깔끔한 개발 도구를 제공한다. 그리고 정말 파워�
 
 그러나 SWR은 서버 상태에 접근할 수 있는 위 같은 client를 명시적으로 제공하지 않는다. SWR의 공식문서를 보면 애초에 그런 기능 자체가 빈약하다. cache자체에 접근할 수 있긴 있다.
 
-```tsx
-const { cache } = useSWRConfig()
+```typescript
+const { cache } = useSWRConfig();
 ```
 
 이렇게 cache에 접근할 수 있지만 reset하거나 invalidate하는 API하는 기능은 제공하지 않는다. 그러다보니 optimistic updates 방식에도 차이가 있다. SWR은 optimistic updates 관련 로직이 mutate함수의 options에 결합이 되어 있다.
 
-```ts
+```typescript
 // SWR 공식문서의 Optimistic UI 예시에서
 await mutate(addTodo(newTodo), {
   optimisticData: [...data, newTodo],
   rollbackOnError: true,
   populateCache: true,
   revalidate: false,
-})
+});
 ```
 
 이런 식으로 `mutate`라는 함수안에 옵션으로 Optimistic updates에 대한 로직을 정한다면 React-Query는 QueryClient가 있기 때문에 mutation과 서버상태 로직을 분리해서 Optimistic updates를 수행한다. 그리고 이런 방식이 논리적으로 더 맞다고 생각한다. 그래서 결론적으로 React-Query가 개발 경험이 더 좋다.
