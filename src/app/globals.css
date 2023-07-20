@@ -22,6 +22,10 @@ pre {
   color: rgb(20, 178, 120) !important;
 }
 
+img {
+  border-radius: 10px !important;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
