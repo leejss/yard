@@ -14,7 +14,11 @@ export class ContentService {
       contentGroupId: this._publishedId,
       perPage: 50,
     });
-    return result;
+    const sorted = result.sort((a, b) => {
+      return new Date(a.date!) < new Date(b.date!) ? 1 : -1;
+    });
+
+    return sorted;
   }
 
   async getContentPiece(id: string) {

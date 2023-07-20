@@ -3,6 +3,7 @@ import Link from "next/link";
 
 const PostsPage = async () => {
   const posts = await contentService.getPublisedContents();
+  console.log(posts);
   return (
     <div>
       <ul className="text-lg text-foreground">

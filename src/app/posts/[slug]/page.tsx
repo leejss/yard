@@ -1,5 +1,5 @@
 import contentService from "@/lib/content.service";
-import { gfmTransformer, htmlTransformer } from "@vrite/sdk/transformers";
+import { gfmTransformer } from "@vrite/sdk/transformers";
 import dayjs from "dayjs";
 import parseMarkdown from "./utils/parseMarkdown";
 
@@ -13,7 +13,6 @@ const PostPage = async ({ params }: PageProps) => {
   const post = await contentService.getContentPiece(params.slug);
   const content = gfmTransformer(post.content);
 
-  console.log(content);
   const html = await parseMarkdown(content);
 
   return (
