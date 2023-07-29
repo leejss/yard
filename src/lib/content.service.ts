@@ -2,6 +2,7 @@ import vrite from "./api";
 
 export class ContentService {
   private _publishedId = "64a1841b4969669109fb5337";
+
   async _getContentGroupId(name: "Published" | "Drafts") {
     const result = await vrite.contentGroups.list();
     const id = result.find((data) => data.name === name)?.id;
@@ -18,6 +19,18 @@ export class ContentService {
       return new Date(a.date!) < new Date(b.date!) ? 1 : -1;
     });
 
+    return sorted;
+  }
+
+  async getDraftedContents() {
+    const id = await this._getContentGroupId("Drafts");
+    const result = await vrite.contentPieces.list({
+      contentGroupId: id,
+      perPage: 50,
+    });
+    const sorted = result.sort((a, b) => {
+      return new Date(a.date!) < new Date(b.date!) ? 1 : -1;
+    });
     return sorted;
   }
 
