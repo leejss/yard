@@ -42,17 +42,17 @@ yarn add -D style-loader css-loader
 
 module resolution과 관련된 설정은 `module.rules` 에서 한다. `module.rules`에 로더를 추가한다.
 
-```javascript
+```js
 const commonConfig = {
-  entry: "./src/index.typescript",
+  entry: "./src/index.tsx",
   output: {
-    filename: "bundle.javascript",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "build"),
   },
   module: {
     rules: [
       {
-        test: /\.(javascript|typescript)x?$/,
+        test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
         use: [
           {
@@ -71,7 +71,7 @@ const commonConfig = {
     ],
   },
   resolve: {
-    extensions: [".typescript", ".typescript", ".javascript"],
+    extensions: [".tsx", ".ts", ".js"],
   },
 };
 ```
@@ -82,7 +82,7 @@ const commonConfig = {
 yarn add -D html-webpack-plugin
 ```
 
-```javascript
+```js
 plugins: [
   new HtmlWebpackPlugin({
     template: "./index.html", // 생성할 템플릿 파일을 지정할 수 있다.
@@ -93,8 +93,8 @@ plugins: [
 
 그 다음 리액트 코드를 작성해보자.
 
-```typescript
-// src/index.typescript
+```tsx
+// src/index.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
@@ -107,7 +107,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 );
 ```
 
-```typescript
+```tsx
 const App = () => {
   return <h1>React + Typescript Template</h1>;
 };
@@ -137,7 +137,7 @@ yarn build
 yarn add -D webpack-dev-server
 ```
 
-```javascript
+```js
 devServer: {
   hot: true,
   open: true
@@ -166,11 +166,11 @@ webpack cli는 --env를 통해 환경변수 값을 설정에 전달할 수 있�
 
 넘겨 받은 값을 통해서 개발환경인지 프로덕션 환경인지 구분할 수 있다. 웹팩설정을 환경별로 구분해준다.
 
-```javascript
+```js
 const commonConfig = {
-  entry: "./src/index.typescript",
+  entry: "./src/index.tsx",
   output: {
-    filename: "bundle.javascript",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "build"),
   },
   stats: {
@@ -179,7 +179,7 @@ const commonConfig = {
   module: {
     rules: [
       {
-        test: /\.(typescript|javascript)x?$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: [{ loader: "babel-loader" }],
       },
@@ -198,7 +198,7 @@ const commonConfig = {
     ],
   },
   resolve: {
-    extensions: [".typescript", ".typescript", ".javascript"],
+    extensions: [".tsx", ".ts", ".js"],
   },
 
   plugins: [
@@ -235,7 +235,7 @@ yarn add -D webpack-merge
 
 그러면 최종적으로 webpack.config.js의 module.exports는 다음과 같다.
 
-```javascript
+```js
 module.exports = ({ env }) => {
   return env === "dev" ? merge(commonConfig, devConfig) : merge(commonConfig, prodConfig);
 };
@@ -249,7 +249,7 @@ yarn add -D react-refresh @pmmmwh/react-refresh-webpack-plugin
 
 Hot module replacemen는 오직 개발환경에서 필요하기 때문에 `devConfig`의 플러그인에 추가해준다.
 
-```javascript
+```js
 const devConfig = {
   mode: "development",
   devtool: "cheap-module-source-map",

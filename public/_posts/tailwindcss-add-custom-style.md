@@ -1,5 +1,5 @@
 ---
-title: "tailwindcss에 커스텀 클래스 추가하기"
+title: 'tailwindcss에 커스텀 클래스 추가하기'
 date: 2022-10-08 14:17
 categories:
   - etc
@@ -15,7 +15,7 @@ categories:
 }
 ```
 
-```javascript
+```jsx
 <div className="customClass"></div>
 ```
 
@@ -30,7 +30,7 @@ tailwindcss는 일반적인 클래스 정의를 제한하지 않는다.
 }
 ```
 
-```javascript
+```jsx
 <div className="customClass"></div>
 ```
 
@@ -46,7 +46,7 @@ tailwindcss는 일반적인 클래스 정의를 제한하지 않는다.
 }
 ```
 
-```javascript
+```jsx
 <a className="hover:highlight">Hover me</a> // 스타일 적용 ❌
 ```
 
@@ -60,7 +60,7 @@ tailwindcss는 일반적인 클래스 정의를 제한하지 않는다.
 }
 ```
 
-```javascript
+```jsx
 <a className="hover:highlight">Hover me</a> // 스타일 적용 ✅
 ```
 
@@ -72,29 +72,29 @@ tailwindcss는 일반적인 클래스 정의를 제한하지 않는다.
 
 따라서 커스텀 클래스가 많아지게 되면 생산성 없고 지루한 작업이 반복될 가능성이 있다.
 
-대신 우리는 `tailwind.config.javascript`에 커스텀 클래스를 등록할 수 있다. config에 커스텀 클래스를 등록하면 tailwindcss는 어떤 클래스가 등록이 되어 있는지 알 수 있다. 따라서 autocomplete가 가능하다.
+대신 우리는 `tailwind.config.js`에 커스텀 클래스를 등록할 수 있다. config에 커스텀 클래스를 등록하면 tailwindcss는 어떤 클래스가 등록이 되어 있는지 알 수 있다. 따라서 autocomplete가 가능하다.
 
-```javascript
-// tailwind.config.javascript
+```js
+// tailwind.config.js
 
-const plugin = require("tailwindcss/plugin");
+const plugin = require('tailwindcss/plugin')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.typescript"],
+  content: ['./src/**/*.tsx'],
   theme: {
     extend: {},
   },
   plugins: [
     plugin(({ addComponents }) => {
       addComponents({
-        ".highlight": {
-          color: "#34ebbd",
+        '.highlight': {
+          color: '#34ebbd',
         },
-      });
+      })
     }),
   ],
-};
+}
 ```
 
 ## References

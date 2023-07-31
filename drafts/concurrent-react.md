@@ -9,7 +9,7 @@ categories:
 
 리액트도 자바스크립트이기 때문애 자바스크립트로 어떻게 UI를 그려내는지를 생각해보면 된다. DOM API에는 요소를 생성하고 DOM 트리에 요소를 삽입하는, 즉 DOM mutation을 수행할 수 있는 API가 있다.
 
-```javascript
+```js
 const app = document.getElementById("app");
 const button = document.createElement("button");
 app.appendChild(button);

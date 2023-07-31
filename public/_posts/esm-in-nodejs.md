@@ -1,5 +1,5 @@
 ---
-title: "ESM in Nodejs"
+title: 'ESM in Nodejs'
 date: 2023-05-07 19:16
 categories:
   - javascript
@@ -24,7 +24,7 @@ Nodejs의 기본 모듈 시스템은 CommonJS module이지만 ESM을 지원하�
 }
 ```
 
-`"type": "module"` 은 .javascript 파일이 CommonJS module이 아닌 ES module 인것을 의미한다. Nodejs 런타임에서 ES module로 사용하게 되면 몇 가지 다른 규칙들이 추가 된다.
+`"type": "module"` 은 .js 파일이 CommonJS module이 아닌 ES module 인것을 의미한다. Nodejs 런타임에서 ES module로 사용하게 되면 몇 가지 다른 규칙들이 추가 된다.
 
 - import, export 문, top level await 문을 사용할 수 있다.
 - relative import path는 full file extension을 필요로 한다.
@@ -33,12 +33,12 @@ Nodejs의 기본 모듈 시스템은 CommonJS module이지만 ESM을 지원하�
 
 여기서 _relative import path는 full file extension을 필요로 한다._ 는 규칙을 눈여겨 봐야 한다. 이는 이후 타입스크립트 컴파일러 옵션의 `module`로 이어지기 때문이다.
 
-Nodejs에서 ES module을 사용할 경우 (즉, type이 module인 경우), 모듈을 불러올 때 file extension(.javascript)를 import path에 포함시켜야 한다.
+Nodejs에서 ES module을 사용할 경우 (즉, type이 module인 경우), 모듈을 불러올 때 file extension(.js)를 import path에 포함시켜야 한다.
 
-```javascript
-import add from "./add"; // ❌ Cannot find module
+```js
+import add from './add' // ❌ Cannot find module
 
-import add from "./add.javascript"; // 🟢
+import add from './add.js' // 🟢
 ```
 
 #### Typescript
@@ -51,12 +51,12 @@ import add from "./add.javascript"; // 🟢
 
 위 둘의 조합은 문제를 야기할 수 있다. 왜냐하면 NodeJS에서 ES module을 사용하기 위해서는 import할 때 .js를 붙어야 하는데 컴파일 시, 파일 확장자를 자동으로 붙여주는 것이 아니기 때문이다.
 
-```typescript
-// index.typescript
-import add from "./add";
+```ts
+// index.ts
+import add from './add'
 
-// 컴파일 이 후 index.javascript
-import add from "./add";
+// 컴파일 이 후 index.js
+import add from './add'
 ```
 
 위 같은 상황을 위해서 타입스크립트는 compilerOptions.module 값으로 node16 또는 nodenext를 설정할 수 있다. 이 옵션을 사용하면 타입스크립트로 작성을 할 때 명시적으로 .js를 붙이도록 강제한다.

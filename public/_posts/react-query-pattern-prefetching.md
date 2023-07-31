@@ -1,5 +1,5 @@
 ---
-title: "React Query pattern: prefetching"
+title: 'React Query pattern: prefetching'
 date: 2022-09-28 21:55
 categories:
   - react
@@ -27,34 +27,34 @@ prefetching을 하게 되면 React Query의 cache에는 해당 data가 들어가
 
 QueryClient를 통해서 prefetching을 할 수 있다.
 
-```typescript
-const queryClient = useQueryClient();
+```tsx
+const queryClient = useQueryClient()
 
 // ...
 
-await queryClient.prefetchQuery(["post", id], () => {
-  return fetchPost(id);
-});
+await queryClient.prefetchQuery(['post', id], () => {
+  return fetchPost(id)
+})
 ```
 
 언제 prefetch를 하고 얼마나 prefetch를 할 것인지는 작성자에 따라 달렸다.  
 공식문서의 예제에서는 mouseenter 이벤트 시, prefetch를 하도록되어 있다.
 
-```typescript
+```tsx
 <ul>
   {data.map((d) => (
     <li
       key={d.id}
       onMouseEnter={async () => {
         await queryClient.prefetchQuery(
-          ["post", id],
+          ['post', id],
           () => {
-            return fetchPost(id);
+            return fetchPost(id)
           },
           {
             staleTime: 3 * 1000, // staleTime을 설정하여 api call이 연속으로 두 번 발생하지 않도록 했다.
-          },
-        );
+          }
+        )
       }}
     >
       {/* 생략 */}

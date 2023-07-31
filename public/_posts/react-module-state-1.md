@@ -12,7 +12,7 @@ categories:
 
 - module scope에 정의한 state
 
-```typescript
+```tsx
 let count = 0; // 👈 module state라고 볼 수 있다.
 const Counter = () => {
   /* ... */
@@ -28,7 +28,7 @@ const Counter = () => {
 - **렌더링을 하기 위해서는 리엑트의 라이프사이클에 개입 하여 렌더링을 일으켜 줘야 하는데** 이를 가능하게 해주는 hook이 `useState`와 `useReducer`다.
 - 따라서 다음과 같이 작성해 볼 수 있다.
 
-```typescript
+```tsx
 let count = 0;
 
 export const Counter1 = () => {
@@ -72,7 +72,7 @@ export const Counter1 = () => {
 - daish kato는 이를 위해 setState 함수를 담을 Set 데이터 구조를 만들고 컴포넌트의 set함수들을 여기다 담는다.
 - 그리고 한 쪽에서 set함수를 호출할 때, Set데이터 구조를 순환하여 같은 인자를 넣어 전부 호출한다. 코드를 보면 간단하다.
 
-```typescript
+```tsx
 const setStateFunctions = new Set<(count: number) => void>(); // 👈 setState 함수를 담을 구조를 생성
 
 export const Counter1 = () => {
@@ -145,7 +145,7 @@ export const Counter2 = () => {
 - 간단하게 말하면 module state인 store가 있고 callback을 store에 subscribe할 수 있다.
 - 만약 store에 있는 state가 변하면 subscribe한 callback이 호출된다.
 
-```typescript
+```tsx
 const unsubscribe = store.subscribe(() => {
   // store의 state가 변하면 이 callback이 호출된다.
 });
@@ -153,7 +153,7 @@ const unsubscribe = store.subscribe(() => {
 
 - store의 팩토리 함수를 살펴보면 다음과 같다.
 
-```typescript
+```tsx
 type Store<T> = {
   getState: () => T;
   setState: (nextState: T | ((prev: T) => T)) => void;
@@ -166,7 +166,10 @@ export const createStore = <T extends unknown>(initialState: T): Store<T> => {
   return {
     getState: () => state,
     setState: (nextState) => {
-      state = typeof nextState === "function" ? (nextState as (prev: T) => T)(state) : nextState;
+      state =
+        typeof nextState === "function"
+          ? (nextState as (prev: T) => T)(state)
+          : nextState;
 
       callbacks.forEach((cb) => cb());
     },
@@ -184,8 +187,10 @@ export const createStore = <T extends unknown>(initialState: T): Store<T> => {
 - store의 setState를 살펴보면 Approach 2 에서 살펴본 것 처럼 Set을 순환하여 subscribe된 콜백을 호출한다.
 - 그리고 이를 컴포넌트 렌더링 과정에 "hook" 하기 위하여 useStore라는 훅을 만들 수 있다.
 
-```typescript
-export const useStore = <T>(store: Store<T>): [T, (nextState: T | ((prev: T) => T)) => void] => {
+```tsx
+export const useStore = <T>(
+  store: Store<T>
+): [T, (nextState: T | ((prev: T) => T)) => void] => {
   const [state, setState] = useState<T>(store.getState());
 
   useEffect(() => {
@@ -203,7 +208,7 @@ export const useStore = <T>(store: Store<T>): [T, (nextState: T | ((prev: T) => 
 
 - 컴포넌트에서는 다음과 같이 사용한다
 
-```typescript
+```tsx
 export const countStore = createStore({ count: 0 });
 
 export const Counter1 = () => {

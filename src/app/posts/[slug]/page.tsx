@@ -1,6 +1,5 @@
-import contentService from "@/lib/content.service";
-import { gfmTransformer } from "@vrite/sdk/transformers";
 import dayjs from "dayjs";
+import getPost from "./utils/getPost";
 import parseMarkdown from "./utils/parseMarkdown";
 
 interface PageProps {
@@ -10,10 +9,8 @@ interface PageProps {
 }
 
 const PostPage = async ({ params }: PageProps) => {
-  const post = await contentService.getContentPiece(params.slug);
-  const content = gfmTransformer(post.content);
-
-  const html = await parseMarkdown(content);
+  const post = await getPost(params.slug);
+  const html = await parseMarkdown(post.content);
 
   return (
     <article>

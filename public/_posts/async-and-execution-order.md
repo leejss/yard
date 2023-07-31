@@ -11,7 +11,7 @@ categories:
 
 자바스크립트 런타인 환경에서 비동기 작업을 처리하는 곳은 자바스크립트 엔진이 아닌 이벤트 루프와 태스크 큐, 그리고 마이크로태스크 큐다. 이를 통해 알 수 있는 것은 자바스크립트 엔진은 싱글 쓰레드 이지만 자바스크립트 런타임 환경(브라우저 또는 Nodejs)은 멀티 쓰레드다.
 
-> Node.javascript runs JavaScript code in a single thread, which means that your code can only do one task at a time. However, Node.javascript itself is multithreaded and provides hidden threads through the libuv library, which handles I/O operations like reading files from a disk or network requests. - [https://www.digitalocean.com/community/tutorials/how-to-use-multithreading-in-node-javascript](https://www.digitalocean.com/community/tutorials/how-to-use-multithreading-in-node-javascript)
+> Node.js runs JavaScript code in a single thread, which means that your code can only do one task at a time. However, Node.js itself is multithreaded and provides hidden threads through the libuv library, which handles I/O operations like reading files from a disk or network requests. - [https://www.digitalocean.com/community/tutorials/how-to-use-multithreading-in-node-js](https://www.digitalocean.com/community/tutorials/how-to-use-multithreading-in-node-js)
 
 코드를 작성할 때, 위에서 아래로 순차적으로 작성하기 때문에 코드의 실행 또한 위에서 아래로 순차적으로 이루어지는 것을 기대한다. 하지만 비동기 작업을 처리하는 방식의 특성 상 코드의 실행이 작성된 순서와 반드시 일치하지 않을 수 있다. 이러한 특성을 이해하고 코드의 실행 순서를 이해하는 것이 중요하다.
 
@@ -19,7 +19,7 @@ categories:
 
 비동기로 동작하는 WebAPI에는 여러가지가 있는데 대표적으로 setTimeout, setInterval와 같은 호출 스케줄링, XMLHttpRequest, Fetch와 같이 네트워크 요청을 하는 API가 비동기로 동작한다.
 
-```javascript
+```js
 console.log("start");
 setTimeout(() => {
   console.log("setTimeout");
@@ -39,7 +39,7 @@ setTimeout
 
 setTimeout의 콜백은 비동기 작업이기 때문에 태스크 큐에 먼저 들어가게 되고 콜스택이 비워지면 이벤트 루프에 의해 콜스택에 푸시되어 실행된다. 콜스택이 비워진 이후에 비동기 작업이 실행되기 되기 때문에 맨 마지막에 로그가 찍히게 된다.
 
-```javascript
+```js
 console.log("start");
 [1, 2, 3, 4].forEach((n) => {
   setTimeout(() => {
@@ -62,13 +62,13 @@ end
 
 콜스택이 전부 비워지고 난 이후, 즉 `console.log("end")`가 실행되고 난 이후 이벤트 루프에 의해서 완료된 비동기 작업을 콜스택에 푸시한다.
 
-```javascript
+```js
 console.log(n);
 ```
 
 이 차례로 태스크 큐에 들어가서 나오게 된다.
 
-```javascript
+```js
 setTimeout(() => {
   console.log("1");
 }, 0);
@@ -98,7 +98,7 @@ WebAPI의 비동기 작업은 태스크 큐에 의해서 관리가 되기 때문
 
 ### Promise
 
-```javascript
+```js
 console.log("start");
 Promise.resolve().then(() => {
   console.log("1");
@@ -116,7 +116,7 @@ end
 2
 ```
 
-```javascript
+```js
 console.log("start");
 new Promise((resolve) => resolve(1)).then((res) => {
   console.log(res);
@@ -138,7 +138,7 @@ end
 
 반면 다음 코드를 보자.
 
-```javascript
+```js
 console.log("start");
 new Promise(() => {
   console.log("1");
@@ -161,7 +161,7 @@ end
 
 프로미스 = 비동기로 이해하는 것은 바람직하지 않다. 프로미스를 생성하는 것 자체는 동기로 동작한다. 비동기로 동작하는 것, 즉 마이크로태스트 큐에 담기는 것은 생성자에 넘겨준 콜백이 아닌 후속처리 메소드(`then`)에 넘겨준 콜백이다.
 
-```javascript
+```js
 console.log("start");
 new Promise((resolve) => {
   console.log("1");
@@ -196,7 +196,7 @@ Async/await은 비동기를 마치 동기처럼 구현하듯이 코드를 작성
 
 다음 코드를 보자
 
-```javascript
+```js
 function sleep(wait) {
   return new Promise((resolve) => setTimeout(resolve, wait));
 }
@@ -236,7 +236,7 @@ end - getTodo
 
 따라서 `async` / await은 비동기 작업을 동작하게 해준다. 동기적으로 동작하는 이유는 await이 프로미스가 settled될 때 까지 다음 코드를 대기하기 때문이다. 하지만 전체 코드의 실행을 동기로 바꿔주는 것이 아니다. 비동기 작업은 콜스택이 비워진 후 실행되는 것은 변함이 없다.
 
-```javascript
+```js
 (async () => {
   console.log("start");
   `await` Promise.resolve().then(() => {
@@ -258,7 +258,7 @@ end
 
 가 출력된다. 즉 `async` 함수 내부에서는 `await` 키워드를 통해 비동기 작업을 동기적으로 동작하게 해준다.
 
-```javascript
+```js
 (async () => {
   console.log("start");
   Promise.resolve().then(() => {

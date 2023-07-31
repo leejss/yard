@@ -1,5 +1,5 @@
 ---
-title: "React Query pattern: mutation"
+title: 'React Query pattern: mutation'
 date: 2022-10-02 21:46
 categories:
   - react
@@ -19,18 +19,18 @@ query가 상태를 읽는 것이라면 mutation은 상태를 바꾸는 것이다
 
 상태를 바꾸는 행동은 `useMutation`의 `mutate`를 직접 호출해야 한다.
 
-```typescript
+```tsx
 const mutation = useMutation((newPost) => {
-  const res = await axios.post("/api/posts");
-  return res.data;
-});
+  const res = await axios.post('/api/posts')
+  return res.data
+})
 
 const handleClick = () => {
   mutation.mutate({
     content,
     author,
-  });
-};
+  })
+}
 ```
 
 `useMutation`은 `useQuery`와 key를 공유하지 않는다. 따라서 `useMutation`을 통해서 상태를 변경했어도 `useQuery`는 revalidate하기 전까지는 이를 바로 알아차리지 못한다.  
@@ -42,16 +42,16 @@ const handleClick = () => {
 
 invalidation은 React Query에게 직접 특정 key가 더이상 validate하지 않다, 즉 revalidate해야 한다는 것을 알려주는 것이다. mutation을 성공하고 바로 invalidate하면 UI도 즉시 반영할 것이다.
 
-```typescript
+```tsx
 export const useTodosMutation = () => {
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient()
   const mutation = useMutation(postTodo, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["todos"]); // 👈 서버가 다시 요청해서 값을 업데이트 할 것이다. (revalidation)
+      queryClient.invalidateQueries(['todos']) // 👈 서버가 다시 요청해서 값을 업데이트 할 것이다. (revalidation)
     },
-  });
-  return mutation;
-};
+  })
+  return mutation
+}
 ```
 
 ### 2. `setQueryData`
@@ -59,16 +59,16 @@ export const useTodosMutation = () => {
 invalidateQueries는 mutation 이후 서버에서 값을 다시 가져와 서버 상태를 업데이트 하는 방식이다.  
 setQueryData는 서버 상태를 직접 조작하여 업데이트 하는 방식이다. 이 방식을 하기 위해서는 직접 저장하려는 데이터가 서버에서 내려받는 데이터와 구조가 일치해야 한다는 것이다.
 
-```typescript
+```tsx
 export const useQuestionMutation = () => {
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient()
   return useMutation(postQuestion, {
     onSuccess: (data) => {
       // data는 mutationFn이 반환하는 Promise가 resolved된 값이다.
-      queryClient.setQueryData(["question", data.id.toString()], data); // 👈 특정 key의 값을 직접 바꿔준다.
+      queryClient.setQueryData(['question', data.id.toString()], data) // 👈 특정 key의 값을 직접 바꿔준다.
     },
-  });
-};
+  })
+}
 ```
 
 ---

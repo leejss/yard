@@ -1,5 +1,5 @@
 ---
-title: "Cancel timer"
+title: 'Cancel timer'
 date: 2023-03-10 09:41
 categories:
   - javascript
@@ -13,29 +13,29 @@ categories:
 
 timer를 메모리에서 삭제 시킬려면 clear함수를 호출해야 한다.
 
-```typescript
-const timerId = setTimeout(() => {}, 1000);
-clearTimeout(timerId);
+```ts
+const timerId = setTimeout(() => {}, 1000)
+clearTimeout(timerId)
 ```
 
 타이머의 콜백을 호출하고 그다음 바로 clear할 수 있다면 memory leak문제를 해결할 수 있다.
 
-```typescript
+```ts
 const registerTimer = (cb, delay) => {
   const timerId = setTimeout(() => {
-    cb();
-    clearTimeout(timerId);
-  }, dalay);
-  return () => clearTimeout(timerId);
-};
+    cb()
+    clearTimeout(timerId)
+  }, dalay)
+  return () => clearTimeout(timerId)
+}
 ```
 
 callback과 closure를 이용하여 registerTimer 함수를 만들었다. 콜백을 실행하여 바로 clear하도록 했고 또 clear함수를 직접 호출할 수 있게 했다.
 
-```typescript
+```ts
 const cancelTimer = registerTimer(() => {
-  console.log("Hello World");
-}, 1500);
+  console.log('Hello World')
+}, 1500)
 
-cancelTiemr(); // delay 이전에 cancel하고 싶은 경우.
+cancelTiemr() // delay 이전에 cancel하고 싶은 경우.
 ```
