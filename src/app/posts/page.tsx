@@ -1,5 +1,5 @@
+import getPosts from "@/utils/getPosts";
 import Link from "next/link";
-import getPosts from "./utils/getPosts";
 
 const PostsPage = async () => {
   const posts = await getPosts();
