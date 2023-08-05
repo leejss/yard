@@ -2,13 +2,13 @@ import Link from "next/link";
 
 const links = ["posts"];
 const sns = {
-  github: "",
-  linkedIn: "",
+  github: "https://github.com/leejss",
+  // linkedIn: "",
 };
 
 const Nav = () => {
   return (
-    <nav className="flex justify-between">
+    <nav className="flex justify-between my-4">
       {links.map((link) => (
         <Link className="link" key={link} href={"/" + link}>
           {link}

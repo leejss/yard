@@ -8,7 +8,7 @@ interface PostProps {
 const Post = async ({ post }: PostProps) => {
   const html = await parseMarkdown(post.content);
   return (
-    <article>
+    <article className="pb-12">
       <header className="py-4">
         <h1 className="text-xl">{post.title}</h1>
         <h2>{dayjs(post.date).format("YYYY/MM/DD")}</h2>

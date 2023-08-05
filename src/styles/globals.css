@@ -19,4 +19,7 @@ a {
   html {
     color-scheme: dark;
   }
+  pre {
+    color: rgba(0, 255, 179, 0.745) !important;
+  }
 }
