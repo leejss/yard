@@ -15,6 +15,13 @@ a {
   text-decoration: none;
 }
 
+img {
+  border-radius: 4px;
+}
+code {
+  color: rgba(0, 255, 179, 0.745) !important;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
