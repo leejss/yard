@@ -1,9 +1,8 @@
 import Link from "next/link";
 
-const links = ["posts"];
+const links = [""];
 const sns = {
   github: "https://github.com/leejss",
-  // linkedIn: "",
 };
 
 const Nav = () => {
