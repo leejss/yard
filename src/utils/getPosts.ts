@@ -6,6 +6,12 @@ export default async function getPosts() {
   const folderPath = path.join(process.cwd(), "/public/_posts");
   const files = fs.readdirSync(folderPath);
   const postData = files
+    .filter((file) => {
+      const filePath = path.join(folderPath, file);
+      const fileStat = fs.statSync(filePath);
+      if (fileStat.isDirectory()) return false;
+      return true;
+    })
     .map((file) => {
       const content = fs.readFileSync(`${folderPath}/${file}`, "utf8");
       const parsedMarkdown = matter(content);
@@ -19,5 +25,6 @@ export default async function getPosts() {
       };
     })
     .sort((a, b) => b.date.getTime() - a.date.getTime());
+
   return postData;
 }
