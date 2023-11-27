@@ -1,3 +1,4 @@
+import { foramtDate } from "@/utils/format";
 import Link from "next/link";
 
 type Post = {
@@ -25,6 +26,7 @@ export const Posts = ({ posts }: PostsProps) => {
             >
               {post.title}
             </Link>
+            <span className="text-sm text-gray-500">{foramtDate(post.date)}</span>
           </li>
         );
       })}
