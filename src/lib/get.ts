@@ -15,6 +15,12 @@ export const getPublisehdContentPieces = async ({ page = 1, perPage = 50 }: Page
     page,
     perPage,
   });
+
+  // Sort DESC
+  res.sort((a, b) => {
+    return new Date(b.date!).getTime() - new Date(a.date!).getTime();
+  });
+
   return res;
 };
 
