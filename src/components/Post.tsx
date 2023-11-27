@@ -1,8 +1,9 @@
+import type { Article } from "@/lib/model/Article";
+import { foramtDate } from "@/utils/format";
 import parseMarkdown from "@/utils/parseMarkdown";
-import dayjs from "dayjs";
 
 interface PostProps {
-  post: any;
+  post: Article;
 }
 const Post = async ({ post }: PostProps) => {
   const html = await parseMarkdown(post.content);
@@ -10,7 +11,7 @@ const Post = async ({ post }: PostProps) => {
     <article className="pb-12">
       <header className="py-4">
         <h1 className="text-xl">{post.title}</h1>
-        <h2>{dayjs(post.date).format("YYYY/MM/DD")}</h2>
+        <h2>{foramtDate(post.date)}</h2>
       </header>
       <div
         className="prose dark:prose-invert !text-foreground"

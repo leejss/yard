@@ -9,8 +9,6 @@ interface PageProps {
 
 const PostPage = async ({ params }: PageProps) => {
   const post = await getAritlceBySlug(params.slug!);
-  console.log("post", post);
-
   return <Post post={post} />;
 };
 
