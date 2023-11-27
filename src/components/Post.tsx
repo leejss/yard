@@ -1,9 +1,8 @@
-import { Post } from "@/types";
 import parseMarkdown from "@/utils/parseMarkdown";
 import dayjs from "dayjs";
 
 interface PostProps {
-  post: Post;
+  post: any;
 }
 const Post = async ({ post }: PostProps) => {
   const html = await parseMarkdown(post.content);

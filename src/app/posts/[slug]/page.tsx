@@ -1,5 +1,5 @@
 import Post from "@/components/Post";
-import getPost from "@/utils/getPost";
+import { getAritlceBySlug } from "@/lib/get";
 
 interface PageProps {
   params: {
@@ -8,7 +8,9 @@ interface PageProps {
 }
 
 const PostPage = async ({ params }: PageProps) => {
-  const post = await getPost(params.slug);
+  const post = await getAritlceBySlug(params.slug!);
+  console.log("post", post);
+
   return <Post post={post} />;
 };
 

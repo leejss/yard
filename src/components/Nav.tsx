@@ -14,10 +14,10 @@ const Nav = () => {
         </Link>
       ))}
       <ul className="flex gap-2">
-        {Object.keys(sns).map((k) => (
-          <li key={k}>
-            <Link className="link" href={sns[k as keyof typeof sns]}>
-              {k}
+        {Object.keys(sns).map((link) => (
+          <li key={link}>
+            <Link className="link" href={sns[link as keyof typeof sns]}>
+              {link}
             </Link>
           </li>
         ))}

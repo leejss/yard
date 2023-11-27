@@ -1,21 +1,11 @@
-import getPosts from "@/utils/getPosts";
-import Link from "next/link";
+import { Posts } from "@/components/Posts";
+import { getPublisehdContentPieces } from "@/lib/get";
 
 const HomePage = async () => {
-  const posts = await getPosts();
+  const posts = await getPublisehdContentPieces({ page: 1, perPage: 50 });
   return (
     <div>
-      <ul className="text-lg text-foreground">
-        {posts.map((post, index) => {
-          return (
-            <li key={index} className="px-2 py-1 hover:outline outline-emerald-500 rounded-md hover:text-emerald-700 text-foreground">
-              <Link className="transition-[color] block w-full" href={"/posts/" + post.slug}>
-                {post.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <Posts posts={posts} />
     </div>
   );
 };
