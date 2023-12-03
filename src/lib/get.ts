@@ -21,7 +21,7 @@ export const getPublisehdContentPieces = async ({ page = 1, perPage = 50 }: Page
     headers: {
       Authorization: `Bearer ${VRITE_TOKEN}`,
     },
-    cache: "no-cache",
+    // cache: "no-cache",
   });
   const json = await res.json<ReturnType<typeof vrite.contentPieces.list>>();
   return json;
@@ -38,7 +38,7 @@ const getPublisehdContentPiece = async (id: string) => {
     headers: {
       Authorization: `Bearer ${VRITE_TOKEN}`,
     },
-    cache: "no-cache",
+    // cache: "no-cache",
   });
 
   const json = await res.json<ReturnType<typeof vrite.contentPieces.get>>();
@@ -56,7 +56,7 @@ const getContentPieceIdBySlug = async (slug: string) => {
     headers: {
       Authorization: `Bearer ${VRITE_TOKEN}`,
     },
-    cache: "no-cache",
+    // cache: "no-cache",
   });
 
   const json = await res.json<ReturnType<typeof vrite.contentPieces.list>>();
