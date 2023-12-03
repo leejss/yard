@@ -1,6 +1,8 @@
+import { API_URL, VRITE_TOKEN } from "@/constant";
 import { vrite } from "@/lib/client";
 import { Article } from "@/lib/model/Article";
 import { gfmOutputTransformer } from "@vrite/sdk/transformers";
+import queryString from "query-string";
 
 const GROUP_ID = "64a1841b4969669109fb5337";
 
@@ -10,35 +12,55 @@ type PageParams = {
 };
 
 export const getPublisehdContentPieces = async ({ page = 1, perPage = 50 }: PageParams) => {
-  const res = await vrite.contentPieces.list({
-    contentGroupId: GROUP_ID,
+  const pageParams = queryString.stringify({
     page,
     perPage,
   });
 
-  // Sort DESC
-  res.sort((a, b) => {
-    return new Date(b.date!).getTime() - new Date(a.date!).getTime();
+  const res = await fetch(`${API_URL}/content-pieces/list?contentGroupId=${GROUP_ID}&${pageParams}`, {
+    headers: {
+      Authorization: `Bearer ${VRITE_TOKEN}`,
+    },
+    cache: "no-cache",
   });
-
-  return res;
+  const json = await res.json<ReturnType<typeof vrite.contentPieces.list>>();
+  return json;
 };
 
 const getPublisehdContentPiece = async (id: string) => {
-  const res = await vrite.contentPieces.get({
+  const params = queryString.stringify({
     id,
     content: true,
+    description: "text",
   });
 
-  return res;
+  const res = await fetch(`${API_URL}/content-pieces?${params}`, {
+    headers: {
+      Authorization: `Bearer ${VRITE_TOKEN}`,
+    },
+    cache: "no-cache",
+  });
+
+  const json = await res.json<ReturnType<typeof vrite.contentPieces.get>>();
+  return json;
 };
 
 const getContentPieceIdBySlug = async (slug: string) => {
-  const res = await vrite.contentPieces.list({
+  const params = queryString.stringify({
     contentGroupId: GROUP_ID,
     slug,
+    page: 1,
+    perPage: 20,
   });
-  const piece = res[0];
+  const res = await fetch(`${API_URL}/content-pieces/list?${params}`, {
+    headers: {
+      Authorization: `Bearer ${VRITE_TOKEN}`,
+    },
+    cache: "no-cache",
+  });
+
+  const json = await res.json<ReturnType<typeof vrite.contentPieces.list>>();
+  const piece = json[0];
   return piece.id;
 };
 
@@ -47,7 +69,7 @@ export const getAritlceBySlug = async (slug: string) => {
   const piece = await getPublisehdContentPiece(id);
   const article = {
     title: piece.title,
-    content: gfmOutputTransformer(piece.content),
+    content: gfmOutputTransformer(piece.content!),
     date: piece.date,
     tags: piece.tags.map((tag) => (tag.label ? tag.label : "")),
   };
