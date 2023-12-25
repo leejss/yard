@@ -14,7 +14,7 @@ const Post = async ({ post }: PostProps) => {
         <h2>{foramtDate(post.date)}</h2>
       </header>
       <div
-        className="prose dark:prose-invert !text-foreground"
+        className="prose dark:prose-invert !text-foreground font-mono"
         dangerouslySetInnerHTML={{
           __html: html,
         }}

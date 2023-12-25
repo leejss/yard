@@ -14,10 +14,10 @@ interface PostsProps {
 
 export const Posts = ({ posts }: PostsProps) => {
   return (
-    <ul className="text-lg text-foreground">
+    <ul className="text-lg text-foreground flex flex-col gap-2">
       {posts.map((post, index) => {
         return (
-          <li key={index} className="px-2 py-1 hover:outline outline-emerald-500 rounded-md hover:text-emerald-700 text-foreground">
+          <li key={index} className="outline-emerald-500 rounded-md hover:text-emerald-700 dark:hover:text-emerald-500 text-foreground">
             <Link
               href={{
                 pathname: "/posts/" + post.slug,

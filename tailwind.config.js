@@ -10,6 +10,11 @@ module.exports = {
         background: "hsl(var(--background-hsl) / <alpha-value>)",
         foregroundLink: "hsl(var(--foreground-link-hsl) / <alpha-value>)",
       },
+
+      fontFamily: {
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
