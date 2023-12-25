@@ -21,7 +21,7 @@ a {
 
 code {
   color: rgba(0, 255, 179, 0.745) !important;
-  @apply font-mono;
+  /* @apply font-mono; */
 }
 
 @media (prefers-color-scheme: dark) {
