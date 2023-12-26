@@ -2,6 +2,7 @@ import { API_URL, VRITE_TOKEN } from "@/constant";
 import { vrite } from "@/lib/client";
 import { Article } from "@/lib/model/Article";
 import { gfmOutputTransformer } from "@vrite/sdk/transformers";
+import ky from "ky";
 import queryString from "query-string";
 
 const GROUP_ID = "64a1841b4969669109fb5337";
@@ -17,7 +18,7 @@ export const getPublisehdContentPieces = async ({ page = 1, perPage = 50 }: Page
     perPage,
   });
 
-  const res = await fetch(`${API_URL}/content-pieces/list?contentGroupId=${GROUP_ID}&${pageParams}`, {
+  const res = await ky.get(`${API_URL}/content-pieces/list?contentGroupId=${GROUP_ID}&${pageParams}`, {
     headers: {
       Authorization: `Bearer ${VRITE_TOKEN}`,
     },
@@ -34,7 +35,7 @@ const getPublisehdContentPiece = async (id: string) => {
     description: "text",
   });
 
-  const res = await fetch(`${API_URL}/content-pieces?${params}`, {
+  const res = await ky.get(`${API_URL}/content-pieces?${params}`, {
     headers: {
       Authorization: `Bearer ${VRITE_TOKEN}`,
     },
@@ -52,7 +53,7 @@ const getContentPieceIdBySlug = async (slug: string) => {
     page: 1,
     perPage: 20,
   });
-  const res = await fetch(`${API_URL}/content-pieces/list?${params}`, {
+  const res = await ky.get(`${API_URL}/content-pieces/list?${params}`, {
     headers: {
       Authorization: `Bearer ${VRITE_TOKEN}`,
     },
