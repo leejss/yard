@@ -19,16 +19,16 @@ a {
   max-width: 90ch !important;
 }
 
-code {
-  color: rgba(0, 255, 179, 0.745) !important;
-  /* @apply font-mono; */
+pre {
+  padding: 0 !important;
 }
+
+/* pre code {
+  color: rgba(0, 255, 179, 0.745) !important;
+} */
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
-  }
-  pre {
-    color: rgba(0, 255, 179, 0.745) !important;
   }
 }
