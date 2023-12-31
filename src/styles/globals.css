@@ -16,7 +16,7 @@ a {
 }
 
 .prose {
-  max-width: 90ch !important;
+  max-width: none;
 }
 
 pre {

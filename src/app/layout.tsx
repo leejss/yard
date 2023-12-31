@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 
 import "@/styles/index.css";
 import clsx from "clsx";
+import TopRight from "@/components/BottomRight";
 
 export const metadata = {
   title: "tinyyard",
@@ -15,9 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className={clsx("text-foreground bg-background font-sans")}>
-        <div className="relative p-4 container mx-auto pt-[60px] pb-[120px]">
-          <Nav />
+        <div className="pt-[80px]">
           {children}
+          <TopRight />
           <Analytics />
         </div>
       </body>
