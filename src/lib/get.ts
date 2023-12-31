@@ -1,6 +1,7 @@
 import { API_URL, VRITE_TOKEN } from "@/constant";
 import { vrite } from "@/lib/client";
 import { Article } from "@/lib/model/Article";
+import { PostListItem } from "@/lib/model/PostListItem";
 import { gfmOutputTransformer } from "@vrite/sdk/transformers";
 import ky from "ky";
 import queryString from "query-string";
@@ -12,7 +13,7 @@ type PageParams = {
   perPage?: number;
 };
 
-export const getPublisehdContentPieces = async ({ page = 1, perPage = 50 }: PageParams) => {
+export const getPosts = async ({ page = 1, perPage = 50 }: PageParams) => {
   const pageParams = queryString.stringify({
     page,
     perPage,
@@ -25,7 +26,8 @@ export const getPublisehdContentPieces = async ({ page = 1, perPage = 50 }: Page
     // cache: "no-cache",
   });
   const json = await res.json<ReturnType<typeof vrite.contentPieces.list>>();
-  return json;
+  const posts = json.map((piece) => new PostListItem(piece)).sort((a, b) => b.date.getTime() - a.date.getTime());
+  return posts;
 };
 
 const getPublisehdContentPiece = async (id: string) => {

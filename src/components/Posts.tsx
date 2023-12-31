@@ -1,15 +1,9 @@
+import { PostListItem } from "@/lib/model/PostListItem";
 import { foramtDate } from "@/utils/format";
 import Link from "next/link";
 
-type Post = {
-  id: string;
-  title: string;
-  slug: string;
-  date?: string;
-};
-
 interface PostsProps {
-  posts: Post[];
+  posts: PostListItem[];
 }
 
 export const Posts = ({ posts }: PostsProps) => {

@@ -12,8 +12,8 @@ const Post = async ({ post }: PostProps) => {
   return (
     <article className="pb-12">
       <header className="py-4">
-        <h1 className="text-xl">{post.title}</h1>
-        <h2>{foramtDate(post.date)}</h2>
+        <h1 className="text-xl md:text-3xl font-bold dark:text-white text-black">{post.title}</h1>
+        <time>{foramtDate(post.date)}</time>
       </header>
       <CodeBlock>
         <div
