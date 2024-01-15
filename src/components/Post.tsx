@@ -1,7 +1,6 @@
 import { CodeBlock } from "@/components/CodeBlock";
 import type { Article } from "@/lib/model/Article";
-import { foramtDate } from "@/utils/format";
-import parseMarkdown from "@/utils/parseMarkdown";
+import { foramtDate, parseMarkdown } from "@/lib/utils";
 
 interface PostProps {
   post: Article;

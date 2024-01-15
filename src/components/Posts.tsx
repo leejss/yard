@@ -1,5 +1,5 @@
 import { PostListItem } from "@/lib/model/PostListItem";
-import { foramtDate } from "@/utils/format";
+import { foramtDate } from "@/lib/utils";
 import Link from "next/link";
 
 interface PostsProps {
