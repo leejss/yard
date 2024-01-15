@@ -5,7 +5,7 @@ import { GeistMono } from "geist/font/mono";
 
 import "@/styles/index.css";
 import clsx from "clsx";
-import TopRight from "@/components/BottomRight";
+import TopRight from "@/components/TopRight";
 
 export const metadata = {
   title: "tinyyard",

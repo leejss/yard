@@ -8,7 +8,7 @@ const TopRight = () => {
           <LinkedInLogoIcon className="hover:brightness-125 transition-all w-[24px] h-[24px]  md:w-[40px] md:h-[40px]" color="rgb(0 119 181)" />
         </a>
         <a href="https://github.com/leejss" target="_blank">
-          <GitHubLogoIcon className="hover:brightness-125 transition-all w-[24px] h-[24px]  md:w-[40px] md:h-[40px]" color="rgb(16 185 129)" />
+          <GitHubLogoIcon className="hover:brightness-125 transition-all w-[24px] h-[24px]  md:w-[40px] md:h-[40px]" color="white" />
         </a>
       </div>
     </div>
