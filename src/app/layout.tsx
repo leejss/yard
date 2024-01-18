@@ -1,13 +1,9 @@
-import Nav from "@/components/Nav";
+import PageLayout from "@/components/PageLayout";
 import { Analytics } from "@vercel/analytics/react";
-import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-
-import "@/styles/index.css";
-import clsx from "clsx";
-import TopRight from "@/components/TopRight";
-import WithSidebar from "@/components/WithSidebar";
-
+import { GeistSans } from "geist/font/sans";
+import "@/styles/globals.scss";
+import { ThemeProvider } from "@/components/ThemeProvider";
 export const metadata = {
   title: "tinyyard",
   description: "tinyyard is tinyyard",
@@ -15,12 +11,12 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
-        <div>
-          <WithSidebar>{children}</WithSidebar>
-          <Analytics />
-        </div>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <PageLayout>{children}</PageLayout>
+        </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

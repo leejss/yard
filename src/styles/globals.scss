@@ -1,3 +1,6 @@
+@forward "variables";
+@import "./tailwind.css";
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -22,10 +25,6 @@ a {
 pre {
   padding: 0 !important;
 }
-
-/* pre code {
-  color: rgba(0, 255, 179, 0.745) !important;
-} */
 
 @media (prefers-color-scheme: dark) {
   html {

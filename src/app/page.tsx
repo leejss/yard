@@ -6,7 +6,7 @@ const HomePage = async () => {
   const posts = await getPosts({ page: 1, perPage: 50 });
   return (
     <div>
-      <Title>sticky notes</Title>
+      {/* <Title>sticky notes</Title> */}
       {/* <div>
         <Posts posts={posts} />
       </div> */}

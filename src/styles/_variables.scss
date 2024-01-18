@@ -1,0 +1,18 @@
+:root {
+  /* Color */
+  --foreground: hsl(0, 0%, 0%);
+  --foreground-link-hsl: 15 90% 50%;
+  --background: hsl(0 0% 100%);
+  --background-secondary: hsl(0 0 80%);
+
+  /* Size */
+  --max-width: 1024px;
+  --nav-height: 72px;
+}
+
+.dark {
+  --foreground: hsl(0, 0%, 100%);
+  --foreground-link-hsl: 15 70% 40%;
+  --background: hsl(0 0% 5%);
+  --background-secondary: hsl(0, 0%, 20%);
+}
