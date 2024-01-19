@@ -9,6 +9,8 @@
 
   .DropdownMenuItem {
     cursor: pointer;
+    font-family: var(--font-geist-mono);
+    font-weight: 500;
 
     &:hover {
       outline: none;

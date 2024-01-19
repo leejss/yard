@@ -12,7 +12,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
         </h1>
         <ToggleTheme />
       </nav>
-      <main className="container mx-auto px-6 mt-nav pt-4 pb-10">{children}</main>
+      <main className="container mx-auto px-6 mt-nav py-10">{children}</main>
     </div>
   );
 };
