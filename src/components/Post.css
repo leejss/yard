@@ -10,3 +10,7 @@ blockquote {
 blockquote {
   font-weight: 700 !important;
 }
+
+a {
+  word-wrap: break-word !important;
+}

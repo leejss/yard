@@ -10,7 +10,7 @@ const Post = async ({ post }: PostProps) => {
   const html = await parseMarkdown(post.content);
 
   return (
-    <article className="pb-12">
+    <article className="pb-12 w-full">
       <header className="py-4">
         <h1 className="text-xl md:text-3xl font-bold text-foreground">{post.title}</h1>
         <time>{foramtDate(post.date)}</time>

@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <LenisProvider>
             <PageLayout>{children}</PageLayout>

@@ -9,11 +9,7 @@ interface PageProps {
 
 const PostPage = async ({ params }: PageProps) => {
   const post = await getAritlceBySlug(params.slug!);
-  return (
-    <div className="container mx-auto px-4">
-      <Post post={post} />
-    </div>
-  );
+  return <Post post={post} />;
 };
 
 export default PostPage;
