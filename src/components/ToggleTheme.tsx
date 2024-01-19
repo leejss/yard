@@ -2,7 +2,7 @@
 import { useTheme } from "next-themes";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { match } from "ts-pattern";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { MoonIcon, SunIcon, FaceIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
 import "./ToggleTheme.scss";
 
@@ -16,11 +16,11 @@ const ToggleTheme = () => {
   const [localTheme, setLocalTheme] = useState<Theme | null>(null);
   const { setTheme, theme } = useTheme();
   const getThemeIcon = (theme: Theme | null) => {
-    if (!theme) return null;
+    if (!theme) return <FaceIcon />;
     return match(theme)
       .with("dark", () => <MoonIcon />)
       .with("light", () => <SunIcon />)
-      .otherwise(() => null);
+      .otherwise(() => <FaceIcon />);
   };
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -41,7 +41,7 @@ const ToggleTheme = () => {
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="DropdownMenuContent" sideOffset={5}>
+        <DropdownMenu.Content className="DropdownMenuContent border border-foreground" sideOffset={32}>
           <DropdownMenu.Item className="DropdownMenuItem" onSelect={() => setTheme("light")}>
             Light
           </DropdownMenu.Item>

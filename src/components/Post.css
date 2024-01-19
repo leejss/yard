@@ -1,0 +1,12 @@
+h2,
+h3,
+h4,
+a,
+p,
+blockquote {
+  color: var(--foreground) !important;
+}
+
+blockquote {
+  font-weight: 700 !important;
+}

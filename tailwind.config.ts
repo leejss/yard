@@ -1,12 +1,16 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss";
+export default {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        foreground: "var(--foreground))",
-        "foreground-link": "hsl(var(--foreground-link-hsl) / <alpha-value>)",
-        background: "var(--background))",
+        foreground: "hsl(var(--foreground))",
+        background: "hsl(var(--background))",
+        brand: "hsl(var(--brand))",
+        "brand-light": "hsl(var(--brand-light))",
+      },
+      margin: {
+        nav: "var(--nav-height)",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
@@ -17,6 +21,5 @@ module.exports = {
       },
     },
   },
-
   plugins: [require("@tailwindcss/typography")],
-};
+} satisfies Config;

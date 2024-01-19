@@ -1,6 +1,7 @@
 import { CodeBlock } from "@/components/CodeBlock";
 import type { Article } from "@/lib/model/Article";
 import { foramtDate, parseMarkdown } from "@/lib/utils";
+import "./Post.css";
 
 interface PostProps {
   post: Article;
@@ -11,12 +12,12 @@ const Post = async ({ post }: PostProps) => {
   return (
     <article className="pb-12">
       <header className="py-4">
-        <h1 className="text-xl md:text-3xl font-bold dark:text-white text-black">{post.title}</h1>
+        <h1 className="text-xl md:text-3xl font-bold text-foreground">{post.title}</h1>
         <time>{foramtDate(post.date)}</time>
       </header>
       <CodeBlock>
         <div
-          className="prose dark:prose-invert !text-foreground font-mono"
+          className="prose text-foreground font-mono"
           dangerouslySetInnerHTML={{
             __html: html,
           }}

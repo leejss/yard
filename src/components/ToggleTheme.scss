@@ -7,8 +7,6 @@
   padding: 8px;
   border-radius: 10px;
 
-  border: 1px solid var(--foreground);
-
   .DropdownMenuItem {
     cursor: pointer;
 
@@ -46,7 +44,8 @@
   width: 73px;
   padding: 4px 8px;
   border-radius: 10px;
-  border: 1px solid var(--foreground);
+  border: 1px solid white;
+  color: #fff;
 
 }
 

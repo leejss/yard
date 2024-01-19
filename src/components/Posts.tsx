@@ -11,12 +11,12 @@ export const Posts = ({ posts }: PostsProps) => {
     <ul className="text-lg text-foreground flex flex-col gap-2">
       {posts.map((post, index) => {
         return (
-          <li key={index} className="outline-emerald-500 rounded-md hover:text-emerald-700 dark:hover:text-emerald-500 text-foreground">
+          <li key={index} className="transition-colors text-foreground hover:text-brand-light">
             <Link
               href={{
                 pathname: "/posts/" + post.slug,
               }}
-              className="transition-[color] block w-full"
+              className="block w-full font-medium"
             >
               {post.title}
             </Link>
