@@ -18,4 +18,12 @@
     font-weight: normal;
     font-style: normal;
   }
+
+  * {
+    font-family: "GeistSans", sans-serif;
+  }
+
+  :root {
+    --nav-height: 60px;
+  }
 }

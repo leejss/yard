@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import FixedNavbar from "~/components/fixed-navbar";
 import stylehseet from "~/styles/tailwind.css?url";
 
 export const links: LinksFunction = () => [
@@ -25,7 +26,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="antialiased">
-        {children}
+        {/* Fixed navbar */}
+        {/* Fixed contacts */}
+        <FixedNavbar />
+        <main className="mt-nav_height">{children}</main>
         <ScrollRestoration />
         <Scripts />
       </body>
