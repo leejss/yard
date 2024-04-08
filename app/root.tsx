@@ -29,7 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {/* Fixed navbar */}
         {/* Fixed contacts */}
         <FixedNavbar />
-        <main className="mt-nav_height">{children}</main>
+        <main className="mt-nav_height container mx-auto px-4">{children}</main>
         <ScrollRestoration />
         <Scripts />
       </body>
