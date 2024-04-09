@@ -8,9 +8,12 @@ export default {
         sans: "GeistSans, sans-serif",
         mono: "GeistMono, monospace",
       },
-
       spacing: {
         nav_height: "var(--nav-height)",
+      },
+
+      colors: {
+        foreground: "var(--foreground)",
       },
     },
   },

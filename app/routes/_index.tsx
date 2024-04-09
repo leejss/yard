@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <section>
       <header>
-        <h1 className=" text-xl">testing...</h1>
+        <h1 className="text-xl text-foreground">testing...</h1>
       </header>
     </section>
   );

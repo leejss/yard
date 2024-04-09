@@ -6,7 +6,6 @@
   @font-face {
     font-family: "GeistSans";
     src: url("/fonts/GeistVF.woff2") format("woff2");
-    /* url("/fonts/GeistVF.woff") format("woff"); */
     font-weight: normal;
     font-style: normal;
   }
@@ -14,7 +13,6 @@
   @font-face {
     font-family: "GeistMono";
     src: url("/fonts/GeistMonoVF.woff2") format("woff2");
-    /* url("/fonts/GeistMonoVF.woff") format("woff"); */
     font-weight: normal;
     font-style: normal;
   }
@@ -25,5 +23,13 @@
 
   :root {
     --nav-height: 60px;
+  }
+
+  :root.light {
+    --foreground: #e60f0f;
+  }
+
+  :root.dark {
+    --foreground: #0011ff;
   }
 }
