@@ -1,6 +1,6 @@
 import { useRouteLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
-import { RootLoader } from "~/root";
+import type { RootLoader } from "~/root";
 // import type { RootLoaderData } from "~/root";
 
 export type UserPreference = {
