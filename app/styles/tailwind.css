@@ -26,10 +26,12 @@
   }
 
   :root.light {
-    --foreground: #e60f0f;
+    --foreground: #000;
+    --background: #fff;
   }
 
   :root.dark {
-    --foreground: #0011ff;
+    --foreground: #fff;
+    --background: #000;
   }
 }
