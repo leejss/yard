@@ -36,7 +36,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			</head>
 			<body className="antialiased bg-background transition">
 				<FixedNavbar />
-				<main className="mt-nav_height container mx-auto px-4">{children}</main>
+				<main className="mt-nav_height container mx-auto px-4 pb-6">{children}</main>
 				<ScrollRestoration />
 				<Scripts />
 			</body>

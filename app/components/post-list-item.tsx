@@ -2,8 +2,6 @@ import { Link } from "@remix-run/react";
 import type { PostListItemType } from "~/model/PostListItem";
 import { formatDate } from "~/utils";
 
-// TODO: need to validate the prosp before pass it
-
 type PostListItemProps = {
 	item: PostListItemType;
 };

@@ -30,9 +30,7 @@ export const getPosts = async ({ page = 1, perPage = 50 }: PageParams) => {
   const json =
     await res.json<ReturnType<typeof vriteClient.contentPieces.list>>();
 
-  const posts = json
-    .map(createPostListItem)
-    .sort((a, b) => b.date.getTime() - a.date.getTime());
+  const posts = json.map(createPostListItem).sort((a, b) => b.date - a.date);
 
   return posts;
 };

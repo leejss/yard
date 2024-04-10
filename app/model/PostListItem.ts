@@ -4,7 +4,7 @@ import type { ContentPiece } from "~/utils/get-vrite";
 
 export const postListItemSchema = Type.Object({
   title: Type.String(),
-  date: Type.Date(),
+  date: Type.Number(),
   slug: Type.String(),
   id: Type.String(),
 });
@@ -12,10 +12,12 @@ export const postListItemSchema = Type.Object({
 export type PostListItemType = Static<typeof postListItemSchema>;
 
 // Accept larget type and return narrow type
-export const createPostListItem = (contentPiece: ContentPiece) => {
+export const createPostListItem = (
+  contentPiece: ContentPiece,
+): PostListItemType => {
   return {
     title: contentPiece.title,
-    date: contentPiece.date ? new Date(contentPiece.date) : new Date(),
+    date: contentPiece.date ? new Date(contentPiece.date).getTime() : 0,
     slug: contentPiece.slug,
     id: contentPiece.id,
   };
