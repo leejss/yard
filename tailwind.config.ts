@@ -1,23 +1,20 @@
 import type { Config } from "tailwindcss";
+
 export default {
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: ["./app/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      colors: {
-        foreground: "hsl(var(--foreground))",
-        background: "hsl(var(--background))",
-        brand: "hsl(var(--brand))",
-        "brand-light": "hsl(var(--brand-light))",
-      },
-      margin: {
-        nav: "var(--nav-height)",
-      },
       fontFamily: {
-        sans: ["var(--font-geist-sans)"],
-        mono: ["var(--font-geist-mono)"],
+        sans: "GeistSans, sans-serif",
+        mono: "GeistMono, monospace",
       },
-      height: {
-        nav: "var(--nav-height)",
+      spacing: {
+        nav_height: "var(--nav-height)",
+      },
+
+      colors: {
+        foreground: "var(--foreground)",
+        background: "var(--background)",
       },
     },
   },

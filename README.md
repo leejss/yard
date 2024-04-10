@@ -1,9 +1,8 @@
-<https://tinyyard.vercel.app/>
+# tinyyard
 
-## TODO
+## UI architecture
 
-- Responsiveness
-
-## References
-
-- <https://generator.swagger.io/?url=https://api.vrite.io/swagger.json>
+- Fixed Navbar => will be inside root layout
+- Fixed contacts => will be inside root layout
+- Container which calc fixed navbar and set the margin top
+- Contents of the route
