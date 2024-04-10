@@ -71,3 +71,9 @@
     }
   }
 }
+
+@layer utilities {
+  .main-height {
+    min-height: calc(100vh - var(--nav-height));
+  }
+}

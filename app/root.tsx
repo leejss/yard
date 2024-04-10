@@ -38,7 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			<body className="antialiased bg-background transition">
 				<FixedNavbar />
 				<LenisProvider>
-					<main className="mt-nav_height container mx-auto px-4 pb-6">{children}</main>
+					<main className="mt-nav_height container mx-auto px-4 pb-6 flex flex-col main-height">{children}</main>
 				</LenisProvider>
 				<ScrollRestoration />
 				<Scripts />

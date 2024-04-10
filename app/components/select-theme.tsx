@@ -21,7 +21,7 @@ const SelectTheme = () => {
 				<div className="relative size-4">
 					<span
 						style={iconTransformOrigin}
-						className={cn("absolute inset-0 transform transition-transform duration-700 motion-reduce:duration-[0s]", {
+						className={cn("absolute inset-0 transform transition-transform duration-400 motion-reduce:duration-[0s]", {
 							"rotate-0": isDarkMode,
 							"rotate-90": !isDarkMode,
 						})}
@@ -31,7 +31,7 @@ const SelectTheme = () => {
 					<span
 						style={iconTransformOrigin}
 						className={cn(
-							"absolute inset-0 transform transition-transform duration-700 motion-reduce:duration-[0s] rotate-90 ",
+							"absolute inset-0 transform transition-transform duration-400 motion-reduce:duration-[0s] rotate-90 ",
 							{
 								"rotate-0": isLightMode,
 								"-rotate-90": !isLightMode,
