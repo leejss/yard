@@ -18,7 +18,7 @@ export const loader = async () => {
 const PostsRoute = () => {
 	const { posts } = useLoaderData<typeof loader>();
 	return (
-		<div>
+		<div className="pt-4">
 			<ul>
 				{posts.map((post) => {
 					return (
