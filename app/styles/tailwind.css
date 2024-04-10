@@ -34,4 +34,10 @@
     --foreground: #fff;
     --background: #000;
   }
+
+  @media (min-width: 768px) {
+    :root {
+      --nav-height: 80px;
+    }
+  }
 }
