@@ -77,3 +77,16 @@
     min-height: calc(100vh - var(--nav-height));
   }
 }
+
+.svg-icon path[fill],
+.svg-icon path[d],
+.svg-icon rect[fill],
+.svg-icon circle[fill] {
+  fill: currentColor;
+}
+
+.svg-icon path[stroke],
+.svg-icon rect[stroke],
+.svg-icon circle[stroke] {
+  stroke: currentColor;
+}
