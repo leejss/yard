@@ -14,3 +14,10 @@ export function formatDate(date: DateCompatible) {
 
   return `${year}/${month}/${day}`;
 }
+
+export function sortByTime(a: Date, b: Date, order: "dsec" | "asc" = "dsec") {
+  if (order === "dsec") {
+    return b.getTime() - a.getTime();
+  }
+  return a.getTime() - b.getTime();
+}
