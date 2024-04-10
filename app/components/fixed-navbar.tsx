@@ -1,10 +1,5 @@
 import { Link } from "@remix-run/react";
 import SelectTheme from "~/components/select-theme";
-
-// Outer div is used to fix the navbar at the top of the page
-// And inner div is used to style the navbar
-
-// Navbar has the fixed height
 const FixedNavbar = () => {
 	return (
 		<div className="fixed top-0 left-0 right-0 w-full">
@@ -15,8 +10,12 @@ const FixedNavbar = () => {
 					</Link>
 
 					<div className="flex items-center gap-4">
-						<Link to="/posts">Posts</Link>
-						<Link to="/me">Me</Link>
+						<Link className="font-bold" to="/posts">
+							Posts
+						</Link>
+						<Link className="font-bold" to="/me">
+							Me
+						</Link>
 						<SelectTheme />
 					</div>
 				</div>

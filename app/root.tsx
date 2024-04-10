@@ -34,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Meta />
 				<Links />
 			</head>
-			<body className="antialiased">
+			<body className="antialiased bg-background transition">
 				<FixedNavbar />
 				<main className="mt-nav_height container mx-auto px-4">{children}</main>
 				<ScrollRestoration />
@@ -47,6 +47,3 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
 	return <Outlet />;
 }
-
-// Add theme className to html and listen to the html className
-// Changing theme is just changing the theme className in the html tag
