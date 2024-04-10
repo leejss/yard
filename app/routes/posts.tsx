@@ -2,11 +2,12 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import PostListItem from "~/components/post-list-item";
-import { validatePostListItem } from "~/model/PostListItem";
-import { getPosts } from "~/utils/get-posts";
+import { validatePostListItem } from "~/model/Post";
+import { createPostService } from "~/utils/get-posts";
 
 export const loader = async () => {
-	const posts = await getPosts({
+	const postService = createPostService();
+	const posts = await postService.getPosts({
 		page: 1,
 		perPage: 50,
 	});

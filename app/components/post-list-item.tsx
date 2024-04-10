@@ -1,5 +1,5 @@
 import { Link } from "@remix-run/react";
-import type { PostListItemType } from "~/model/PostListItem";
+import type { PostListItemType } from "~/model/Post";
 import { formatDate } from "~/utils";
 
 type PostListItemProps = {

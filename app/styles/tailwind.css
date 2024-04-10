@@ -41,3 +41,33 @@
     }
   }
 }
+
+@layer components {
+  .post {
+    h1,
+    h2,
+    h3,
+    h4,
+    a,
+    p,
+    blockquote {
+      color: var(--foreground) !important;
+    }
+
+    blockquote {
+      font-weight: 700 !important;
+    }
+
+    a {
+      word-wrap: break-word !important;
+    }
+
+    pre {
+      @apply p-4 rounded-lg [&_*]:font-mono overflow-x-auto my-4;
+    }
+
+    p code {
+      @apply text-emerald-500;
+    }
+  }
+}

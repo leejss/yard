@@ -26,3 +26,17 @@ export const createPostListItem = (
 export const validatePostListItem = (data: unknown): PostListItemType => {
   return Value.Cast(postListItemSchema, data);
 };
+
+export const postContentSchema = Type.Object({
+  title: Type.String(),
+  date: Type.String(),
+  content: Type.String(),
+  html: Type.String(),
+  tags: Type.Array(Type.String()),
+});
+
+export type PostContentType = Static<typeof postContentSchema>;
+
+export const validatePostContent = (data: unknown): PostContentType => {
+  return Value.Cast(postContentSchema, data);
+};
