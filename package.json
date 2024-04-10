@@ -17,6 +17,7 @@
     "@remix-run/react": "^2.8.1",
     "@remix-run/serve": "^2.8.1",
     "@sinclair/typebox": "^0.32.20",
+    "@studio-freight/react-lenis": "^0.0.47",
     "@tailwindcss/typography": "^0.5.12",
     "@vrite/sdk": "^0.4.1",
     "clsx": "^2.1.0",

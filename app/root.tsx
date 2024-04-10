@@ -1,6 +1,7 @@
 import { type LinksFunction, type LoaderFunctionArgs, json } from "@remix-run/node";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 import FixedNavbar from "~/components/fixed-navbar";
+import LenisProvider from "~/components/lenis-provider";
 import { useTheme } from "~/hooks/useTheme";
 import stylehseet from "~/styles/tailwind.css?url";
 import { cn } from "~/utils";
@@ -36,7 +37,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			</head>
 			<body className="antialiased bg-background transition">
 				<FixedNavbar />
-				<main className="mt-nav_height container mx-auto px-4 pb-6">{children}</main>
+				<LenisProvider>
+					<main className="mt-nav_height container mx-auto px-4 pb-6">{children}</main>
+				</LenisProvider>
 				<ScrollRestoration />
 				<Scripts />
 			</body>
