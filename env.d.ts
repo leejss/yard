@@ -1,6 +1,6 @@
 namespace NodeJS {
   interface ProcessEnv {
-    readonly NEXT_PUBLIC_VRITE_TOKEN: string;
-    readonly NEXT_PUBLIC_GROUP_ID: string;
+    readonly VRITE_TOKEN: string;
+    readonly VRITE_GROUP_ID: string;
   }
 }
