@@ -1,9 +1,11 @@
 "use client";
+
 import { useTheme } from "next-themes";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { match } from "ts-pattern";
 import { MoonIcon, SunIcon, FaceIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
+
 import "./ToggleTheme.scss";
 
 type Theme = "light" | "dark";
@@ -41,14 +43,26 @@ const ToggleTheme = () => {
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="DropdownMenuContent border border-foreground" sideOffset={32}>
-          <DropdownMenu.Item className="DropdownMenuItem" onSelect={() => setTheme("light")}>
+        <DropdownMenu.Content
+          className="DropdownMenuContent border border-foreground"
+          sideOffset={32}
+        >
+          <DropdownMenu.Item
+            className="DropdownMenuItem"
+            onSelect={() => setTheme("light")}
+          >
             Light
           </DropdownMenu.Item>
-          <DropdownMenu.Item className="DropdownMenuItem" onSelect={() => setTheme("dark")}>
+          <DropdownMenu.Item
+            className="DropdownMenuItem"
+            onSelect={() => setTheme("dark")}
+          >
             Dark
           </DropdownMenu.Item>
-          <DropdownMenu.Item className="DropdownMenuItem" onSelect={() => setTheme(getSystemTheme())}>
+          <DropdownMenu.Item
+            className="DropdownMenuItem"
+            onSelect={() => setTheme(getSystemTheme())}
+          >
             System
           </DropdownMenu.Item>
         </DropdownMenu.Content>
