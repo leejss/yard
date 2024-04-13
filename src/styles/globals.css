@@ -10,7 +10,7 @@
 
     /* Size */
     --max-width: 1024px;
-    --nav-height: 72px;
+    --nav-height: 48px;
     --text-primary: 1.6rem;
   }
 
@@ -25,14 +25,21 @@
     --background: 0 0 5;
     --background-secondary: hsl(0, 0%, 20%);
   }
+  .prose {
+    max-width: none;
+  }
+
+  :root.light .prose {
+    --tw-prose-code: green;
+  }
+
+  :root.dark .prose {
+    --tw-prose-code: greenyellow;
+  }
 }
 
 a {
   text-decoration: none;
-}
-
-.prose {
-  max-width: none;
 }
 
 @media (prefers-color-scheme: dark) {

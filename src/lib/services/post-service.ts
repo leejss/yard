@@ -1,6 +1,6 @@
 import { API_URL, VRITE_TOKEN } from "@/constant";
 import { vrite } from "@/lib/vrite";
-import { parseMarkdown } from "@/lib/utils";
+import { foramtDate, parseMarkdown } from "@/lib/utils";
 import { gfmOutputTransformer } from "@vrite/sdk/transformers";
 import ky from "ky";
 import queryString from "query-string";
@@ -32,7 +32,7 @@ class PostServiceConverter {
   static convertToPostListItem(data: VriteContentListItem): PostListItemModel {
     return {
       title: data.title ?? "",
-      date: data.date ?? "",
+      date: data.date ? foramtDate(data.date) : "",
       slug: data.slug ?? "",
       id: data.id,
     };
