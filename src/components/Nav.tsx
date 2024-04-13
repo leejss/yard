@@ -7,7 +7,7 @@ const sns = {
 
 const Nav = () => {
   return (
-    <nav className="flex justify-between my-4">
+    <nav className="my-4 flex justify-between">
       {links.map((link) => (
         <Link className="link" key={link} href={"/" + link}>
           {link}

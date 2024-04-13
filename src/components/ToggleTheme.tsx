@@ -43,26 +43,14 @@ const ToggleTheme = () => {
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          className="DropdownMenuContent border border-foreground"
-          sideOffset={32}
-        >
-          <DropdownMenu.Item
-            className="DropdownMenuItem"
-            onSelect={() => setTheme("light")}
-          >
+        <DropdownMenu.Content className="DropdownMenuContent border border-foreground" sideOffset={32}>
+          <DropdownMenu.Item className="DropdownMenuItem" onSelect={() => setTheme("light")}>
             Light
           </DropdownMenu.Item>
-          <DropdownMenu.Item
-            className="DropdownMenuItem"
-            onSelect={() => setTheme("dark")}
-          >
+          <DropdownMenu.Item className="DropdownMenuItem" onSelect={() => setTheme("dark")}>
             Dark
           </DropdownMenu.Item>
-          <DropdownMenu.Item
-            className="DropdownMenuItem"
-            onSelect={() => setTheme(getSystemTheme())}
-          >
+          <DropdownMenu.Item className="DropdownMenuItem" onSelect={() => setTheme(getSystemTheme())}>
             System
           </DropdownMenu.Item>
         </DropdownMenu.Content>

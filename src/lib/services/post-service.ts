@@ -1,5 +1,5 @@
 import { API_URL, VRITE_TOKEN } from "@/constant";
-import { vrite } from "@/lib/client";
+import { vrite } from "@/lib/vrite";
 import { parseMarkdown } from "@/lib/utils";
 import { gfmOutputTransformer } from "@vrite/sdk/transformers";
 import ky from "ky";
@@ -24,9 +24,7 @@ type PageParams = {
   perPage?: number;
 };
 
-type VriteContentListItem = Awaited<
-  ReturnType<typeof vrite.contentPieces.list>
->[number];
+type VriteContentListItem = Awaited<ReturnType<typeof vrite.contentPieces.list>>[number];
 
 type VriteContentPiece = Awaited<ReturnType<typeof vrite.contentPieces.get>>;
 
@@ -67,13 +65,9 @@ export class PostService {
       perPage: 50,
     },
   ) {
-    const endpoint = `${API_URL}/content-pieces/list?contentGroupId=${this.GROUP_ID}&${queryString.stringify(
-      params,
-    )}`;
+    const endpoint = `${API_URL}/content-pieces/list?contentGroupId=${this.GROUP_ID}&${queryString.stringify(params)}`;
 
-    const json = await this.httpClient
-      .get(endpoint)
-      .json<ReturnType<typeof vrite.contentPieces.list>>();
+    const json = await this.httpClient.get(endpoint).json<ReturnType<typeof vrite.contentPieces.list>>();
 
     return json;
   }
@@ -87,9 +81,7 @@ export class PostService {
     let contentPieceId = "";
     {
       const endpoint = `${API_URL}/content-pieces/list?contentGroupId=${this.GROUP_ID}&slug=${slug}&page=1&perPage=20`;
-      const content = await this.httpClient
-        .get(endpoint)
-        .json<ReturnType<typeof vrite.contentPieces.list>>();
+      const content = await this.httpClient.get(endpoint).json<ReturnType<typeof vrite.contentPieces.list>>();
 
       contentPieceId = content[0].id;
     }
@@ -101,9 +93,7 @@ export class PostService {
     });
     const endpoint = `${API_URL}/content-pieces?${params}`;
 
-    const json = await this.httpClient
-      .get(endpoint)
-      .json<ReturnType<typeof vrite.contentPieces.get>>();
+    const json = await this.httpClient.get(endpoint).json<ReturnType<typeof vrite.contentPieces.get>>();
 
     return json;
   }

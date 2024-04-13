@@ -8,13 +8,10 @@ interface PostsProps {
 
 export const Posts = ({ posts }: PostsProps) => {
   return (
-    <ul className="text-lg text-foreground flex flex-col gap-2">
+    <ul className="flex flex-col gap-2 text-lg text-foreground">
       {posts.map((post, index) => {
         return (
-          <li
-            key={index}
-            className="transition-colors text-foreground hover:text-brand-light"
-          >
+          <li key={index} className="text-foreground transition-colors hover:text-brand-light">
             <Link
               href={{
                 pathname: "/posts/" + post.slug,
@@ -23,9 +20,7 @@ export const Posts = ({ posts }: PostsProps) => {
             >
               {post.title}
             </Link>
-            <span className="text-sm text-gray-500">
-              {foramtDate(post.date)}
-            </span>
+            <span className="text-sm text-gray-500">{foramtDate(post.date)}</span>
           </li>
         );
       })}

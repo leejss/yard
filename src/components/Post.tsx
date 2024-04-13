@@ -8,15 +8,13 @@ interface PostProps {
 }
 const Post = async ({ post }: PostProps) => {
   return (
-    <article className="post pb-12 w-full">
+    <article className="post w-full pb-12">
       <header className="py-4">
-        <h1 className="text-xl md:text-3xl font-bold text-foreground">
-          {post.title}
-        </h1>
+        <h1 className="text-xl font-bold text-foreground md:text-3xl">{post.title}</h1>
         <time>{foramtDate(post.date)}</time>
       </header>
       <div
-        className="prose text-foreground font-mono"
+        className="prose font-mono text-foreground"
         dangerouslySetInnerHTML={{
           __html: post.html,
         }}

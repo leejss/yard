@@ -11,23 +11,11 @@ export const metadata = {
   description: "tinyyard is tinyyard",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
-    >
-      <body className="antialiased overflow-x-hidden">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+    <html suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className="overflow-x-hidden antialiased">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <LenisProvider>
             <PageLayout>{children}</PageLayout>
           </LenisProvider>
