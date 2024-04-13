@@ -9,9 +9,11 @@ export default {
         brand: "hsl(var(--brand))",
         "brand-light": "hsl(var(--brand-light))",
       },
+
       margin: {
         nav: "var(--nav-height)",
       },
+
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
         mono: ["var(--font-geist-mono)"],

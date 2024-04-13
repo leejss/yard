@@ -19,14 +19,19 @@ export const getPosts = async ({ page = 1, perPage = 50 }: PageParams) => {
     perPage,
   });
 
-  const res = await ky.get(`${API_URL}/content-pieces/list?contentGroupId=${GROUP_ID}&${pageParams}`, {
-    headers: {
-      Authorization: `Bearer ${VRITE_TOKEN}`,
+  const res = await ky.get(
+    `${API_URL}/content-pieces/list?contentGroupId=${GROUP_ID}&${pageParams}`,
+    {
+      headers: {
+        Authorization: `Bearer ${VRITE_TOKEN}`,
+      },
+      // cache: "no-cache",
     },
-    // cache: "no-cache",
-  });
+  );
   const json = await res.json<ReturnType<typeof vrite.contentPieces.list>>();
-  const posts = json.map((piece) => new PostListItem(piece)).sort((a, b) => b.date.getTime() - a.date.getTime());
+  const posts = json
+    .map((piece) => new PostListItem(piece))
+    .sort((a, b) => b.date.getTime() - a.date.getTime());
   return posts;
 };
 
@@ -55,6 +60,7 @@ const getContentPieceIdBySlug = async (slug: string) => {
     page: 1,
     perPage: 20,
   });
+
   const res = await ky.get(`${API_URL}/content-pieces/list?${params}`, {
     headers: {
       Authorization: `Bearer ${VRITE_TOKEN}`,

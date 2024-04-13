@@ -9,7 +9,11 @@ export const vrite = createClient({
   token: VRITE_TOKEN,
 });
 
-export const createFsClient = ({ path = "/public/_posts" }: { path: string }) => {
+export const createFsClient = ({
+  path = "/public/_posts",
+}: {
+  path: string;
+}) => {
   const base = process.cwd() + path;
   const getPostBySlug = async (slug: string): Promise<Article> => {
     const filename = slug + ".md";

@@ -1,9 +1,9 @@
-import { PostListItem } from "@/lib/model/PostListItem";
 import { foramtDate } from "@/lib/utils";
+import type { PostListItemModel } from "@/lib/services/post-service";
 import Link from "next/link";
 
 interface PostsProps {
-  posts: PostListItem[];
+  posts: PostListItemModel[];
 }
 
 export const Posts = ({ posts }: PostsProps) => {
@@ -11,7 +11,10 @@ export const Posts = ({ posts }: PostsProps) => {
     <ul className="text-lg text-foreground flex flex-col gap-2">
       {posts.map((post, index) => {
         return (
-          <li key={index} className="transition-colors text-foreground hover:text-brand-light">
+          <li
+            key={index}
+            className="transition-colors text-foreground hover:text-brand-light"
+          >
             <Link
               href={{
                 pathname: "/posts/" + post.slug,
@@ -20,7 +23,9 @@ export const Posts = ({ posts }: PostsProps) => {
             >
               {post.title}
             </Link>
-            <span className="text-sm text-gray-500">{foramtDate(post.date)}</span>
+            <span className="text-sm text-gray-500">
+              {foramtDate(post.date)}
+            </span>
           </li>
         );
       })}

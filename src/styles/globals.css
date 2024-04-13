@@ -17,29 +17,18 @@
     --text-primary: 1.6rem;
   }
 
-  .dark {
+  :root.light {
+    --foreground: 0 0 0;
+    --background: 0 0 100;
+    --background-secondary: hsl(0 0 80%);
+  }
+
+  :root.dark {
     --foreground: 0 0 100;
     --background: 0 0 5;
     --background-secondary: hsl(0, 0%, 20%);
   }
 }
-
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-li,
-a {
-  color: var(--foreground) !important;
-}
-
-li::marker {
-  color: var(--foreground) !important;
-} */
 
 a {
   text-decoration: none;
