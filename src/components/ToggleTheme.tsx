@@ -17,6 +17,7 @@ const getSystemTheme = () => {
 const ToggleTheme = () => {
   const [localTheme, setLocalTheme] = useState<Theme | null>(null);
   const { setTheme, theme } = useTheme();
+
   const getThemeIcon = (theme: Theme | null) => {
     if (!theme) return <FaceIcon />;
     return match(theme)
@@ -24,6 +25,7 @@ const ToggleTheme = () => {
       .with("light", () => <SunIcon />)
       .otherwise(() => <FaceIcon />);
   };
+
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (!theme) {
