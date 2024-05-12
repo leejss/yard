@@ -8,7 +8,7 @@ import PageLayout from "@/components/layouts/page-layout";
 
 export const metadata = {
   title: "tinyyard",
-  description: "tinyyard is tinyyard",
+  description: "tinyyard",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
