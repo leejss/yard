@@ -1,5 +1,6 @@
 import Post from "@/components/Post";
-import { PostService } from "@/lib/services/post-service";
+import { postIdCache } from "@/lib/caching";
+import { getPostById } from "@/lib/services/post-service";
 
 interface PageProps {
   params: {
@@ -8,7 +9,8 @@ interface PageProps {
 }
 
 const PostPage = async ({ params }: PageProps) => {
-  const post = await PostService.getPostBySlug(params.slug);
+  const postId = postIdCache.get(params.slug);
+  const post = await getPostById(postId!);
   return <Post post={post} />;
 };
 

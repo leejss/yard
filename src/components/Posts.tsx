@@ -1,6 +1,7 @@
 import { foramtDate } from "@/lib/utils";
 import type { PostListItemModel } from "@/lib/services/post-service";
 import Link from "next/link";
+import { postIdCache } from "@/lib/caching";
 
 interface PostsProps {
   posts: PostListItemModel[];
@@ -11,7 +12,6 @@ export const Posts = ({ posts }: PostsProps) => {
     <ul className="flex flex-col gap-2 text-lg text-foreground">
       {posts.map(({ date, id, slug, title }) => {
         const pathname = "/posts/" + slug;
-
         return (
           <li key={id} className="text-foreground transition-colors hover:text-brand-light">
             <Link

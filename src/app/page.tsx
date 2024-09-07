@@ -1,8 +1,8 @@
 import { Posts } from "@/components/Posts";
-import { PostService } from "@/lib/services/post-service";
+import { getPosts } from "@/lib/services/post-service";
 
 const HomePage = async () => {
-  const posts = await PostService.getPostList();
+  const posts = await getPosts();
   return <Posts posts={posts} />;
 };
 
