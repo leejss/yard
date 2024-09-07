@@ -3,10 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  a {
+    @apply text-cyan-700 transition;
+  }
+  a:hover {
+    @apply text-cyan-500;
+  }
+}
+
+@layer components {
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+    /* @apply bg-white; */
   }
 }
