@@ -3,47 +3,30 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body {
+    @apply bg-stone-50 font-mono dark:bg-stone-950;
+  }
   :root {
-    /* Color */
-    --brand: 0 98% 65%;
-    --brand-light: 0 98% 75%;
-
-    /* Size */
-    --max-width: 1024px;
-    --nav-height: 48px;
-    --text-primary: 1.6rem;
+    --page-width: 1024px;
   }
-
-  :root.light {
-    --foreground: 0 0 0;
-    --background: 0 0 100;
-    --background-secondary: hsl(0 0 80%);
+  a {
+    @apply text-gray-800 transition dark:text-gray-400;
   }
-
-  :root.dark {
-    --foreground: 0 0 100;
-    --background: 0 0 5;
-    --background-secondary: hsl(0, 0%, 20%);
-  }
-  .prose {
-    max-width: none;
-  }
-
-  :root.light .prose {
-    --tw-prose-code: green;
-  }
-
-  :root.dark .prose {
-    --tw-prose-code: greenyellow;
+  a:hover {
+    @apply hover:underline dark:text-gray-200;
   }
 }
 
-a {
-  text-decoration: none;
+@layer components {
+  .ink {
+    @apply text-stone-900 transition hover:text-stone-600 dark:text-stone-300 dark:hover:text-stone-100;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+    /* @apply bg-white; */
   }
 }

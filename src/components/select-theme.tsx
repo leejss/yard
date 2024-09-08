@@ -1,76 +1,75 @@
 "use client";
-import { useTheme } from "next-themes";
+
+import { ThemeValue } from "@/lib/cookie";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { MoonIcon, SunIcon, FaceIcon } from "@radix-ui/react-icons";
-import { match } from "ts-pattern";
+import { useTheme } from "next-themes";
+import { useEffect, useRef, useState } from "react";
 
-type Theme = "light" | "dark";
+// const getSystemTheme = () => {
+//   const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+//   return isDark ? "dark" : "light";
+// };
 
-const getSystemTheme = () => {
-  const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  return isDark ? "dark" : "light";
-};
-
+const dropdownOffset = 20;
 const SelectTheme = () => {
-  const { setTheme, themes, theme } = useTheme();
-  const [localTheme, setLocalTheme] = useState<Theme | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { setTheme, themes, resolvedTheme } = useTheme();
+  // const [localTheme, setLocalTheme] = useState<Theme | null>(null);
   const [open, setOpen] = useState(false);
 
-  const getThemeIcon = (theme: Theme | null) => {
-    if (!theme) return <FaceIcon />;
-    return match(theme)
-      .with("dark", () => <MoonIcon />)
-      .with("light", () => <SunIcon />)
-      .otherwise(() => <FaceIcon />);
+  useEffect(() => {
+    const buttonElement = buttonRef.current;
+    const dropdownElement = dropdownRef.current;
+    if (!buttonElement) return;
+    const buttonRect = buttonElement.getBoundingClientRect();
+    const buttonBottom = buttonRect.bottom;
+    if (open && dropdownElement) {
+      dropdownElement.style.top = `${buttonBottom + dropdownOffset}px`;
+    }
+  }, [open]);
+
+  const labels: Record<ThemeValue, string> = {
+    light: "Light",
+    dark: "Dark",
+    system: "System",
   };
 
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (!theme) {
-      const systemTheme = getSystemTheme();
-      localStorage.setItem("theme", systemTheme);
-      setLocalTheme(systemTheme);
-    } else {
-      setLocalTheme(theme as Theme);
-    }
-  }, [theme]);
-
+  const theme = (resolvedTheme || "system") as ThemeValue;
   return (
-    <div className="relative z-10 h-full">
+    <div className="relative z-10 flex h-full w-[60px] flex-1 flex-col justify-center">
       {/* Dropdown trigger */}
       <button
+        className="ink text-left"
+        ref={buttonRef}
         onClick={() => {
           setOpen((v) => !v);
         }}
       >
-        {getThemeIcon(localTheme)}
+        {labels[theme]}
       </button>
-      {/* Dropdown content */}
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={dropdownRef}
             className="absolute"
             initial={{ opacity: 0, y: -5 }}
             animate={{ opacity: 1, y: 15 }}
             exit={{ opacity: 0, y: -5 }}
           >
             <div className="">
-              {
-                // Loop through themes
-                themes.map((theme) => (
-                  <button
-                    key={theme}
-                    className="capitalize"
-                    onClick={() => {
-                      setTheme(theme);
-                      setOpen(false);
-                    }}
-                  >
-                    {theme}
-                  </button>
-                ))
-              }
+              {themes.map((theme) => (
+                <button
+                  key={theme}
+                  className="ink capitalize"
+                  onClick={() => {
+                    setTheme(theme);
+                    setOpen(false);
+                  }}
+                >
+                  {theme}
+                </button>
+              ))}
             </div>
           </motion.div>
         )}
@@ -80,14 +79,3 @@ const SelectTheme = () => {
 };
 
 export default SelectTheme;
-
-// TODO: make select theme dropdown
-
-// 1. has open and closed state
-// 2. theme has 3 options: light, dark, system
-// 3. if open state, animation starts
-// 4. animation is like a config of from and to
-// 5. from is 0% opacity, to is 100% opacity
-// 5. from y is -10px, to y is 30px
-
-// initial state, animate state and exit state
