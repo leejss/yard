@@ -1,6 +1,6 @@
 // contentlayer.config.ts
+import rehypeShiki from "@shikijs/rehype";
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-
 export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `**/*.md`,
@@ -13,4 +13,17 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
-export default makeSource({ contentDirPath: "posts", documentTypes: [Post] });
+export default makeSource({
+  contentDirPath: "posts",
+  documentTypes: [Post],
+  markdown: {
+    rehypePlugins: [
+      [
+        rehypeShiki as any,
+        {
+          theme: "catppuccin-mocha",
+        },
+      ],
+    ],
+  },
+});

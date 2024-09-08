@@ -5,7 +5,7 @@
 @layer base {
   html,
   body {
-    @apply font-mono;
+    @apply bg-stone-50 font-mono dark:bg-stone-950;
   }
   :root {
     --page-width: 1024px;
@@ -14,7 +14,7 @@
     @apply text-gray-800 transition dark:text-gray-400;
   }
   a:hover {
-    @apply dark:text-gray-200;
+    @apply hover:underline dark:text-gray-200;
   }
 }
 
