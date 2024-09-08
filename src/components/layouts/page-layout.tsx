@@ -5,9 +5,9 @@ interface PageLayoutProps {
 }
 const PageLayout = ({ children }: PageLayoutProps) => {
   return (
-    <div id="tinyyard">
+    <div>
       <PageNav />
-      <main className="container mx-auto mt-nav h-[2000px] px-2 py-6 md:py-10">{children}</main>
+      <main className="mx-auto w-full max-w-[--page-width]">{children}</main>
     </div>
   );
 };
