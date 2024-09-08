@@ -11,14 +11,17 @@
     --page-width: 1024px;
   }
   a {
-    @apply text-neutral-400 transition;
+    @apply text-gray-800 transition dark:text-gray-400;
   }
   a:hover {
-    @apply text-neutral-100;
+    @apply dark:text-gray-200;
   }
 }
 
 @layer components {
+  .ink {
+    @apply text-stone-900 transition hover:text-stone-600 dark:text-stone-300 dark:hover:text-stone-100;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
