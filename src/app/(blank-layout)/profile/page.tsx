@@ -75,7 +75,27 @@ const projects: Project[] = [
 export default function ProfilePage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="mb-12 text-3xl font-bold">Projects</h1>
+      <div className="mb-12 flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Projects</h1>
+        <div className="flex gap-4">
+          <a
+            href="https://github.com/leejss"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-gray-900"
+          >
+            GitHub ↗
+          </a>
+          <a
+            href="https://yard-coral.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-gray-900"
+          >
+            Blog ↗
+          </a>
+        </div>
+      </div>
       <div className="space-y-12">
         {projects
           .sort((a, b) => b.period.start.localeCompare(a.period.start))
