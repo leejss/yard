@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { allPosts, Post } from "contentlayer/generated";
+import { allPosts, type Post } from "contentlayer/generated";
 import { compareDesc, format, parseISO } from "date-fns";
 
 function PostTitle({ post }: { post: Post }) {
@@ -26,8 +26,8 @@ export default function Home() {
   return (
     <div className="mx-auto w-full max-w-[--page-width] px-4 py-8">
       <ul className="flex flex-col gap-4">
-        {posts.map((post, idx) => (
-          <li key={idx}>
+        {posts.map((post) => (
+          <li key={post._id}>
             <PostTitle post={post} />
           </li>
         ))}

@@ -100,12 +100,12 @@ export default function ProfilePage() {
         {projects
           .sort((a, b) => b.period.start.localeCompare(a.period.start))
           .map((project, idx) => (
-            <div key={idx} className="mb-8">
+            <div key={project.name} className="mb-8">
               <h2 className="mb-4 text-2xl font-bold">{project.name}</h2>
               <p className="mb-4 text-gray-600">@ {project.company}</p>
               <div className="mb-4">
-                {project.techStack.map((tech, techIdx) => (
-                  <span key={techIdx} className="mr-4 font-mono text-sm">
+                {project.techStack.map((tech) => (
+                  <span key={tech} className="mr-4 font-mono text-sm">
                     {tech}
                   </span>
                 ))}
